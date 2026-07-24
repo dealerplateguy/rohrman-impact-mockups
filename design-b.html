@@ -198,6 +198,24 @@
 </head>
 <body>
 
+<!-- ===== Concept preview switcher (review aid, not part of the store page) ===== -->
+<style>
+  .concept-nav{position:sticky;top:0;z-index:9999;background:rgba(11,14,18,.92);border-bottom:1px solid rgba(251,176,64,.35);
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:7px 12px;
+    font:600 12px/1 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .concept-nav .lbl{color:#8b94a3;letter-spacing:.05em;text-transform:uppercase;font-size:10px;margin-right:4px}
+  .concept-nav a{color:#cdd3db;text-decoration:none;padding:5px 12px;border-radius:999px}
+  .concept-nav a:hover{background:rgba(255,255,255,.09);color:#fff}
+  .concept-nav a.cur,.concept-nav a.cur:hover{background:#fbb040;color:#111}
+  @media print{.concept-nav{display:none}}
+</style>
+<nav class="concept-nav" aria-label="Concept preview navigation">
+  <span class="lbl">Concept preview</span>
+  <a href="index.html">Home</a>
+  <a href="design-a.html">Direction A</a>
+  <a href="design-b.html" class="cur">Direction B</a>
+</nav>
+
 <!-- Local SEO: hidden h1 + location line -->
 <h1 class="sr-only">Rohrman Impact</h1>
 <p class="sr-only">Lafayette &amp; West Lafayette, Indiana, Tippecanoe County, Purdue University, and beyond</p>
