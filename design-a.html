@@ -217,9 +217,9 @@
     display:flex;align-items:center;justify-content:center;overflow:hidden}
   .rgt-inner{width:100%;max-width:720px;margin:0 auto;padding:24px 20px;display:flex;flex-direction:column;gap:18px}
   .rgt-head{text-align:center}
-  .rgt-logo{display:block;width:auto;max-width:340px;height:auto;margin:0 auto 14px}
-  .rgt-report{margin:0;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold,#fbb040)}
-  @media(max-width:560px){.rgt-logo{max-width:250px}}
+  .rgt-logo{display:block;width:auto;max-width:400px;height:auto;margin:0 auto 14px}
+  .rgt-report{margin:0;font-size:clamp(28px,6vw,46px);font-weight:800;line-height:1.04;letter-spacing:-.01em;color:#fff}
+  @media(max-width:560px){.rgt-logo{max-width:280px}}
   .rgt-body{display:flex;gap:20px;align-items:stretch;justify-content:center}
   .rgt-tube{position:relative;width:52px;flex:0 0 52px;min-height:300px;background:rgba(255,255,255,.10);
     border:1px solid rgba(255,255,255,.22);border-radius:26px;overflow:hidden}
@@ -604,7 +604,7 @@
     <div class="rgt-inner">
 
       <header class="rgt-head">
-        <img class="rgt-logo" src="assets/logo-light.png" alt="Rohrman Impact" width="900" height="582">
+        <img class="rgt-logo" src="assets/logo-light-trim.png" alt="Rohrman Impact" width="836" height="222">
         <p class="rgt-report">2025 Community Giving Report</p>
       </header>
 
