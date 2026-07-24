@@ -10,9 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#102A43; --navy-deep:#0a1c30; --muted:#5a6b7b; --hairline:#e3e8ee;
-    --ink:#15212b; --gold:#c8a96b; --gold-dark:#b3945a; --gold-soft:#e7d8b8;
-    --bg:#ffffff; --bg-alt:#f5f7fa;
+    /* Rohrman brand: black + orange (matches Direction A) */
+    --navy:#141416; --navy-deep:#0f0f10; --muted:#565959; --hairline:#e5e5e5;
+    --ink:#141416; --gold:#fbb040; --gold-dark:#a96a10; --gold-soft:#ffe7bd;
+    --bg:#ffffff; --bg-alt:#f2f3f4;
     --radius:18px; --radius-sm:12px;
     --shadow:0 12px 34px rgba(16,42,67,.08);
     --shadow-sm:0 6px 18px rgba(16,42,67,.06);
@@ -79,7 +80,13 @@
   /* Hero */
   .hero{padding:64px 0 72px}
   .hero__grid{display:grid; grid-template-columns:1.05fr .95fr; gap:52px; align-items:center}
-  .hero h1.big{font-size:clamp(40px,6.4vw,68px); font-weight:800; letter-spacing:-1.5px; margin:18px 0 18px}
+  .hero__logo{width:clamp(280px,40vw,520px); max-width:100%; height:auto; display:block; margin:0 0 20px}
+  @media(max-width:860px){ .hero__logo{margin:0 auto 16px} }
+  /* photo squares gallery */
+  .gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+  .gallery img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:14px; display:block; box-shadow:var(--shadow)}
+  @media(max-width:700px){ .gallery{grid-template-columns:repeat(2,1fr); gap:10px} }
+  .hero h1.big{font-size:clamp(40px,6.4vw,68px); font-weight:800; letter-spacing:-1.5px; margin:14px 0 18px}
   .hero .chips{margin:0 0 24px}
   .hero__actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px}
   .hero__photo{position:relative}
@@ -214,7 +221,8 @@
 <section class="hero">
   <div class="wrap hero__grid">
     <div class="hero__text">
-      <p class="eyebrow">Rohrman Impact &middot; Lafayette, Indiana</p>
+      <img class="hero__logo" src="assets/logo-dark.png" alt="Rohrman Impact" width="520" height="130">
+      <p class="eyebrow">Lafayette &amp; West Lafayette, Indiana</p>
       <div class="chips">
         <span class="chip chip--soft">Giving since 1986</span>
         <span class="chip chip--soft">60+ organizations</span>
@@ -247,6 +255,26 @@
       <div class="stat"><div class="stat__num">60+</div><div class="stat__lbl">Organizations</div></div>
       <div class="stat"><div class="stat__num">400+</div><div class="stat__lbl">Volunteer hours</div></div>
       <div class="stat"><div class="stat__num">1,745+</div><div class="stat__lbl">Items collected</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY (photo squares) -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Moments</p>
+      <h2>The year in pictures</h2>
+    </div>
+    <div class="gallery">
+      <img src="assets/mp-03.jpg" alt="Volunteers packing meals" loading="lazy">
+      <img src="assets/vol-yardcleanup.jpg" alt="Yard cleanup for a neighbor" loading="lazy">
+      <img src="assets/d-check-puppies.jpg" alt="Donation check with rescue animals" loading="lazy">
+      <img src="assets/mp-14.jpg" alt="On the meal packing line" loading="lazy">
+      <img src="assets/vol-camp-selfie.jpg" alt="Prepping the camp grounds" loading="lazy">
+      <img src="assets/mp-20.jpg" alt="Boxing meals by hand" loading="lazy">
+      <img src="assets/vol-planting.jpg" alt="Planting and landscaping" loading="lazy">
+      <img src="assets/mp-04.jpg" alt="Our team at the meal pack" loading="lazy">
     </div>
   </div>
 </section>
