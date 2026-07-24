@@ -27,7 +27,7 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  html{scroll-behavior:smooth;overflow-x:hidden}
+  html{scroll-behavior:smooth;overflow-x:clip}
   body{
     font-family:var(--sans);
     color:var(--ink);
@@ -35,7 +35,7 @@
     font-size:14px;
     line-height:1.45;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    overflow-x:clip;
   }
   img{max-width:100%;display:block}
   a{color:var(--link);text-decoration:none}
@@ -186,6 +186,42 @@
   .therm-total{margin-top:16px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px}
   .therm-total .n{font-size:clamp(28px,6vw,38px);font-weight:700;letter-spacing:-.01em;line-height:1;color:var(--ink)}
   .therm-total .c{margin-top:6px;font-size:13px;color:var(--muted);font-weight:400}
+
+  /* wide 4-across stats under the Ryan quote (thermometer moved to its own band) */
+  .qstats--wide{grid-template-columns:repeat(2,1fr)}
+  @media(min-width:760px){.qstats--wide{grid-template-columns:repeat(4,1fr)}}
+  .qblock--wide{max-width:900px;margin:0 auto;text-align:center}
+  .qblock--wide blockquote{text-align:center}
+  .qblock--wide .attrib{text-align:center}
+
+  /* ===================== PINNED GIVING THERMOMETER (vertical sticky-pin scrub) ===================== */
+  .rgt-track{position:relative;height:300vh;background:var(--charcoal,#131921);color:#fff}
+  .rgt-stage{position:-webkit-sticky;position:sticky;top:0;height:100vh;height:100svh;
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .rgt-inner{width:100%;max-width:720px;margin:0 auto;padding:24px 20px;display:flex;flex-direction:column;gap:18px}
+  .rgt-head{text-align:center}
+  .rgt-eyebrow{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold,#fbb040)}
+  .rgt-title{margin:0;font-size:clamp(22px,5vw,34px);font-weight:800;line-height:1.1;color:#fff}
+  .rgt-sub{margin:6px 0 0;font-size:14px;color:rgba(255,255,255,.72)}
+  .rgt-body{display:flex;gap:20px;align-items:stretch;justify-content:center}
+  .rgt-tube{position:relative;width:52px;flex:0 0 52px;min-height:300px;background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.22);border-radius:26px;overflow:hidden}
+  .rgt-fill{position:absolute;left:0;right:0;bottom:0;height:0%;background:linear-gradient(180deg,var(--gold,#fbb040) 0%, #f0980f 100%)}
+  .rgt-ticks{list-style:none;margin:0;padding:0;flex:1;max-width:420px;display:flex;flex-direction:column;justify-content:space-between}
+  .rgt-tick{display:grid;grid-template-columns:16px 1fr auto;grid-template-rows:auto auto;align-items:center;gap:4px 10px;
+    padding:6px 0;opacity:.30;transform:translateX(-4px);transition:opacity .35s ease, transform .35s ease}
+  .rgt-tick.is-lit{opacity:1;transform:none}
+  .rgt-dot{grid-row:1 / span 2;width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25);
+    box-shadow:0 0 0 0 rgba(251,176,64,0);transition:background .35s ease, box-shadow .35s ease}
+  .rgt-tick.is-lit .rgt-dot{background:var(--gold,#fbb040);box-shadow:0 0 0 4px rgba(251,176,64,.22)}
+  .rgt-when{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold,#fbb040)}
+  .rgt-what{grid-column:2;font-size:13px;color:rgba(255,255,255,.85)}
+  .rgt-amt{grid-column:3;grid-row:1 / span 2;align-self:center;font-size:13px;font-weight:800;white-space:nowrap;color:#fff}
+  .rgt-total{text-align:center}
+  .rgt-num{font-size:clamp(34px,9vw,56px);font-weight:800;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:#fff}
+  .rgt-cap{margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
+  @media(max-width:560px){.rgt-tube{width:40px;flex-basis:40px;min-height:260px}.rgt-what{font-size:12px}}
+  @media(prefers-reduced-motion:reduce){.rgt-track{height:auto}.rgt-stage{position:static;height:auto}}
 
   /* ===================== CONNOR (photo + quote) ===================== */
   .person{display:grid;grid-template-columns:1fr;overflow:hidden}
@@ -513,47 +549,57 @@
   </div>
 </div>
 
-<!-- ========== CLIMB: RYAN QUOTE + SCROLL-FILL THERMOMETER ========== -->
+<!-- ========== RYAN QUOTE ========== -->
 <div class="row stack" id="climb">
   <article class="card climb reveal">
-    <div class="climb-grid">
-
-      <div class="qblock">
-        <div class="mark">&#8220;</div>
-        <blockquote>We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home.</blockquote>
-        <div class="attrib">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
-        <div class="qstats">
-          <div class="qstat"><div class="n">400+</div><div class="l">Volunteer hours, hands-on</div></div>
-          <div class="qstat"><div class="n">22,228</div><div class="l">Meals packed by hand</div></div>
-          <div class="qstat"><div class="n">545</div><div class="l">Shoeboxes packed</div></div>
-          <div class="qstat"><div class="n">60+</div><div class="l">Organizations served</div></div>
-        </div>
+    <div class="qblock qblock--wide">
+      <div class="mark">&#8220;</div>
+      <blockquote>We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home.</blockquote>
+      <div class="attrib">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
+      <div class="qstats qstats--wide">
+        <div class="qstat"><div class="n">400+</div><div class="l">Volunteer hours, hands-on</div></div>
+        <div class="qstat"><div class="n">22,228</div><div class="l">Meals packed by hand</div></div>
+        <div class="qstat"><div class="n">545</div><div class="l">Shoeboxes packed</div></div>
+        <div class="qstat"><div class="n">60+</div><div class="l">Organizations served</div></div>
       </div>
-
-      <div class="therm-card">
-        <h3>Dollars raised in 2025</h3>
-        <p class="sub">Scroll to fill it. Each cause lights up as we reach it.</p>
-        <div class="therm-wrap">
-          <div class="therm" role="progressbar" aria-label="Total given in 2025" aria-valuemin="0" aria-valuemax="1236826" aria-valuenow="0" id="thermBar">
-            <div class="therm__fill" id="thermFill"></div>
-          </div>
-          <div class="therm__ticks">
-            <div class="tick"><span class="mon">Plus</span><span class="amt">+$904,976</span><span class="who">Across 60+ organizations</span></div>
-            <div class="tick"><span class="mon">November</span><span class="amt">$77,200</span><span class="who">Indiana Donor Network</span></div>
-            <div class="tick"><span class="mon">September</span><span class="amt">$80,850</span><span class="who">Childhood cancer</span></div>
-            <div class="tick"><span class="mon">June</span><span class="amt">$80,850</span><span class="who">Animal shelters and rescues</span></div>
-            <div class="tick"><span class="mon">April</span><span class="amt">$92,950</span><span class="who">Leukemia and Lymphoma Society</span></div>
-          </div>
-        </div>
-        <div class="therm-total">
-          <div class="n" id="thermNum">$0</div>
-          <div class="c">Total given in 2025</div>
-        </div>
-      </div>
-
     </div>
   </article>
 </div>
+
+<!-- ========== PINNED GIVING THERMOMETER (vertical, sticky-pin scrub) ========== -->
+<section class="rgt-track" id="rgtTrack">
+  <div class="rgt-stage">
+    <div class="rgt-inner">
+
+      <header class="rgt-head">
+        <p class="rgt-eyebrow">Rohrman Automotive Group &middot; 2025 Community Giving</p>
+        <h2 class="rgt-title">Keep scrolling. Watch it climb.</h2>
+        <p class="rgt-sub">Each cause lights up as we reach it.</p>
+      </header>
+
+      <div class="rgt-body">
+        <div class="rgt-tube" role="progressbar" aria-label="Total given to the community in 2025"
+             aria-valuemin="0" aria-valuemax="1236826" aria-valuenow="0" id="rgtBar">
+          <div class="rgt-fill" id="rgtFill"></div>
+        </div>
+
+        <ul class="rgt-ticks" aria-hidden="true">
+          <li class="rgt-tick" data-at="0.92"><span class="rgt-dot"></span><span class="rgt-when">Year-round</span><span class="rgt-what">60+ organizations</span><span class="rgt-amt">$904,976</span></li>
+          <li class="rgt-tick" data-at="0.70"><span class="rgt-dot"></span><span class="rgt-when">November</span><span class="rgt-what">Indiana Donor Network</span><span class="rgt-amt">$77,200</span></li>
+          <li class="rgt-tick" data-at="0.50"><span class="rgt-dot"></span><span class="rgt-when">September</span><span class="rgt-what">Childhood cancer</span><span class="rgt-amt">$80,850</span></li>
+          <li class="rgt-tick" data-at="0.30"><span class="rgt-dot"></span><span class="rgt-when">June</span><span class="rgt-what">Animal shelters and rescues</span><span class="rgt-amt">$80,850</span></li>
+          <li class="rgt-tick" data-at="0.12"><span class="rgt-dot"></span><span class="rgt-when">April</span><span class="rgt-what">Leukemia &amp; Lymphoma Society</span><span class="rgt-amt">$92,950</span></li>
+        </ul>
+      </div>
+
+      <div class="rgt-total">
+        <div class="rgt-num" id="rgtNum">$0</div>
+        <div class="rgt-cap">Given back across our Midwest communities in 2025</div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ========== CONNOR ROHRMAN: PHOTO + QUOTE ========== -->
 <div class="row stack">
@@ -922,56 +968,51 @@
   }, {threshold:0.15});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  /* ---------- THERMOMETER: fills FAST as its section enters view, then LOCKS at full ----------
-     Progress is tied to the thermometer section's position in the viewport, NOT whole-page scroll.
-     It completes over roughly 0.6 of a viewport of scrolling, locks at $1,236,826, and stays. */
-  var TOTAL = 1236826;
-  var fill = document.getElementById('thermFill');
-  var num  = document.getElementById('thermNum');
-  var bar  = document.getElementById('thermBar');
-  var section = document.getElementById('climb');
-  var ticks = document.querySelectorAll('.therm__ticks .tick');
-  // DOM order top->bottom: Plus, Nov, Sep, June, April. Reveal each as the fill
-  // rises past its level (April lowest reveals first, Plus highest reveals last).
-  var tickAt = [0.9, 0.72, 0.54, 0.34, 0.14];
-  function fmtDollars(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
-  function setProgress(p){
-    p = Math.min(Math.max(p, 0), 1);
-    var val = TOTAL * p;
-    if(fill) fill.style.height = (p*100) + '%';
-    if(num)  num.textContent = fmtDollars(val);
-    if(bar)  bar.setAttribute('aria-valuenow', Math.round(val));
-    for(var i=0;i<ticks.length;i++){ if(p >= tickAt[i]) ticks[i].classList.add('show'); }
-  }
-  if(reduce || !section){
-    setProgress(1);
-  } else {
-    if(fill) fill.style.transition = 'height .12s linear';
-    var locked = false;
-    function updateProgress(){
-      if(locked) return;
-      var rect = section.getBoundingClientRect();
+  /* ---------- PINNED GIVING THERMOMETER (vertical, sticky-pin scrub) ----------
+     A tall .rgt-track (300vh) reserves scroll distance; the .rgt-stage pins via
+     position:sticky. Progress = how far the track has traveled through the pin,
+     mapped 0..1, driving the fill height, the animated counter, and tick reveals.
+     Real scroll position drives it, so it's reversible and accessible. */
+  (function(){
+    var track = document.getElementById('rgtTrack');
+    var fill  = document.getElementById('rgtFill');
+    var num   = document.getElementById('rgtNum');
+    var bar   = document.getElementById('rgtBar');
+    if(!track || !fill) return;
+    var TOTAL = 1236826;
+    var ticks = Array.prototype.slice.call(track.querySelectorAll('.rgt-tick'));
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function clamp(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
+    function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+    function setProgress(p){
+      p = clamp(p);
+      fill.style.height = (p * 100) + '%';
+      if(num) num.textContent = money(TOTAL * p);
+      if(bar) bar.setAttribute('aria-valuenow', Math.round(TOTAL * p));
+      for(var i = 0; i < ticks.length; i++){
+        var at = parseFloat(ticks[i].getAttribute('data-at')) || 0;
+        ticks[i].classList.toggle('is-lit', p >= at);
+      }
+    }
+    if(rm){ setProgress(1); return; }
+    function computeProgress(){
+      var rect = track.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
-      /* Start LATER (once the section is well into view, its top ~0.72 down the
-         viewport) and fill over a longer, NOTICEABLE distance (~1.1 viewports),
-         then lock. The orgs reveal one by one as the fill passes them. */
-      var startTop = vh * 0.72;
-      var endTop   = -vh * 0.38;
-      var p = (startTop - rect.top) / (startTop - endTop);
-      setProgress(p);
-      if(p >= 1){ locked = true; }
+      var scrollable = track.offsetHeight - vh;
+      if(scrollable <= 0){ return -rect.top >= 0 ? 1 : 0; }
+      return clamp(-rect.top / scrollable);
     }
-    var ticking = false;
-    function onScroll(){
-      if(ticking) return;
-      ticking = true;
-      requestAnimationFrame(function(){ updateProgress(); ticking = false; });
+    var tickingT = false;
+    function onScrollT(){
+      if(tickingT) return;
+      tickingT = true;
+      requestAnimationFrame(function(){ setProgress(computeProgress()); tickingT = false; });
     }
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', function(){ locked = false; updateProgress(); }, {passive:true});
-    window.addEventListener('load', updateProgress);
-    updateProgress();
-  }
+    window.addEventListener('scroll', onScrollT, { passive: true });
+    window.addEventListener('resize', onScrollT, { passive: true });
+    window.addEventListener('load', onScrollT);
+    setProgress(computeProgress());
+  })();
 
   /* ---------- HORIZONTAL SCROLL SHELVES (promo row + photo carousel) ---------- */
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
