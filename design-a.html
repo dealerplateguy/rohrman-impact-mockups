@@ -106,10 +106,14 @@
   .hero__tag{
     position:relative;z-index:2;margin:0;max-width:min(94vw,860px);
     color:#fff;font-size:clamp(16px,2.4vw,24px);font-weight:600;line-height:1.32;letter-spacing:.01em;
-    text-shadow:0 1px 12px rgba(0,0,0,.85);text-wrap:balance;
+    text-shadow:0 1px 12px rgba(0,0,0,.85);
   }
-  .hero__tag .lead{color:var(--gold);text-transform:uppercase;font-weight:800;letter-spacing:.05em}
-  .hero__tag .sep{color:var(--gold);margin:0 6px}
+  /* cities first (white), each kept whole so a separator never starts a line */
+  .hero__tag .cities{display:block;color:#fff;text-wrap:balance}
+  .hero__tag .city{white-space:nowrap}
+  .hero__tag .city:not(:last-child)::after{content:"\00b7";color:var(--gold);margin-left:.5em;font-weight:700}
+  /* orange tagline at the end, echoing the logo's white + orange */
+  .hero__tag .lead{display:block;margin-top:8px;color:var(--gold);text-transform:uppercase;font-weight:800;letter-spacing:.08em;font-size:1.08em}
 
   /* ===================== SPOTLIGHT (Tyler Trent, right under hero) ===================== */
   .spot{display:grid;grid-template-columns:1fr;overflow:hidden}
@@ -486,7 +490,7 @@
       <h1 class="visually-hidden">Rohrman Impact</h1>
       <img class="hero__logo" src="assets/logo-light-trim.png" alt="Rohrman Impact" width="836" height="222">
     </div>
-    <h2 class="hero__tag"><span class="lead">Driven to give back</span> in Lafayette &amp; West Lafayette, Indiana <span class="sep">&middot;</span> Tippecanoe County <span class="sep">&middot;</span> Purdue University, and beyond</h2>
+    <h2 class="hero__tag"><span class="cities"><span class="city">Lafayette &amp; West Lafayette, Indiana</span> <span class="city">Tippecanoe County</span> <span class="city">Purdue University</span></span><span class="lead">Driven to give back</span></h2>
   </div>
 </header>
 
