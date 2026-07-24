@@ -346,6 +346,21 @@
   .nrow:hover .hd{color:var(--link-hover);text-decoration:underline}
   .nrow .meta{display:block;margin-top:3px;font-size:12px;color:var(--muted)}
 
+  /* ===================== FAQ (accordion, native <details>) ===================== */
+  .faqwrap{border-top:1px solid var(--divider);max-width:900px}
+  .faq{border-bottom:1px solid var(--divider)}
+  .faq>summary{cursor:pointer;list-style:none;padding:18px 4px;font-size:16px;font-weight:700;
+    color:var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+  .faq>summary::-webkit-details-marker{display:none}
+  .faq>summary::after{content:"+";color:var(--gold-deep);font-weight:700;font-size:22px;line-height:1;flex:0 0 auto}
+  .faq[open]>summary::after{content:"-"}
+  .faq>summary:hover{color:var(--link-hover)}
+  .faq__a{padding:0 4px 18px;max-width:72ch}
+  .faq__a p{margin:0 0 10px;font-size:14px;line-height:1.6;color:var(--muted)}
+  .faq__a p:last-child{margin-bottom:0}
+  .faq__a a{color:var(--link)}
+  .faq__a a:hover{color:var(--link-hover);text-decoration:underline}
+
   /* ===================== UPCOMING + NOMINATE (merged, set-apart band) ===================== */
   .next-band{background:var(--charcoal);padding:44px 0;margin:44px auto 0}
   .next-inner{display:flex;flex-direction:column}
@@ -915,6 +930,62 @@
   </ul>
 </div>
 
+<!-- ========== FAQ (answer-first, feeds FAQPage schema for AI extraction) ========== -->
+<div class="row stack" id="faq">
+  <div class="shead reveal">
+    <div>
+      <p class="ey">Good to know</p>
+      <h2>Frequently asked</h2>
+    </div>
+  </div>
+  <div class="faqwrap reveal">
+
+    <details class="faq">
+      <summary>Why did Rohrman start giving back?</summary>
+      <div class="faq__a">
+        <p>Giving back has been part of Rohrman Automotive Group since founder Bob Rohrman started the Bob Rohrman Automobile Dealerships Foundation in 1986. Rohrman Impact carries that legacy forward across all of the group's dealerships.</p>
+        <p>As CEO Ryan Rohrman puts it: "We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home."</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Who was Bob Rohrman, and what is his legacy?</summary>
+      <div class="faq__a">
+        <p>Bob Rohrman built one of the Midwest's largest family-owned dealer groups over more than 50 years before he passed away in 2020. His giving left a lasting mark on Greater Lafayette and beyond: a $15 million lead gift that named Rohrman Field at Purdue's Ross-Ade Stadium, the multimillion-dollar Jefferson High School Performing Arts Center, a tennis complex for Lafayette Central Catholic, and decades of support for Meals on Wheels, Make-A-Wish, and local schools. In 2021 he received the AIADA Lifetime Achievement Award for that legacy.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How much does Rohrman give back each year?</summary>
+      <div class="faq__a">
+        <p>In 2025, Rohrman Automotive Group gave $1,236,826 to more than 60 organizations across Indiana, Illinois, and Wisconsin. That included four signature campaigns: $92,950 to the Leukemia &amp; Lymphoma Society, $80,850 to animal shelters and rescues, $80,850 to childhood cancer causes, and $77,200 to the Indiana Donor Network.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How does the $50-per-new-car program work?</summary>
+      <div class="faq__a">
+        <p>For each signature campaign, Rohrman donates $50 for every new vehicle sold across all of its dealerships that month, then presents the total to that cause. April supports blood cancer research, June supports animal shelters and rescues, September supports childhood cancer, and November supports the Indiana Donor Network in memory of donor hero Kaitlyn Isbell.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What causes does Rohrman support in Greater Lafayette?</summary>
+      <div class="faq__a">
+        <p>In Greater Lafayette, Rohrman supports the Indiana Donor Network, the Humane Society for Greater Lafayette, IU Health Arnett Hospital, the Tyler Trent Foundation at Purdue, and Wabash College, among others. The group organizes its giving around five areas: volunteerism, education, athletics, cultural programs, and direct donations.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Does Rohrman give time as well as money?</summary>
+      <div class="faq__a">
+        <p>Yes. Alongside the dollars, Rohrman employees gave more than 400 hands-on volunteer hours in 2025: packing 22,228 meals with Feed My Starving Children, assembling 545 Operation Christmas Child shoeboxes, and refreshing homes and camp grounds across the communities the group serves.</p>
+      </div>
+    </details>
+
+  </div>
+</div>
+
 <!-- ========== WHAT'S NEXT + NOMINATE A CAUSE (merged, set-apart band) ========== -->
 <section class="next-band" aria-labelledby="nexthd">
   <div class="row">
@@ -1020,6 +1091,43 @@
         { "@type": "City", "name": "West Lafayette, Indiana" },
         { "@type": "AdministrativeArea", "name": "Tippecanoe County, Indiana" },
         { "@type": "Place", "name": "Purdue University" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#faq",
+      "isPartOf": { "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#webpage" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why did Rohrman start giving back?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Giving back has been part of Rohrman Automotive Group since founder Bob Rohrman started the Bob Rohrman Automobile Dealerships Foundation in 1986. Rohrman Impact carries that legacy forward across all of the group's dealerships. As CEO Ryan Rohrman puts it: We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who was Bob Rohrman, and what is his legacy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bob Rohrman built one of the Midwest's largest family-owned dealer groups over more than 50 years before he passed away in 2020. His giving named Rohrman Field at Purdue's Ross-Ade Stadium with a $15 million lead gift, funded the Jefferson High School Performing Arts Center and a tennis complex for Lafayette Central Catholic, and supported Meals on Wheels, Make-A-Wish, and local schools for decades. In 2021 he received the AIADA Lifetime Achievement Award." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Rohrman give back each year?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In 2025, Rohrman Automotive Group gave $1,236,826 to more than 60 organizations across Indiana, Illinois, and Wisconsin. That included four signature campaigns: $92,950 to the Leukemia and Lymphoma Society, $80,850 to animal shelters and rescues, $80,850 to childhood cancer causes, and $77,200 to the Indiana Donor Network." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the $50-per-new-car program work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For each signature campaign, Rohrman donates $50 for every new vehicle sold across all of its dealerships that month, then presents the total to that cause. April supports blood cancer research, June supports animal shelters and rescues, September supports childhood cancer, and November supports the Indiana Donor Network in memory of donor hero Kaitlyn Isbell." }
+        },
+        {
+          "@type": "Question",
+          "name": "What causes does Rohrman support in Greater Lafayette?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In Greater Lafayette, Rohrman supports the Indiana Donor Network, the Humane Society for Greater Lafayette, IU Health Arnett Hospital, the Tyler Trent Foundation at Purdue, and Wabash College, among others. The group organizes its giving around five areas: volunteerism, education, athletics, cultural programs, and direct donations." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Rohrman give time as well as money?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Alongside the dollars, Rohrman employees gave more than 400 hands-on volunteer hours in 2025: packing 22,228 meals with Feed My Starving Children, assembling 545 Operation Christmas Child shoeboxes, and refreshing homes and camp grounds across the communities the group serves." }
+        }
       ]
     }
   ]
@@ -1135,25 +1243,33 @@ function initCharityMap(){
     __rohrmanMapReady = true;
     var fb = document.getElementById('mapFallback');
     if(fb) fb.hidden = true;               /* success: keep the fallback hidden */
-    var center = {lat:40.4, lng:-86.88};
+    var center = {lat:40.15, lng:-86.6};
     var map = new google.maps.Map(document.getElementById('charityMap'), {
-      center: center, zoom: 10, mapTypeControl:false, streetViewControl:false, fullscreenControl:false
+      center: center, zoom: 9, mapTypeControl:false, streetViewControl:false, fullscreenControl:false
     });
     var places = [
-      {name:'Indiana Donor Network', lat:39.8,   lng:-86.2,  url:'https://indianadonornetwork.org'},
+      // Indiana Donor Network has no Lafayette office; this is its real Indianapolis HQ (3750 Guion Rd).
+      {name:'Indiana Donor Network', lat:39.8206, lng:-86.2364, url:'https://indianadonornetwork.org'},
       {name:'Humane Society for Greater Lafayette', lat:40.38, lng:-86.86, url:'https://humanesociety4greaterlafayette.org'},
       {name:'IU Health Arnett Hospital', lat:40.381, lng:-86.862, url:'https://iuhealth.org'},
       {name:'Tyler Trent Foundation (Purdue)', lat:40.428, lng:-86.914, url:'https://tylertrentfoundation.com'},
-      {name:'Wabash College', lat:40.04, lng:-86.91, url:'https://wabash.edu'}
+      {name:'Wabash College (Crawfordsville)', lat:40.04, lng:-86.91, url:'https://wabash.edu'}
     ];
     var info = new google.maps.InfoWindow();
+    var bounds = new google.maps.LatLngBounds();
     places.forEach(function(pl){
-      var marker = new google.maps.Marker({ position:{lat:pl.lat, lng:pl.lng}, map:map, title:pl.name });
+      var pos = {lat:pl.lat, lng:pl.lng};
+      var marker = new google.maps.Marker({ position:pos, map:map, title:pl.name });
+      bounds.extend(pos);
       marker.addListener('click', function(){
         info.setContent('<div style="font-family:Arial,sans-serif;max-width:200px"><strong>'+pl.name+'</strong><br><a href="'+pl.url+'" target="_blank" rel="noopener" style="color:#a96a10;font-weight:700;text-decoration:none">Visit site &#8599;</a></div>');
         info.open(map, marker);
       });
     });
+    // Frame every point (with padding) so none get cut off, e.g. Crawfordsville to the south.
+    map.fitBounds(bounds, {top:56, right:40, bottom:40, left:40});
+    // Don't let a tight cluster over-zoom if points are ever dropped.
+    google.maps.event.addListenerOnce(map, 'idle', function(){ if(map.getZoom() > 11) map.setZoom(11); });
   } catch(err){ showMapFallback(); }
 }
 setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
