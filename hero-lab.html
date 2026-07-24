@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Rohrman Impact — Hero directions</title>
+<style>
+  html,body{overflow-x:clip}
+  :root{ --gold:#fbb040; --gold-deep:#a96a10; --ink:#0b0e12; --charcoal:#131921; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#fff;background:#0a0d11;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+
+  .label{position:sticky;top:0;z-index:20;background:#0a0d11;border-bottom:1px solid rgba(255,255,255,.08);
+    padding:12px 20px;display:flex;align-items:center;gap:12px}
+  .label .chip{background:var(--gold);color:#111;font-weight:800;font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .label .desc{font-size:13px;color:rgba(255,255,255,.7)}
+
+  /* shared hero photo layer */
+  .h{position:relative;overflow:hidden;background:var(--ink)}
+  .h__bg{position:absolute;inset:0;background:url("assets/vol-mealpack-group.jpg") center 38%/cover}
+
+  /* ============ A — QUIET (minimal center, one short line) ============ */
+  .a{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:64px 24px}
+  .a .h__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,11,15,.35) 0%,rgba(9,11,15,.28) 55%,rgba(9,11,15,.6) 100%)}
+  .a__in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px}
+  .a__logo{width:clamp(280px,42vw,520px);filter:drop-shadow(0 8px 26px rgba(0,0,0,.55))}
+  .a__line{margin:0;font-size:clamp(15px,2vw,20px);font-weight:600;letter-spacing:.02em;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.8)}
+  .a__line b{color:var(--gold);font-weight:800}
+
+  /* ============ B — EDITORIAL (bottom-left, quiet) ============ */
+  .b{min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:clamp(40px,8vh,90px) clamp(28px,6vw,84px)}
+  .b .h__scrim{position:absolute;inset:0;background:linear-gradient(105deg,rgba(9,11,15,.78) 0%,rgba(9,11,15,.28) 46%,rgba(9,11,15,0) 72%)}
+  .b__in{position:relative;z-index:2;max-width:560px}
+  .b__logo{width:clamp(260px,34vw,440px);filter:drop-shadow(0 8px 26px rgba(0,0,0,.6))}
+  .b__line{margin:20px 0 0;font-size:clamp(20px,3vw,30px);font-weight:800;letter-spacing:.01em;line-height:1.12;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.8)}
+  .b__line b{color:var(--gold)}
+  .b__loc{margin:12px 0 0;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+
+  /* ============ C — LOGO ONLY + LOCATION BAR (cleanest photo) ============ */
+  .c{min-height:74vh;display:flex;align-items:center;justify-content:center;padding:56px 24px}
+  .c .h__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,11,15,.22) 0%,rgba(9,11,15,.12) 50%,rgba(9,11,15,.34) 100%)}
+  .c__logo{position:relative;z-index:2;width:clamp(300px,44vw,560px);filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))}
+  .cbar{background:var(--charcoal);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 26px;
+    padding:16px clamp(20px,5vw,56px);border-top:2px solid var(--gold)}
+  .cbar__lead{font-size:clamp(14px,1.9vw,18px);font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+  .cbar__loc{font-size:clamp(12px,1.6vw,15px);color:rgba(255,255,255,.8);letter-spacing:.01em}
+  .cbar__loc .dot{color:var(--gold);margin:0 .35em}
+
+  .note{padding:26px 24px 60px;text-align:center;color:rgba(255,255,255,.6);font-size:13px}
+  @media(max-width:600px){ .b .h__scrim{background:linear-gradient(180deg,rgba(9,11,15,.25) 0%,rgba(9,11,15,.35) 50%,rgba(9,11,15,.85) 100%)} }
+</style>
+</head>
+<body>
+
+  <div class="label"><span class="chip">A · Quiet</span><span class="desc">Logo + one short line, centered. Maximum breathing room, minimum words.</span></div>
+  <section class="h a">
+    <div class="h__bg"></div><div class="h__scrim"></div>
+    <div class="a__in">
+      <img class="a__logo" src="assets/logo-light-trim.png" alt="Rohrman Impact">
+      <p class="a__line"><b>Driven to give back</b> in Greater Lafayette</p>
+    </div>
+  </section>
+
+  <div class="label"><span class="chip">B · Editorial</span><span class="desc">Logo bottom-left, one bold line, quiet location. Photo breathes to the right.</span></div>
+  <section class="h b">
+    <div class="h__bg"></div><div class="h__scrim"></div>
+    <div class="b__in">
+      <img class="b__logo" src="assets/logo-light-trim.png" alt="Rohrman Impact">
+      <p class="b__line"><b>Driven to give back</b><br>in the places we call home.</p>
+      <p class="b__loc">Greater Lafayette, Indiana</p>
+    </div>
+  </section>
+
+  <div class="label"><span class="chip">C · Logo + bar</span><span class="desc">Nothing on the photo but the logo. The words live in a tidy bar below.</span></div>
+  <section class="h c">
+    <div class="h__bg"></div><div class="h__scrim"></div>
+    <img class="c__logo" src="assets/logo-light-trim.png" alt="Rohrman Impact">
+  </section>
+  <div class="cbar">
+    <span class="cbar__lead">Driven to give back</span>
+    <span class="cbar__loc">Lafayette &amp; West Lafayette<span class="dot">&middot;</span>Tippecanoe County<span class="dot">&middot;</span>Purdue University</span>
+  </div>
+
+  <p class="note">Three directions. Tell me a letter (A / B / C), or what to borrow from each, and I'll build the winner into the real page.</p>
+
+</body>
+</html>
