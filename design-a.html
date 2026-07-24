@@ -84,36 +84,42 @@
   /* ===================== HERO (logo only, top-weighted) ===================== */
   .hero{
     position:relative;
-    min-height:74vh;
+    min-height:clamp(540px,76vh,860px);
     display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
-    text-align:center;color:#fff;background:#0b0e12;overflow:hidden;
-    padding:clamp(28px,6vw,64px) 20px 24px;
+    color:#fff;background:#0b0e12;overflow:hidden;
+    padding:clamp(32px,10vh,96px) 20px clamp(36px,7vh,72px);
   }
   .hero__bg{
     position:absolute;inset:0;
     background-image:url("assets/vol-mealpack-group.jpg");
-    background-size:cover;background-position:center 40%;
+    background-size:cover;background-position:center 38%;
   }
-  .hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(9,11,15,.34) 0%, rgba(9,11,15,.12) 34%, rgba(9,11,15,.82) 100%)}
-  /* logo (H1) + tagline (H2) stacked tight together at the BOTTOM; faces show above */
-  .hero__inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;flex:1;justify-content:flex-end}
-  .hero__top{display:flex;flex-direction:column;align-items:center}
-  .hero__logo{
-    width:clamp(300px,48vw,600px);max-width:90vw;height:auto;
-    filter:drop-shadow(0 6px 22px rgba(0,0,0,.5));
+  /* Let the people breathe up top; ramp to dark only under the type */
+  .hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(9,11,15,0) 0%, rgba(9,11,15,.04) 42%, rgba(9,11,15,.52) 76%, rgba(9,11,15,.90) 100%)}
+  .hero__inner{position:relative;z-index:2;width:100%;display:flex;justify-content:center}
+  /* Width-lock: this box IS the logo's width, so the tagline scales WITH the
+     logo (cqw units) and their edges stay aligned at every viewport. */
+  .hero__stack{container-type:inline-size;width:clamp(300px,48vw,600px);max-width:90vw;display:flex;flex-direction:column}
+  .hero__logo{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 26px rgba(0,0,0,.55))}
+  .hero__tag{margin:0;text-shadow:0 1px 14px rgba(0,0,0,.85)}
+  /* cities = the ROHRMAN row: spans the logo width, each city kept whole so a
+     separator never starts a line */
+  .hero__tag .cities{
+    display:block;text-align:center;color:#fff;font-weight:600;line-height:1.35;letter-spacing:.01em;text-wrap:balance;
+    margin-top:24px;margin-top:clamp(16px,4.2cqw,32px);
+    font-size:16px;font-size:clamp(12px,3.3cqw,18px);
   }
-  /* tagline under the logo (local-SEO / GEO signal) */
-  .hero__tag{
-    position:relative;z-index:2;margin:0;max-width:min(94vw,860px);
-    color:#fff;font-size:clamp(16px,2.4vw,24px);font-weight:600;line-height:1.32;letter-spacing:.01em;
-    text-shadow:0 1px 12px rgba(0,0,0,.85);
-  }
-  /* cities first (white), each kept whole so a separator never starts a line */
-  .hero__tag .cities{display:block;color:#fff;text-wrap:balance}
   .hero__tag .city{white-space:nowrap}
   .hero__tag .city:not(:last-child)::after{content:"\00b7";color:var(--gold);margin-left:.5em;font-weight:700}
-  /* orange tagline at the end, echoing the logo's white + orange */
-  .hero__tag .lead{display:block;margin-top:8px;color:var(--gold);text-transform:uppercase;font-weight:800;letter-spacing:.08em;font-size:1.08em}
+  /* lead = the IMPACT row: right-offset ~29%, right edge flush with the logo */
+  .hero__tag .lead{
+    display:block;margin-left:29%;text-align:right;margin-right:-.08em;
+    color:var(--gold);text-transform:uppercase;font-weight:800;letter-spacing:.08em;line-height:1.05;
+    margin-top:10px;margin-top:clamp(6px,1.8cqw,14px);
+    font-size:22px;font-size:clamp(14px,5.6cqw,34px);
+  }
+  /* narrowest phones: drop the offset so the payoff can't cramp */
+  @media(max-width:380px){.hero__tag .lead{margin-left:0;text-align:center}}
 
   /* ===================== SPOTLIGHT (Tyler Trent, right under hero) ===================== */
   .spot{display:grid;grid-template-columns:1fr;overflow:hidden}
@@ -486,11 +492,11 @@
   <div class="hero__bg" role="img" aria-label="Rohrman team volunteers packing meals in the community"></div>
   <div class="hero__scrim"></div>
   <div class="hero__inner">
-    <div class="hero__top">
+    <div class="hero__stack">
       <h1 class="visually-hidden">Rohrman Impact</h1>
       <img class="hero__logo" src="assets/logo-light-trim.png" alt="Rohrman Impact" width="836" height="222">
+      <h2 class="hero__tag"><span class="cities"><span class="city">Lafayette &amp; West Lafayette, Indiana</span> <span class="city">Tippecanoe County</span> <span class="city">Purdue University</span></span><span class="lead">Driven to give back</span></h2>
     </div>
-    <h2 class="hero__tag"><span class="cities"><span class="city">Lafayette &amp; West Lafayette, Indiana</span> <span class="city">Tippecanoe County</span> <span class="city">Purdue University</span></span><span class="lead">Driven to give back</span></h2>
   </div>
 </header>
 
