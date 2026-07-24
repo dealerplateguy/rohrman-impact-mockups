@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rohrman Impact, Design Options</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--gold:#fbb040;--gold-deep:#d4922a;--charcoal:#0f0f10;--ink:#e9eaec;--muted:#9aa0a6;--line:#2a2b2e}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#0b0b0c;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 20px 70px}
+  .head{text-align:center;margin-bottom:34px}
+  .logo{width:min(360px,80vw);height:auto;display:block;margin:0 auto 20px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+  h1{font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-.01em;margin:0 0 10px}
+  .sub{color:var(--muted);max-width:56ch;margin:0 auto;font-size:15px}
+  .grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:34px}
+  @media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:#141416;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .card .tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .card .body{padding:24px 22px 22px}
+  .card h2{font-size:22px;font-weight:800;margin:8px 0 8px}
+  .card p{color:var(--muted);font-size:14px;margin:0 0 18px}
+  .card ul{margin:0 0 20px;padding-left:18px;color:var(--muted);font-size:13.5px}
+  .card li{margin:0 0 5px}
+  .btn{display:inline-block;background:var(--gold);color:#0f0f10;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:10px;text-align:center;transition:background .15s}
+  .btn:hover{background:var(--gold-deep)}
+  .swatch{height:8px;display:flex}
+  .swatch span{flex:1}
+  .note{margin-top:36px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.7}
+  .note b{color:var(--ink)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <img class="logo" src="assets/logo-light.png" alt="Rohrman Impact">
+      <p class="eyebrow">Community giving page, Lafayette edition</p>
+      <h1>Two design directions</h1>
+      <p class="sub">Two working mockups of the Rohrman Impact page, built from real photos, real press, and real giving data. Open each, scroll all the way through, and view them on your phone too. Then tell us which direction feels right.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="swatch"><span style="background:#EAEDED"></span><span style="background:#fbb040"></span><span style="background:#0f0f10"></span></div>
+        <div class="body">
+          <span class="tag">Direction A</span>
+          <h2>Storefront</h2>
+          <p>A bold, modern "storefront" layout: a photo-led hero, swipeable card rows, and a scroll-driven giving meter. Busy and energetic, lots to explore.</p>
+          <ul>
+            <li>Logo-forward hero over the team photo</li>
+            <li>Scrollable campaign tiles and photo shelf</li>
+            <li>Animated giving thermometer</li>
+            <li>Pinned charity map and news list</li>
+          </ul>
+          <a class="btn" href="design-a.html">View Direction A &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch"><span style="background:#f5f7fa"></span><span style="background:#c8a96b"></span><span style="background:#102A43"></span></div>
+        <div class="body">
+          <span class="tag">Direction B</span>
+          <h2>Editorial</h2>
+          <p>A calm, clean, editorial layout with warm tones and generous whitespace, modeled after the Finish Line site. Simple and confident, easy to scan.</p>
+          <ul>
+            <li>Two-column hero with a feature photo</li>
+            <li>Quiet section bands and simple cards</li>
+            <li>Elegant pull-quote and campaign cards</li>
+            <li>Same charity map, news, and videos</li>
+          </ul>
+          <a class="btn" href="design-b.html">View Direction B &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="note">
+      Internal preview for the Orange Media team. Both pages use the Lafayette region as the sample.<br>
+      <b>Note:</b> the giving figures are placeholders pending the confirmed 2025 total, and a few regional charity assignments are still being verified.
+    </p>
+  </div>
+</body>
+</html>

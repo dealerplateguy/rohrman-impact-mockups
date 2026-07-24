@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rohrman Impact, Lafayette Indiana | Rohrman Automotive Group Giving</title>
+<meta name="description" content="Rohrman Impact in Lafayette and West Lafayette, Indiana. Giving since 1986. In 2025 the Rohrman Automotive Group donated $1,236,826 across 60+ organizations with money and time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#102A43; --navy-deep:#0a1c30; --muted:#5a6b7b; --hairline:#e3e8ee;
+    --ink:#15212b; --gold:#c8a96b; --gold-dark:#b3945a; --gold-soft:#e7d8b8;
+    --bg:#ffffff; --bg-alt:#f5f7fa;
+    --radius:18px; --radius-sm:12px;
+    --shadow:0 12px 34px rgba(16,42,67,.08);
+    --shadow-sm:0 6px 18px rgba(16,42,67,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Open Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.65;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Montserrat',system-ui,sans-serif; color:var(--navy); line-height:1.15; margin:0 0 .4em}
+  h2{font-size:clamp(28px,4.4vw,44px); font-weight:800; letter-spacing:-.5px}
+  h3{font-size:clamp(19px,2.4vw,24px); font-weight:700}
+  p{margin:0 0 1em}
+  a{color:var(--navy); text-decoration:none}
+  img{max-width:100%; display:block}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  .wrap{width:100%; max-width:1120px; margin:0 auto; padding:0 24px}
+  .section{padding:76px 0}
+  .section--alt{background:var(--bg-alt)}
+  .eyebrow{
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; letter-spacing:2px;
+    text-transform:uppercase; color:var(--gold-dark); margin:0 0 14px;
+  }
+  .lead{font-size:clamp(16px,1.7vw,18px); color:var(--muted); max-width:60ch}
+  .center{text-align:center}
+  .center .lead{margin-left:auto;margin-right:auto}
+  .section-head{max-width:64ch; margin:0 0 40px}
+  .section-head.center{margin-left:auto;margin-right:auto}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; font-family:'Montserrat',sans-serif;
+    font-weight:700; font-size:15px; padding:13px 26px; border-radius:999px;
+    border:2px solid transparent; cursor:pointer; transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn-primary{background:var(--gold); color:var(--navy-deep); border-color:var(--gold)}
+  .btn-primary:hover{background:var(--gold-dark); border-color:var(--gold-dark)}
+  .btn-outline{background:transparent; color:var(--navy); border-color:var(--navy)}
+  .btn-outline:hover{background:var(--navy); color:#fff}
+  .btn-lg{padding:15px 32px; font-size:16px}
+  .btn:hover{transform:translateY(-1px)}
+
+  /* Chips */
+  .chips{display:flex; flex-wrap:wrap; gap:10px}
+  .chip{
+    font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:var(--navy);
+    background:#fff; border:1px solid var(--hairline); border-radius:999px; padding:8px 15px;
+  }
+  .chip--soft{background:var(--gold-soft); border-color:var(--gold-soft); color:var(--navy-deep)}
+
+  /* Nav */
+  .nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--hairline)}
+  .nav__inner{display:flex; align-items:center; gap:20px; height:72px}
+  .nav__logo img{height:40px; width:auto}
+  .nav__links{display:flex; gap:26px; margin-left:auto}
+  .nav__links a{font-family:'Montserrat',sans-serif; font-weight:600; font-size:14.5px; color:var(--navy)}
+  .nav__links a:hover{color:var(--gold-dark)}
+  .nav__cta{margin-left:8px}
+  @media(max-width:820px){ .nav__links{display:none} .nav__cta{margin-left:auto} }
+
+  /* Hero */
+  .hero{padding:64px 0 72px}
+  .hero__grid{display:grid; grid-template-columns:1.05fr .95fr; gap:52px; align-items:center}
+  .hero h1.big{font-size:clamp(40px,6.4vw,68px); font-weight:800; letter-spacing:-1.5px; margin:18px 0 18px}
+  .hero .chips{margin:0 0 24px}
+  .hero__actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px}
+  .hero__photo{position:relative}
+  .hero__photo img{width:100%; height:100%; max-height:520px; object-fit:cover; border-radius:var(--radius); box-shadow:var(--shadow)}
+  .photo-cap{
+    position:absolute; left:16px; bottom:16px; right:16px;
+    font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#fff;
+    background:rgba(10,28,48,.72); border-radius:12px; padding:9px 14px; backdrop-filter:blur(2px);
+  }
+  @media(max-width:860px){ .hero__grid{grid-template-columns:1fr; gap:34px} .hero__photo img{max-height:360px} }
+
+  /* Stat band */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
+  .stat{background:#fff; border:1px solid var(--hairline); border-radius:var(--radius); padding:28px 22px; text-align:center; box-shadow:var(--shadow-sm)}
+  .stat__num{font-family:'Montserrat',sans-serif; font-weight:800; font-size:clamp(26px,3.4vw,36px); color:var(--navy); letter-spacing:-1px}
+  .stat__lbl{font-size:14px; color:var(--muted); margin-top:6px}
+  @media(max-width:760px){ .stats{grid-template-columns:repeat(2,1fr)} }
+
+  /* Campaign cards */
+  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
+  @media(max-width:880px){ .grid-4{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:460px){ .grid-4{grid-template-columns:1fr} }
+  .camp{background:#fff; border:1px solid var(--hairline); border-radius:var(--radius); padding:26px 22px; box-shadow:var(--shadow-sm); transition:transform .18s ease, box-shadow .18s ease}
+  .camp:hover{transform:translateY(-3px); box-shadow:var(--shadow)}
+  .camp__month{font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-dark)}
+  .camp__amt{font-family:'Montserrat',sans-serif; font-weight:800; font-size:30px; color:var(--navy); margin:10px 0 6px; letter-spacing:-.5px}
+  .camp__desc{font-size:14.5px; color:var(--muted); margin:0}
+  .more-line{text-align:center; margin-top:34px; font-size:16px; color:var(--muted)}
+  .more-line strong{color:var(--navy); font-family:'Montserrat',sans-serif}
+
+  /* Pull quote */
+  .quote-band{background:var(--navy); color:#fff; text-align:center}
+  .quote-band h2,.quote-band h3{color:#fff}
+  .pullquote{font-family:'Montserrat',sans-serif; font-weight:700; font-size:clamp(22px,3.2vw,34px); line-height:1.35; max-width:22ch; margin:0 auto 26px; letter-spacing:-.5px}
+  .pullquote .mark{color:var(--gold)}
+  .quote-by{font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; color:var(--gold-soft); letter-spacing:.5px}
+  .quote-by span{display:block; color:rgba(255,255,255,.6); font-weight:400; font-size:13.5px; letter-spacing:.5px; margin-top:4px}
+
+  /* Feature two-column */
+  .feature{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center}
+  .feature__img img{width:100%; height:100%; max-height:440px; object-fit:cover; border-radius:var(--radius); box-shadow:var(--shadow)}
+  @media(max-width:820px){ .feature{grid-template-columns:1fr; gap:30px} }
+
+  /* Charity + map */
+  .map-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:start}
+  @media(max-width:900px){ .map-grid{grid-template-columns:1fr} }
+  .map-card{border:1px solid var(--hairline); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); background:#fff}
+  .gmap{width:100%; height:440px; background:var(--bg-alt)}
+  .map-fallback{
+    height:440px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    text-align:center; padding:30px; background:var(--navy); color:#fff;
+  }
+  .map-fallback[hidden]{display:none}
+  .map-fallback .pin{font-size:40px}
+  .map-fallback h4{color:#fff; margin:0}
+  .map-fallback p{color:rgba(255,255,255,.8); max-width:36ch; margin:0}
+  .map-fallback .chip{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.28); color:#fff}
+  .map-note{font-size:13.5px; color:var(--muted); margin-top:14px; max-width:46ch}
+  .charity-list{display:flex; flex-direction:column; gap:14px}
+  .charity{display:flex; align-items:center; gap:16px; background:#fff; border:1px solid var(--hairline); border-radius:var(--radius-sm); padding:16px 18px; box-shadow:var(--shadow-sm)}
+  .charity__logo{flex:0 0 62px; width:62px; height:62px; border-radius:12px; background:#fff; border:1px solid var(--hairline); display:flex; align-items:center; justify-content:center; padding:8px}
+  .charity__logo img{max-width:100%; max-height:100%; width:auto; object-fit:contain}
+  .charity__body{flex:1; min-width:0}
+  .charity__name{font-family:'Montserrat',sans-serif; font-weight:700; font-size:16px; color:var(--navy); margin:0}
+  .charity__desc{font-size:13.5px; color:var(--muted); margin:2px 0 6px}
+  .charity__link{font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:var(--gold-dark)}
+  .charity__link:hover{text-decoration:underline}
+
+  /* News list */
+  .news{display:flex; flex-direction:column; gap:2px; max-width:820px}
+  .news__item{padding:18px 0; border-bottom:1px solid var(--hairline)}
+  .news__item:first-child{border-top:1px solid var(--hairline)}
+  .news__title{font-family:'Montserrat',sans-serif; font-weight:700; font-size:clamp(16px,2vw,19px); color:var(--navy); display:inline}
+  .news__title:hover{color:var(--gold-dark); text-decoration:underline}
+  .news__meta{font-size:13px; color:var(--muted); margin-top:5px}
+  .news__meta .src{font-weight:600; color:var(--ink)}
+
+  /* Video */
+  .videos{display:grid; grid-template-columns:1fr 1fr; gap:26px}
+  @media(max-width:760px){ .videos{grid-template-columns:1fr} }
+  .video{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--hairline)}
+  .video16x9{position:relative; width:100%; aspect-ratio:16/9; background:#000}
+  .video16x9 iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  .video__cap{font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:var(--navy); padding:14px 18px; background:#fff}
+
+  /* Final CTA */
+  .cta-band{background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%); color:#fff; text-align:center}
+  .cta-band h2{color:#fff}
+  .cta-band .lead{color:rgba(255,255,255,.82)}
+  .cta-actions{margin-top:26px; display:flex; justify-content:center}
+  .planned{margin-top:40px; padding-top:30px; border-top:1px solid rgba(255,255,255,.16)}
+  .planned__label{font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-soft); margin-bottom:16px}
+  .planned .chips{justify-content:center}
+  .planned .chip{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.26); color:#fff}
+
+  /* Footer */
+  .footer{background:var(--navy-deep); color:rgba(255,255,255,.72); padding:52px 0; text-align:center}
+  .footer img{height:38px; width:auto; margin:0 auto 18px}
+  .footer strong{color:#fff; font-family:'Montserrat',sans-serif}
+  .footer p{font-size:14px; max-width:70ch; margin:0 auto 10px}
+  .footer .fine{font-size:12.5px; color:rgba(255,255,255,.5)}
+
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important}
+    .btn:hover,.camp:hover{transform:none}
+    .camp,.btn{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- Local SEO: hidden h1 + location line -->
+<h1 class="sr-only">Rohrman Impact</h1>
+<p class="sr-only">Lafayette &amp; West Lafayette, Indiana, Tippecanoe County, Purdue University, and beyond</p>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="#" aria-label="Rohrman Impact home">
+      <img src="assets/logo-dark.png" alt="Rohrman Impact" width="160" height="40">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#impact">Our Impact</a>
+      <a href="#where">Where We Help</a>
+      <a href="#news">In the News</a>
+    </nav>
+    <a class="btn btn-primary nav__cta" href="#nominate">Nominate a cause</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow">Rohrman Impact &middot; Lafayette, Indiana</p>
+      <div class="chips">
+        <span class="chip chip--soft">Giving since 1986</span>
+        <span class="chip chip--soft">60+ organizations</span>
+        <span class="chip chip--soft">Indiana, Illinois, Wisconsin</span>
+      </div>
+      <h2 class="big" style="font-family:'Montserrat';">Driven to give back.</h2>
+      <p class="lead">We show up for Greater Lafayette with money and with time. Every year our team turns car sales into real support for the neighbors, hospitals, shelters, and families right here at home.</p>
+      <div class="hero__actions">
+        <a class="btn btn-primary btn-lg" href="#nominate">Nominate a cause</a>
+        <a class="btn btn-outline btn-lg" href="#impact">See the impact</a>
+      </div>
+    </div>
+    <div class="hero__photo">
+      <img src="assets/vol-mealpack-group.jpg" alt="Rohrman team volunteers packing meals together" loading="eager" width="640" height="520">
+      <div class="photo-cap">Our team, hands-on at a community meal pack.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAND -->
+<section class="section section--alt" id="impact">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Our 2025 impact</p>
+      <h2>A year of showing up</h2>
+      <p class="lead">The numbers behind a full year of giving across our communities.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat__num">$1,236,826</div><div class="stat__lbl">Donated in 2025</div></div>
+      <div class="stat"><div class="stat__num">60+</div><div class="stat__lbl">Organizations</div></div>
+      <div class="stat"><div class="stat__num">400+</div><div class="stat__lbl">Volunteer hours</div></div>
+      <div class="stat"><div class="stat__num">1,745+</div><div class="stat__lbl">Items collected</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGNS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">The 2025 campaigns</p>
+      <h2>Four signature gifts</h2>
+      <p class="lead">Group-wide, we set aside $50 for every new car sold across all 22 dealerships. Here is where it went.</p>
+    </div>
+    <div class="grid-4">
+      <div class="camp">
+        <div class="camp__month">April</div>
+        <div class="camp__amt">$92,950</div>
+        <p class="camp__desc">Leukemia &amp; Lymphoma Society, our biggest single drive of the year.</p>
+      </div>
+      <div class="camp">
+        <div class="camp__month">June</div>
+        <div class="camp__amt">$80,850</div>
+        <p class="camp__desc">Animal shelters and rescues, including the Humane Society for Greater Lafayette.</p>
+      </div>
+      <div class="camp">
+        <div class="camp__month">September</div>
+        <div class="camp__amt">$80,850</div>
+        <p class="camp__desc">Childhood cancer, from Hope on Wheels to the Tyler Trent Foundation.</p>
+      </div>
+      <div class="camp">
+        <div class="camp__month">November</div>
+        <div class="camp__amt">$77,200</div>
+        <p class="camp__desc">Indiana Donor Network, in memory of donor hero Kaitlyn Isbell.</p>
+      </div>
+    </div>
+    <p class="more-line">Plus <strong>$904,976 more</strong> across 60+ organizations.</p>
+  </div>
+</section>
+
+<!-- CEO QUOTE -->
+<section class="section quote-band">
+  <div class="wrap">
+    <p class="pullquote">We believe that a thriving community lifts everyone up. It's not just about selling cars<span class="mark">;</span> it's about investing in the places we call home.</p>
+    <div class="quote-by">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
+  </div>
+</section>
+
+<!-- MOST RECENT PROJECT -->
+<section class="section section--alt">
+  <div class="wrap feature">
+    <div class="feature__img">
+      <img src="assets/ath-stadium-check.jpg" alt="Rohrman check presentation at the stadium for the Tyler Trent Foundation" loading="lazy" width="600" height="440">
+    </div>
+    <div class="feature__text">
+      <p class="eyebrow">Most recent project</p>
+      <h2>Tyler Trent Foundation</h2>
+      <p class="lead">Tyler Trent's story started right here at Purdue, and his fight against cancer moved this whole community. We are proud to stand with the foundation carrying his name, funding cancer research and support for families walking the same road.</p>
+      <a class="btn btn-outline" href="https://tylertrentfoundation.com" target="_blank" rel="noopener">Visit the foundation</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE WE HELP + MAP -->
+<section class="section" id="where">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Where we help in Lafayette</p>
+      <h2>Close to home</h2>
+      <p class="lead">Every marker is a Lafayette-area organization we supported in 2025.</p>
+    </div>
+    <div class="map-grid">
+      <div>
+        <div class="map-card">
+          <div id="charityMap" class="gmap" aria-label="Map of Lafayette-area charities Rohrman supported"></div>
+          <div id="mapFallback" class="map-fallback" hidden>
+            <div class="pin">&#128205;</div>
+            <h4>Greater Lafayette, Indiana</h4>
+            <p>The organizations we supported this year, mapped across the Lafayette and West Lafayette area.</p>
+            <div class="chips" style="justify-content:center">
+              <span class="chip">Indiana Donor Network</span>
+              <span class="chip">Humane Society for Greater Lafayette</span>
+              <span class="chip">IU Health Arnett</span>
+              <span class="chip">Tyler Trent / Purdue</span>
+              <span class="chip">Wabash College</span>
+            </div>
+          </div>
+        </div>
+        <p class="map-note">The big campaigns run group-wide across 22 dealerships. Here in Lafayette, that support stayed with our neighbors.</p>
+      </div>
+      <div class="charity-list">
+        <article class="charity">
+          <span class="charity__logo"><img src="assets/logos/indiana-donor-network.png" alt="Indiana Donor Network logo" loading="lazy"></span>
+          <div class="charity__body">
+            <p class="charity__name">Indiana Donor Network</p>
+            <p class="charity__desc">Grief baskets for grieving families, in memory of Kaitlyn Isbell.</p>
+            <a class="charity__link" href="https://indianadonornetwork.org" target="_blank" rel="noopener">Visit site &#8599;</a>
+          </div>
+        </article>
+        <article class="charity">
+          <span class="charity__logo"><img src="assets/logos/humane-lafayette.png" alt="Humane Society for Greater Lafayette logo" loading="lazy"></span>
+          <div class="charity__body">
+            <p class="charity__name">Humane Society for Greater Lafayette</p>
+            <p class="charity__desc">Care and shelter for animals waiting on their forever homes.</p>
+            <a class="charity__link" href="https://humanesociety4greaterlafayette.org" target="_blank" rel="noopener">Visit site &#8599;</a>
+          </div>
+        </article>
+        <article class="charity">
+          <span class="charity__logo"><img src="assets/logos/iu-health.png" alt="IU Health logo" loading="lazy"></span>
+          <div class="charity__body">
+            <p class="charity__name">IU Health Arnett Hospital</p>
+            <p class="charity__desc">Nearly $20,000 toward care for Lafayette-area patients.</p>
+            <a class="charity__link" href="https://iuhealth.org" target="_blank" rel="noopener">Visit site &#8599;</a>
+          </div>
+        </article>
+        <article class="charity">
+          <span class="charity__logo"><img src="assets/logos/tyler-trent.png" alt="Tyler Trent Foundation logo" loading="lazy"></span>
+          <div class="charity__body">
+            <p class="charity__name">Tyler Trent Foundation</p>
+            <p class="charity__desc">Cancer research and family support, born at Purdue.</p>
+            <a class="charity__link" href="https://tylertrentfoundation.com" target="_blank" rel="noopener">Visit site &#8599;</a>
+          </div>
+        </article>
+        <article class="charity">
+          <span class="charity__logo"><img src="assets/logos/wabash.png" alt="Wabash College logo" loading="lazy"></span>
+          <div class="charity__body">
+            <p class="charity__name">Wabash College</p>
+            <p class="charity__desc">Scholarships and bikes for students in the region.</p>
+            <a class="charity__link" href="https://wabash.edu" target="_blank" rel="noopener">Visit site &#8599;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IN THE NEWS -->
+<section class="section section--alt" id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">In the news</p>
+      <h2>What people are writing</h2>
+      <p class="lead">Real coverage of our giving across Indiana, Illinois, and the region.</p>
+    </div>
+    <div class="news">
+      <div class="news__item">
+        <a class="news__title" href="https://www.21alivenews.com/2025/05/08/rohrman-automotive-group-raises-over-90k-leukemia-lymphoma-society-during-april-fundraiser/" target="_blank" rel="noopener">Rohrman Automotive Group donates over $90k to Leukemia &amp; Lymphoma Society during April fundraiser</a>
+        <p class="news__meta"><span class="src">21Alive (WPTA)</span> &middot; May 8, 2025 &middot; Fort Wayne</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://www.wlfi.com/news/rohrman-automotive-group-donates-77-200-to-support-families-of-donor-heroes/article_da2b558d-a492-4d92-872d-74a3b1da7916.html" target="_blank" rel="noopener">Rohrman Automotive Group donates $77,200 to support families of donor heroes</a>
+        <p class="news__meta"><span class="src">WLFI News 18</span> &middot; November 2025 &middot; Lafayette</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://www.autosuccessonline.com/rohrman-hyundai-childhood-cancer-donation/" target="_blank" rel="noopener">Rohrman, Hyundai donate to fight childhood cancer</a>
+        <p class="news__meta"><span class="src">AutoSuccess</span> &middot; 2025 &middot; Indianapolis</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://www.wlfi.com/community/rohrman-donates-10-350-to-humane-society-for-greater-lafayette/article_a88fec8e-4317-4510-a501-7ed4fc68bb06.html" target="_blank" rel="noopener">Rohrman donates $10,350 to Humane Society for Greater Lafayette</a>
+        <p class="news__meta"><span class="src">WLFI News 18</span> &middot; 2025 &middot; Lafayette</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://iuhealth.org/thrive/wcr-iu-health-arnett-hospital-gifted-nearly-20-000-from-rohrman-automotive-group" target="_blank" rel="noopener">IU Health Arnett Hospital gifted nearly $20,000 from Rohrman Automotive Group</a>
+        <p class="news__meta"><span class="src">IU Health</span> &middot; 2025 &middot; Lafayette</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://www.prnewswire.com/news-releases/80-000-raised-for-chicago-area-childhood-cancer-awareness-groups-300951673.html" target="_blank" rel="noopener">$80,000 raised for Chicago-area childhood cancer awareness groups</a>
+        <p class="news__meta"><span class="src">PR Newswire</span> &middot; 2025 &middot; Chicago</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://www.journalgazette.net/local/rohrman-impact-report-shows-thousands-invested-in-its-auto-group-communities/article_7d3719d6-f097-11ef-bd07-f33dd16affa1.html" target="_blank" rel="noopener">Rohrman impact report shows thousands invested in its communities</a>
+        <p class="news__meta"><span class="src">Fort Wayne Journal Gazette</span> &middot; Fort Wayne</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://www.fwbusiness.com/news/article_c515d555-d5ae-4e8b-9838-48336c218f18.html" target="_blank" rel="noopener">Rohrman Automotive Group donates to Humane Fort Wayne</a>
+        <p class="news__meta"><span class="src">Fort Wayne Business</span> &middot; Fort Wayne</p>
+      </div>
+      <div class="news__item">
+        <a class="news__title" href="https://www.autosuccessonline.com/rohrman-wins-usa-today-top-workplace-award/" target="_blank" rel="noopener">Rohrman Automotive Group wins USA Today Top Workplaces award</a>
+        <p class="news__meta"><span class="src">AutoSuccess</span> &middot; Group</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WATCH -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Watch</p>
+      <h2>See it for yourself</h2>
+      <p class="lead">A closer look at the people and moments behind Rohrman Impact.</p>
+    </div>
+    <div class="videos">
+      <div class="video">
+        <div class="video16x9">
+          <iframe src="https://www.youtube-nocookie.com/embed/cR4rx6iGUck" title="Rohrman Impact video 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video__cap">Rohrman Impact in the community</div>
+      </div>
+      <div class="video">
+        <div class="video16x9">
+          <iframe src="https://www.youtube-nocookie.com/embed/4xgfuCY5VTE" title="Rohrman Impact video 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video__cap">Giving back, year after year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section cta-band" id="nominate">
+  <div class="wrap">
+    <h2>Know a cause that needs a hand?</h2>
+    <p class="lead" style="margin-left:auto;margin-right:auto">If there's an organization in Greater Lafayette that could use our support, tell us about it. Our team is always looking for the next place to show up.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary btn-lg" href="mailto:community@rohrman.com?subject=Nominate%20a%20cause">Nominate a cause</a>
+    </div>
+    <div class="planned">
+      <p class="planned__label">On our radar for the year ahead</p>
+      <div class="chips">
+        <span class="chip">Blood Cancer United</span>
+        <span class="chip">Animal shelters</span>
+        <span class="chip">Indianapolis meal packing</span>
+        <span class="chip">Happy Hollow</span>
+        <span class="chip">NeighborLink</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <img src="assets/logo-light.png" alt="Rohrman Impact" width="150" height="38" loading="lazy">
+    <p><strong>Rohrman Automotive Group</strong> &middot; Giving since 1986</p>
+    <p>Indiana &middot; Illinois &middot; Wisconsin</p>
+    <p class="fine">Proudly serving Lafayette, West Lafayette, Battle Ground, Dayton, Delphi, Monticello, Frankfort, Crawfordsville, and the Greater Lafayette area.</p>
+  </div>
+</footer>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Rohrman Automotive Group",
+  "url":"https://rohrman.com",
+  "slogan":"Giving since 1986",
+  "areaServed":[
+    {"@type":"City","name":"Lafayette, Indiana"},
+    {"@type":"City","name":"West Lafayette, Indiana"},
+    {"@type":"AdministrativeArea","name":"Tippecanoe County, Indiana"},
+    {"@type":"Place","name":"Purdue University"}
+  ]
+}
+</script>
+
+<!-- MAP: exactly one map. Live map by default; static fallback only if it fails. -->
+<script>
+var __rohrmanMapReady = false;
+function showMapFallback(){
+  if(__rohrmanMapReady) return;
+  var map = document.getElementById('charityMap');
+  var fb  = document.getElementById('mapFallback');
+  if(map) map.style.display = 'none';
+  if(fb)  fb.hidden = false;
+}
+window.gm_authFailure = showMapFallback;
+
+function initCharityMap(){
+  try {
+    if(!(window.google && google.maps)){ showMapFallback(); return; }
+    __rohrmanMapReady = true;
+    var fb = document.getElementById('mapFallback');
+    if(fb) fb.hidden = true;
+    var center = {lat:40.4, lng:-86.88};
+    var map = new google.maps.Map(document.getElementById('charityMap'), {
+      center: center, zoom: 10, mapTypeControl:false, streetViewControl:false, fullscreenControl:false
+    });
+    var places = [
+      {name:'Indiana Donor Network', lat:39.8,   lng:-86.2,  url:'https://indianadonornetwork.org'},
+      {name:'Humane Society for Greater Lafayette', lat:40.38, lng:-86.86, url:'https://humanesociety4greaterlafayette.org'},
+      {name:'IU Health Arnett Hospital', lat:40.381, lng:-86.862, url:'https://iuhealth.org'},
+      {name:'Tyler Trent Foundation (Purdue)', lat:40.428, lng:-86.914, url:'https://tylertrentfoundation.com'},
+      {name:'Wabash College', lat:40.04, lng:-86.91, url:'https://wabash.edu'}
+    ];
+    var info = new google.maps.InfoWindow();
+    places.forEach(function(pl){
+      var marker = new google.maps.Marker({ position:{lat:pl.lat, lng:pl.lng}, map:map, title:pl.name });
+      marker.addListener('click', function(){
+        info.setContent('<div style="font-family:Arial,sans-serif;max-width:200px"><strong>'+pl.name+'</strong><br><a href="'+pl.url+'" target="_blank" rel="noopener" style="color:#b3945a;font-weight:700;text-decoration:none">Visit site &#8599;</a></div>');
+        info.open(map, marker);
+      });
+    });
+  } catch(err){ showMapFallback(); }
+}
+setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
+</script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApZi7xiWJXSr0dw1MA3RAqAAcuW2UIoT0&callback=initCharityMap" onerror="showMapFallback()"></script>
+
+</body>
+</html>
