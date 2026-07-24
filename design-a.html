@@ -1179,8 +1179,8 @@
       var rect = track.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
       var center = rect.top + rect.height / 2;
-      var start = vh * 1.0;    // p=0 when the band's center is at the bottom edge
-      var end   = vh * 0.45;   // p=1 when the center is just above the middle
+      var start = vh * 0.80;   // hold at $0 until the band is clearly on screen
+      var end   = vh * 0.40;   // full by the time it's near the middle (~0.4vh scroll)
       return clamp((start - center) / (start - end));
     }
     var tickingT = false;
