@@ -505,6 +505,17 @@
   .map-regionbar{display:flex;flex-wrap:wrap;gap:9px 20px;padding:13px 16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
   .mrb b{color:var(--gold-deep);font-weight:800;margin-right:5px;font-variant-numeric:tabular-nums}
 
+  /* ===================== CEO section: standalone standout card ===================== */
+  .ceo-wrap{max-width:860px;margin:0 auto}
+  .ceo-eyebrow{text-align:center;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 16px}
+  .ceo-card{position:relative;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:clamp(22px,3.4vw,36px);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  .ceo-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--gold),#f0980f)}
+  .ceo-photo.noimg::after{content:"RR";font-size:34px;font-weight:800;color:var(--gold)}
+  .ceo-sig text{}
+  /* map framed to the footprint, not half the country */
+  .gmap--compact{min-height:460px}
+  @media(max-width:600px){.gmap--compact{min-height:320px}}
+
   /* ===================== ODOMETER REPORT ===================== */
   .odo-track{position:relative;background:var(--charcoal,#131921);color:#fff;padding:clamp(30px,5vh,54px) 16px}
   .odo-inner{max-width:760px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
@@ -645,18 +656,19 @@
 
 <!-- ========== ROHRMAN IMPACT: CEO letter + Community Giving Report + stats (combined) ========== -->
 <section class="ceo-band">
-  <div class="ceo-inner">
-    <!-- PLACEHOLDER headshot. Drop Ryan's real photo here: <img src="assets/ryan-rohrman.jpg" alt="Ryan Rohrman"> -->
-    <div class="ceo-photo" title="Ryan Rohrman headshot goes here">RR</div>
-    <div class="ceo-body">
-      <div class="ceo-mark">&#8220;</div>
-      <blockquote>We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home.</blockquote>
-      <div class="ceo-sign">
-        <!-- PLACEHOLDER signature flourish. Swap for Ryan's real signature PNG when ready. -->
-        <svg class="ceo-sig" viewBox="0 0 250 60" fill="none" stroke="#fbb040" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Ryan Rohrman signature (placeholder)">
-          <path d="M10 46 C 18 14, 30 12, 26 42 C 24 52, 34 40, 40 30 C 46 20, 50 30, 46 42 C 56 24, 64 26, 60 40 C 74 18, 88 16, 82 44 C 96 20, 108 22, 102 44 C 116 24, 124 30, 120 42 M 132 40 C 150 16, 150 42, 134 40 C 152 42, 160 42, 170 30 C 180 18, 184 30, 178 42 C 192 22, 208 24, 202 44 C 216 26, 226 30, 222 42 M 150 50 L 236 52"/>
-        </svg>
-        <div class="ceo-name">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
+  <div class="ceo-wrap">
+    <p class="ceo-eyebrow">A note from our CEO</p>
+    <div class="ceo-inner ceo-card">
+      <div class="ceo-photo"><img src="assets/ryan-rohrman.jpg" alt="Ryan Rohrman, CEO of Rohrman Automotive Group" onerror="this.parentElement.classList.add('noimg');this.remove();"></div>
+      <div class="ceo-body">
+        <div class="ceo-mark">&#8220;</div>
+        <blockquote>We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home.</blockquote>
+        <div class="ceo-sign">
+          <svg class="ceo-sig" viewBox="0 0 300 72" role="img" aria-label="Ryan Rohrman signature (placeholder)">
+            <text x="2" y="50" font-family="'Snell Roundhand','Apple Chancery','Segoe Script','Brush Script MT',cursive" font-size="46" font-style="italic" fill="#fbb040">Ryan Rohrman</text>
+          </svg>
+          <div class="ceo-name">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1337,9 +1349,9 @@ function initCharityMap(){
       });
     });
     // Frame every point (with padding) so none get cut off, e.g. Crawfordsville to the south.
-    map.fitBounds(bounds, {top:56, right:40, bottom:40, left:40});
+    map.fitBounds(bounds, {top:40, right:60, bottom:40, left:60});
     // Don't let a tight cluster over-zoom if points are ever dropped.
-    google.maps.event.addListenerOnce(map, 'idle', function(){ if(map.getZoom() > 9) map.setZoom(9); });
+    google.maps.event.addListenerOnce(map, 'idle', function(){ if(map.getZoom() > 8) map.setZoom(8); });
   } catch(err){ showMapFallback(); }
 }
 setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
