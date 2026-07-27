@@ -477,6 +477,33 @@
     .shelf__track{scroll-behavior:auto}
     .reveal{opacity:1;transform:none}
   }
+
+  /* ===================== ROHRMAN IMPACT combined section (CEO + report + stats) ===================== */
+  .ceo-band{background:var(--charcoal,#131921);color:#fff;padding:clamp(42px,7vh,74px) 16px clamp(18px,3vh,28px)}
+  .ceo-inner{max-width:840px;margin:0 auto;display:flex;gap:26px;align-items:center;flex-direction:column;text-align:center}
+  @media(min-width:720px){.ceo-inner{flex-direction:row;text-align:left}}
+  .ceo-photo{flex:0 0 auto;width:120px;height:120px;border-radius:50%;background:linear-gradient(160deg,#2a3340,#151a22);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:var(--gold);overflow:hidden}
+  .ceo-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .ceo-body{flex:1;min-width:0}
+  .ceo-mark{font-size:44px;line-height:.2;color:var(--gold);font-weight:800;height:22px}
+  .ceo-body blockquote{margin:6px 0 0;font-size:clamp(18px,2.6vw,24px);font-weight:700;line-height:1.32;color:#fff}
+  .ceo-sign{margin-top:16px;display:flex;align-items:center;gap:18px;justify-content:center;flex-wrap:wrap}
+  @media(min-width:720px){.ceo-sign{justify-content:flex-start}}
+  .ceo-sig{height:44px;width:auto;opacity:.95}
+  .ceo-name{font-weight:700;color:var(--gold);font-size:14px}
+  .ceo-name span{display:block;color:rgba(255,255,255,.6);font-weight:400;font-size:12px;margin-top:2px}
+  .stat-band{background:var(--charcoal,#131921);color:#fff;padding:clamp(16px,3vh,26px) 16px clamp(42px,7vh,72px)}
+  .stat-row{max-width:900px;margin:0 auto;list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(min-width:760px){.stat-row{grid-template-columns:repeat(4,1fr)}}
+  .stat-row li{text-align:center;border-top:2px solid rgba(251,176,64,.5);padding-top:12px}
+  .stat-row .n{font-size:clamp(26px,5vw,36px);font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+  .stat-row .l{margin-top:6px;font-size:12px;color:rgba(255,255,255,.66);text-transform:uppercase;letter-spacing:.03em}
+
+  /* ===================== WHOLE-GROUP MAP (compact) ===================== */
+  .gmap--compact{min-height:320px}
+  @media(max-width:600px){.gmap--compact{min-height:260px}}
+  .map-regionbar{display:flex;flex-wrap:wrap;gap:9px 20px;padding:13px 16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+  .mrb b{color:var(--gold-deep);font-weight:800;margin-right:5px;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -599,24 +626,26 @@
   </div>
 </div>
 
-<!-- ========== RYAN QUOTE ========== -->
-<div class="row stack" id="climb">
-  <article class="card climb reveal">
-    <div class="qblock qblock--wide">
-      <div class="mark">&#8220;</div>
+<!-- ========== ROHRMAN IMPACT: CEO letter + Community Giving Report + stats (combined) ========== -->
+<section class="ceo-band">
+  <div class="ceo-inner">
+    <!-- PLACEHOLDER headshot. Drop Ryan's real photo here: <img src="assets/ryan-rohrman.jpg" alt="Ryan Rohrman"> -->
+    <div class="ceo-photo" title="Ryan Rohrman headshot goes here">RR</div>
+    <div class="ceo-body">
+      <div class="ceo-mark">&#8220;</div>
       <blockquote>We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home.</blockquote>
-      <div class="attrib">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
-      <div class="qstats qstats--wide" id="ryanStats">
-        <div class="qstat"><div class="n" data-count="525">0</div><div class="l">Volunteer hours in 2026</div></div>
-        <div class="qstat"><div class="n" data-count="206">0</div><div class="l">Teammates who showed up</div></div>
-        <div class="qstat"><div class="n" data-count="12">0</div><div class="l">Service projects, so far</div></div>
-        <div class="qstat"><div class="n" data-count="249016" data-prefix="$">$0</div><div class="l">Given back in 2026</div></div>
+      <div class="ceo-sign">
+        <!-- PLACEHOLDER signature flourish. Swap for Ryan's real signature PNG when ready. -->
+        <svg class="ceo-sig" viewBox="0 0 250 60" fill="none" stroke="#fbb040" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Ryan Rohrman signature (placeholder)">
+          <path d="M10 46 C 18 14, 30 12, 26 42 C 24 52, 34 40, 40 30 C 46 20, 50 30, 46 42 C 56 24, 64 26, 60 40 C 74 18, 88 16, 82 44 C 96 20, 108 22, 102 44 C 116 24, 124 30, 120 42 M 132 40 C 150 16, 150 42, 134 40 C 152 42, 160 42, 170 30 C 180 18, 184 30, 178 42 C 192 22, 208 24, 202 44 C 216 26, 226 30, 222 42 M 150 50 L 236 52"/>
+        </svg>
+        <div class="ceo-name">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
       </div>
     </div>
-  </article>
-</div>
+  </div>
+</section>
 
-<!-- ========== PINNED GIVING THERMOMETER (vertical, sticky-pin scrub) ========== -->
+<!-- ========== COMMUNITY GIVING REPORT ========== -->
 <section class="rgt-track" id="rgtTrack">
   <div class="rgt-stage">
     <div class="rgt-inner">
@@ -648,6 +677,18 @@
     </div>
   </div>
 </section>
+
+<!-- ========== STATS (moved down into the Rohrman Impact section) ========== -->
+<section class="stat-band">
+  <ul class="stat-row" id="statRow">
+    <li><div class="n" data-count="525">0</div><div class="l">Volunteer hours in 2026</div></li>
+    <li><div class="n" data-count="206">0</div><div class="l">Teammates who showed up</div></li>
+    <li><div class="n" data-count="12">0</div><div class="l">Service projects</div></li>
+    <li><div class="n" data-count="60" data-suffix="+">0</div><div class="l">Organizations served</div></li>
+  </ul>
+</section>
+
+
 
 <!-- ========== CONNOR ROHRMAN: PHOTO + QUOTE ========== -->
 <div class="row stack">
@@ -766,62 +807,34 @@
   </div>
 </div>
 
-<!-- ========== MAP + CHARITIES ========== -->
+<!-- ========== MAP: whole-group footprint (compact) ========== -->
 <div class="row stack" id="map">
   <div class="shead reveal">
     <div>
-      <p class="ey">Where we helped, Greater Lafayette</p>
-      <h2>Close to home</h2>
+      <p class="ey">Across Indiana, Illinois &amp; Wisconsin</p>
+      <h2>Everywhere the group showed up in 2026</h2>
     </div>
   </div>
-  <div class="map-grid">
-    <div class="card map-card reveal">
-      <div id="charityMap" class="gmap" aria-label="Map of Lafayette-area charities Rohrman supported"></div>
-      <div id="mapFallback" class="map-fallback" hidden>
-        <div class="pin">&#128205;</div>
-        <h4>Greater Lafayette, Indiana</h4>
-        <p>The organizations we supported this year, mapped across the Lafayette and West Lafayette area.</p>
-        <div class="chips">
-          <span class="chip">Indiana Donor Network</span>
-          <span class="chip">Humane Society for Greater Lafayette</span>
-          <span class="chip">IU Health Arnett</span>
-          <span class="chip">Tyler Trent / Purdue</span>
-          <span class="chip">Wabash College</span>
-        </div>
+  <div class="card map-card reveal">
+    <div id="charityMap" class="gmap gmap--compact" aria-label="Map of Rohrman Impact projects across the group"></div>
+    <div id="mapFallback" class="map-fallback" hidden>
+      <div class="pin">&#128205;</div>
+      <h4>Indiana, Illinois &amp; Wisconsin</h4>
+      <p>Every dealership in the group giving back in its own community, from Greater Lafayette to Chicagoland to Fort Wayne to Indianapolis.</p>
+      <div class="chips">
+        <span class="chip">Chicagoland</span>
+        <span class="chip">Fort Wayne</span>
+        <span class="chip">Indianapolis</span>
+        <span class="chip">Greater Lafayette</span>
+        <span class="chip">Kenosha &amp; Racine, WI</span>
       </div>
-      <div class="map-note">Every marker is a Lafayette-area organization Rohrman supported in 2025. The big campaigns run group-wide across 22 dealerships; here in Lafayette, that support stayed with our neighbors.</div>
     </div>
-    <div class="charity-list">
-      <article class="card charity reveal">
-        <div class="top"><span class="name">Indiana Donor Network</span><span class="amt">$77,200</span></div>
-        <div class="desc">In memory of donor hero Kaitlyn Isbell, funding grief baskets for grieving families.</div>
-        <div class="go"><a href="https://indianadonornetwork.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
-      </article>
-      <article class="card charity reveal">
-        <div class="top"><span class="name">Humane Society for Greater Lafayette</span><span class="amt">$10,350</span></div>
-        <div class="desc">Care and shelter for animals waiting on their forever homes.</div>
-        <div class="go"><a href="https://humanesociety4greaterlafayette.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
-      </article>
-      <article class="card charity reveal">
-        <div class="top"><span class="name">IU Health Arnett Hospital</span><span class="amt">~$20,000</span></div>
-        <div class="desc">Supporting patient care right here in Lafayette.</div>
-        <div class="go"><a href="https://iuhealth.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
-      </article>
-      <article class="card charity reveal">
-        <div class="top"><span class="name">Tyler Trent Foundation</span><span class="amt">Childhood cancer</span></div>
-        <div class="desc">Honoring a Purdue legend, funding the fight against pediatric cancer.</div>
-        <div class="go"><a href="https://tylertrentfoundation.com" target="_blank" rel="noopener">Visit site &#8599;</a></div>
-      </article>
-      <article class="card charity reveal">
-        <div class="top"><span class="name">Wabash College</span><span class="amt">Scholarships</span></div>
-        <div class="desc">Scholarships and bikes for students in the region.</div>
-        <div class="go"><a href="https://wabash.edu" target="_blank" rel="noopener">Visit site &#8599;</a></div>
-      </article>
-      <article class="card charity reveal">
-        <div class="top"><span class="name">Leukemia &amp; Lymphoma Society</span><span class="amt">$92,950</span></div>
-        <div class="desc">Group-wide April drive, $50 for every new vehicle sold.</div>
-        <div class="go"><a href="https://www.lls.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
-      </article>
+    <div class="map-regionbar">
+      <span class="mrb"><b>18</b>Chicagoland</span>
+      <span class="mrb"><b>10</b>Fort Wayne</span>
+      <span class="mrb"><b>5</b>Indianapolis</span>
+      <span class="mrb"><b>2</b>Greater Lafayette</span>
+      <span class="mrb"><b>3</b>Group-wide campaigns</span>
     </div>
   </div>
 </div>
@@ -1166,22 +1179,23 @@
 
   /* ---------- COUNT-UP stats (Ryan section): numbers climb when scrolled into view ---------- */
   (function(){
-    function fmt(n, prefix){ return (prefix||'') + Math.round(n).toLocaleString('en-US'); }
+    function fmt(n, prefix, suffix){ return (prefix||'') + Math.round(n).toLocaleString('en-US') + (suffix||''); }
     function run(el){
       var target = parseFloat(el.getAttribute('data-count')) || 0;
       var prefix = el.getAttribute('data-prefix') || '';
-      if(reduce){ el.textContent = fmt(target, prefix); return; }
+      var suffix = el.getAttribute('data-suffix') || '';
+      if(reduce){ el.textContent = fmt(target, prefix, suffix); return; }
       var dur = 1400, t0 = null;
       function step(ts){
         if(t0 === null) t0 = ts;
         var p = Math.min((ts - t0) / dur, 1);
         var eased = 1 - Math.pow(1 - p, 3);      // easeOutCubic
-        el.textContent = fmt(target * eased, prefix);
+        el.textContent = fmt(target * eased, prefix, suffix);
         if(p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
-    var wrap = document.getElementById('ryanStats');
+    var wrap = document.getElementById('statRow');
     if(!wrap) return;
     var nums = Array.prototype.slice.call(wrap.querySelectorAll('[data-count]'));
     var seen = false;
@@ -1296,17 +1310,24 @@ function initCharityMap(){
     __rohrmanMapReady = true;
     var fb = document.getElementById('mapFallback');
     if(fb) fb.hidden = true;               /* success: keep the fallback hidden */
-    var center = {lat:40.15, lng:-86.6};
+    var center = {lat:41.2, lng:-87.2};
     var map = new google.maps.Map(document.getElementById('charityMap'), {
-      center: center, zoom: 9, mapTypeControl:false, streetViewControl:false, fullscreenControl:false
+      center: center, zoom: 7, mapTypeControl:false, streetViewControl:false, fullscreenControl:false
     });
     var places = [
-      // Indiana Donor Network has no Lafayette office; this is its real Indianapolis HQ (3750 Guion Rd).
-      {name:'Indiana Donor Network', lat:39.8206, lng:-86.2364, url:'https://indianadonornetwork.org'},
-      {name:'Humane Society for Greater Lafayette', lat:40.38, lng:-86.86, url:'https://humanesociety4greaterlafayette.org'},
-      {name:'IU Health Arnett Hospital', lat:40.381, lng:-86.862, url:'https://iuhealth.org'},
-      {name:'Tyler Trent Foundation (Purdue)', lat:40.428, lng:-86.914, url:'https://tylertrentfoundation.com'},
-      {name:'Wabash College (Crawfordsville)', lat:40.04, lng:-86.91, url:'https://wabash.edu'}
+      // Rohrman Impact 2026 projects, one representative pin per community across the group
+      {name:'Greater Lafayette, IN', lat:40.4167, lng:-86.8753, url:'#'},
+      {name:'Wabash College, Crawfordsville IN', lat:40.0392, lng:-86.9136, url:'#'},
+      {name:'Fort Wayne, IN', lat:41.0793, lng:-85.1394, url:'#'},
+      {name:'Indianapolis, IN', lat:39.7684, lng:-86.1581, url:'#'},
+      {name:'Lawrence, IN (HILL 317)', lat:39.8386, lng:-86.0250, url:'#'},
+      {name:'Arlington Heights, IL', lat:42.0884, lng:-87.9806, url:'#'},
+      {name:'Schaumburg, IL', lat:42.0334, lng:-88.0834, url:'#'},
+      {name:'Oakbrook Terrace, IL', lat:41.8500, lng:-87.9645, url:'#'},
+      {name:'Naperville, IL', lat:41.7508, lng:-88.1535, url:'#'},
+      {name:'Gurnee, IL', lat:42.3703, lng:-87.9020, url:'#'},
+      {name:'Kenosha, WI', lat:42.5847, lng:-87.8212, url:'#'},
+      {name:'Racine, WI', lat:42.7261, lng:-87.7829, url:'#'}
     ];
     var info = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();
@@ -1315,14 +1336,14 @@ function initCharityMap(){
       var marker = new google.maps.Marker({ position:pos, map:map, title:pl.name });
       bounds.extend(pos);
       marker.addListener('click', function(){
-        info.setContent('<div style="font-family:Arial,sans-serif;max-width:200px"><strong>'+pl.name+'</strong><br><a href="'+pl.url+'" target="_blank" rel="noopener" style="color:#a96a10;font-weight:700;text-decoration:none">Visit site &#8599;</a></div>');
+        info.setContent('<div style="font-family:Arial,sans-serif;max-width:220px"><strong>'+pl.name+'</strong>'+(pl.url && pl.url!=='#' ? '<br><a href="'+pl.url+'" target="_blank" rel="noopener" style="color:#a96a10;font-weight:700;text-decoration:none">Visit site &#8599;</a>' : '')+'</div>');
         info.open(map, marker);
       });
     });
     // Frame every point (with padding) so none get cut off, e.g. Crawfordsville to the south.
     map.fitBounds(bounds, {top:56, right:40, bottom:40, left:40});
     // Don't let a tight cluster over-zoom if points are ever dropped.
-    google.maps.event.addListenerOnce(map, 'idle', function(){ if(map.getZoom() > 11) map.setZoom(11); });
+    google.maps.event.addListenerOnce(map, 'idle', function(){ if(map.getZoom() > 9) map.setZoom(9); });
   } catch(err){ showMapFallback(); }
 }
 setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
