@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rohrman Impact, Lafayette Edition</title>
+<meta name="description" content="How Rohrman Automotive Group showed up for Greater Lafayette. Money and time, given by hand, to the neighbors we call home. Serving Lafayette, West Lafayette, Tippecanoe County, and Purdue University.">
+
+<!-- Open Graph + Twitter card: gives the page a thumbnail in Google / AI-Overview source cards
+     and in social/share unfurls. Set og:image to a >=1200px image on the store's own domain.
+     (In DealerOn, set these in the page's "Open Graph Tags" tab, not the body.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rohrman Impact">
+<meta property="og:title" content="Rohrman Impact, Greater Lafayette">
+<meta property="og:description" content="In 2025 Rohrman Automotive Group gave $1,236,826 to more than 60 organizations, plus 400+ volunteer hours. See how we show up for Greater Lafayette.">
+<meta property="og:url" content="https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html">
+<meta property="og:image" content="https://dealerplateguy.github.io/rohrman-impact-mockups/assets/vol-mealpack-group.jpg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1350">
+<meta property="og:image:alt" content="Rohrman Automotive Group volunteers packing meals in the community">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rohrman Impact, Greater Lafayette">
+<meta name="twitter:description" content="In 2025 Rohrman Automotive Group gave $1,236,826 to more than 60 organizations, plus 400+ volunteer hours.">
+<meta name="twitter:image" content="https://dealerplateguy.github.io/rohrman-impact-mockups/assets/vol-mealpack-group.jpg">
+<style>
+  :root{
+    /* Amazon neutral canvas */
+    --page:#EAEDED;
+    --surface:#ffffff;
+    --panel:#F7FAFA;
+    --panel-2:#F0F2F2;
+    --border:#D5D9D9;
+    --divider:#DDDDDD;
+    --ink:#0F1111;
+    --muted:#565959;
+    --link:#007185;
+    --link-hover:#C7511F;
+    /* Rohrman accents */
+    --gold:#fbb040;
+    --gold-deep:#a96a10;
+    --charcoal:#131921;
+    --btn-shadow:0 2px 8px rgba(15,17,17,.15);
+    --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--page);
+    font-size:14px;
+    line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:clip;
+  }
+  img{max-width:100%;display:block}
+  a{color:var(--link);text-decoration:none}
+  a:hover{color:var(--link-hover);text-decoration:underline}
+
+  /* accessible visually-hidden (real h1 for SEO / screen readers) */
+  .visually-hidden{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  }
+
+  /* content row: fixed max column, fluid inside */
+  .row{max-width:1500px;margin:0 auto;padding:0 16px}
+  /* Amazon-style rhythm: wide gray gutter between section blocks, tight gaps inside grids */
+  .stack{margin:44px auto}
+  .stack:first-of-type{margin-top:32px}
+
+  /* Amazon shelf/section header */
+  .shead{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:0 0 12px}
+  .shead h2{font-size:21px;font-weight:700;color:var(--ink);margin:0;letter-spacing:0;line-height:1.3}
+  .shead .ey{font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 4px}
+  .shead .see{font-size:13px;font-weight:400;color:var(--link);white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+  .shead .see:hover{color:var(--link-hover);text-decoration:underline}
+
+  /* generic card */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;transition:box-shadow .1s ease, border-color .1s ease}
+  @media(hover:hover){.card:hover{box-shadow:var(--btn-shadow)}}
+
+  /* ===================== HERO (logo only, top-weighted) ===================== */
+  /* Editorial hero: logo + one line, anchored bottom-left. Built so the copy
+     stays legible over ANY hero photo (they rotate) via a dual scrim. */
+  .hero{
+    position:relative;
+    min-height:clamp(520px,78vh,800px);
+    display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
+    color:#fff;background:#0b0e12;overflow:hidden;
+    padding:clamp(40px,9vh,96px) clamp(24px,6vw,84px);
+  }
+  .hero__bg{
+    position:absolute;inset:0;
+    background-image:url("assets/vol-mealpack-group.jpg");
+    background-size:cover;background-position:center 40%;
+  }
+  /* Two stacked gradients: bottom fade + left fade, so the bottom-left corner
+     where the logo/copy live is always dark enough, whatever photo loads. */
+  .hero__scrim{position:absolute;inset:0;background:
+    linear-gradient(180deg, rgba(9,11,15,0) 40%, rgba(9,11,15,.58) 100%),
+    linear-gradient(100deg, rgba(9,11,15,.82) 0%, rgba(9,11,15,.32) 46%, rgba(9,11,15,0) 72%)}
+  .hero__inner{position:relative;z-index:2;max-width:600px}
+  .hero__logo{display:block;width:clamp(260px,34vw,440px);height:auto;filter:drop-shadow(0 8px 26px rgba(0,0,0,.6))}
+  .hero__tag{margin:clamp(16px,2.4vw,22px) 0 0;font-size:clamp(20px,3vw,30px);font-weight:800;letter-spacing:.01em;line-height:1.14;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.85)}
+  .hero__tag b{color:var(--gold)}
+  .hero__loc{margin:12px 0 0;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);text-shadow:0 1px 12px rgba(0,0,0,.8)}
+
+  /* ===================== SPOTLIGHT (Tyler Trent, right under hero) ===================== */
+  .spot{display:grid;grid-template-columns:1fr;overflow:hidden}
+  @media(min-width:820px){.spot{grid-template-columns:1.05fr .95fr}}
+  .spot__img{position:relative;min-height:260px;background:var(--panel-2)}
+  .spot__img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .spot__badge{
+    position:absolute;top:14px;left:14px;z-index:2;
+    background:var(--gold);color:var(--ink);
+    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:6px 11px;border-radius:6px;
+  }
+  .spot__body{padding:28px 28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+  .spot__ey{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-deep)}
+  .spot__body h3{margin:0;font-size:clamp(22px,4vw,30px);font-weight:700;line-height:1.14;color:var(--ink)}
+  .spot__body p{margin:0;color:var(--ink);font-size:15px;line-height:1.5}
+  .spot__body p.sub{color:var(--muted)}
+  .cta-gold{
+    align-self:flex-start;margin-top:4px;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);border:1px solid var(--gold-deep);border-radius:8px;
+    color:var(--ink);font-size:14px;font-weight:700;padding:9px 16px;text-decoration:none;
+  }
+  .cta-gold:hover{background:#f7a52a;color:var(--ink);text-decoration:none}
+
+  /* ===================== PROMO TILE ROW (shoveler) ===================== */
+  .shelf{position:relative}
+  .shelf__viewport{position:relative}
+  .shelf__track{
+    display:flex;gap:16px;margin:0;padding:4px 2px 8px;list-style:none;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x proximity;scroll-behavior:smooth;
+    overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .shelf__track::-webkit-scrollbar{display:none}
+  .shelf__item{scroll-snap-align:start}
+  .shelf__btn{
+    position:absolute;top:42%;transform:translateY(-50%);z-index:3;
+    width:44px;height:44px;display:grid;place-items:center;border-radius:50%;
+    background:var(--surface);border:1px solid var(--border);box-shadow:var(--btn-shadow);
+    color:var(--ink);cursor:pointer;
+  }
+  .shelf__btn svg{width:22px;height:22px}
+  .shelf__btn--prev{left:-6px}
+  .shelf__btn--next{right:-6px}
+  .shelf__btn:hover{background:var(--panel-2)}
+  .shelf__btn:focus-visible{outline:none;border-color:#E77600;box-shadow:0 0 3px 2px rgba(228,121,17,.5)}
+  .shelf__btn[hidden]{display:none}
+  .shelf__btn:disabled{opacity:.35;cursor:default;pointer-events:none}
+  @media (hover:none),(pointer:coarse){.shelf__btn{display:none}}
+
+  .promo-track .shelf__item{flex:0 0 340px}
+  @media(max-width:480px){.promo-track .shelf__item{flex:0 0 86vw}} /* one tile + peek */
+  .promo{display:flex;flex-direction:column;height:100%;overflow:hidden;padding:18px 18px 16px}
+  .promo__ey{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-deep)}
+  .promo__hd{margin:6px 0 8px;font-size:20px;font-weight:700;line-height:1.16;color:var(--ink)}
+  .promo__amt{font-size:24px;font-weight:700;color:var(--ink);line-height:1;margin-bottom:12px}
+  .promo__amt span{font-size:12px;font-weight:400;color:var(--muted)}
+  .promo__img{border-radius:6px;overflow:hidden;background:var(--panel-2);aspect-ratio:16/10}
+  .promo__img img{width:100%;height:100%;object-fit:cover}
+  .promo__more{margin-top:12px;font-size:13px;color:var(--link);display:inline-flex;align-items:center;gap:4px}
+  .promo__more:hover{color:var(--link-hover);text-decoration:underline}
+
+  /* ===================== CLIMB (Ryan quote + scroll thermometer) ===================== */
+  .climb{padding:26px 24px}
+  .climb-grid{display:grid;gap:26px;grid-template-columns:1fr}
+  @media(min-width:900px){.climb-grid{grid-template-columns:1.05fr .95fr}}
+  .qblock .mark{font-size:56px;line-height:.3;color:var(--gold);font-weight:800;height:34px}
+  .qblock blockquote{margin:8px 0 0;font-size:clamp(20px,3.2vw,28px);font-weight:700;line-height:1.28;color:var(--ink)}
+  .qblock .attrib{margin-top:18px;font-weight:700;color:var(--gold-deep);font-size:15px}
+  .qblock .attrib span{display:block;color:var(--muted);font-weight:400;font-size:13px;margin-top:2px}
+  .qstats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+  .qstat{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 14px}
+  .qstat .n{font-size:22px;font-weight:700;color:var(--ink);line-height:1}
+  .qstat .l{margin-top:5px;font-size:12px;color:var(--muted);font-weight:400}
+
+  .therm-card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:20px 18px}
+  .therm-card h3{margin:0 0 2px;font-size:16px;font-weight:700;color:var(--ink)}
+  .therm-card .sub{margin:0 0 16px;font-size:13px;color:var(--muted)}
+  .therm-wrap{display:flex;gap:18px;align-items:stretch}
+  .therm{position:relative;width:44px;flex:0 0 44px;background:#e3e6e6;border:1px solid var(--border);border-radius:8px;min-height:300px;overflow:hidden}
+  .therm__fill{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,var(--gold) 0%, #f0980f 100%)}
+  .therm__ticks{flex:1;display:flex;flex-direction:column-reverse;justify-content:space-between;padding:2px 0}
+  .tick{display:flex;flex-direction:column;gap:1px;padding:4px 0;opacity:0;transform:translateX(12px);transition:opacity .4s ease, transform .4s ease}
+  .tick.show{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.tick{opacity:1;transform:none;transition:none}}
+  .tick .mon{font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--gold-deep)}
+  .tick .amt{font-weight:700;font-size:15px;color:var(--ink)}
+  .tick .who{font-size:12px;color:var(--muted);line-height:1.25}
+  .therm-total{margin-top:16px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px}
+  .therm-total .n{font-size:clamp(28px,6vw,38px);font-weight:700;letter-spacing:-.01em;line-height:1;color:var(--ink)}
+  .therm-total .c{margin-top:6px;font-size:13px;color:var(--muted);font-weight:400}
+
+  /* wide 4-across stats under the Ryan quote (thermometer moved to its own band) */
+  .qstats--wide{grid-template-columns:repeat(2,1fr)}
+  @media(min-width:760px){.qstats--wide{grid-template-columns:repeat(4,1fr)}}
+  .qblock--wide{max-width:900px;margin:0 auto;text-align:center}
+  .qblock--wide blockquote{text-align:center}
+  .qblock--wide .attrib{text-align:center}
+
+  /* ===================== PINNED GIVING THERMOMETER (vertical sticky-pin scrub) ===================== */
+  /* Normal band (NOT a pinned 300vh track): the page keeps moving as it scrolls
+     past, so it never reads as the end of the page. The fill is scroll-LINKED
+     (driven by the band's position in the viewport), not scroll-LOCKED. */
+  .rgt-track{position:relative;background:var(--charcoal,#131921);color:#fff;padding:clamp(34px,5vh,62px) 0}
+  .rgt-stage{display:flex;align-items:center;justify-content:center}
+  .rgt-inner{width:100%;max-width:720px;margin:0 auto;padding:24px 20px;display:flex;flex-direction:column;gap:18px}
+  .rgt-head{text-align:center}
+  .rgt-logo{display:block;width:auto;max-width:400px;height:auto;margin:0 auto 14px}
+  .rgt-report{margin:0;font-size:clamp(28px,6vw,46px);font-weight:800;line-height:1.04;letter-spacing:-.01em;color:#fff}
+  @media(max-width:560px){.rgt-logo{max-width:280px}}
+  .rgt-body{display:flex;gap:20px;align-items:stretch;justify-content:center}
+  .rgt-tube{position:relative;width:52px;flex:0 0 52px;min-height:256px;background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.22);border-radius:26px;overflow:hidden}
+  .rgt-fill{position:absolute;left:0;right:0;bottom:0;height:0%;background:linear-gradient(180deg,var(--gold,#fbb040) 0%, #f0980f 100%)}
+  .rgt-ticks{list-style:none;margin:0;padding:0;flex:1;max-width:420px;display:flex;flex-direction:column;justify-content:space-between}
+  .rgt-tick{display:grid;grid-template-columns:16px 1fr auto;grid-template-rows:auto auto;align-items:center;gap:4px 10px;
+    padding:6px 0;opacity:.30;transform:translateX(-4px);transition:opacity .35s ease, transform .35s ease}
+  .rgt-tick.is-lit{opacity:1;transform:none}
+  .rgt-dot{grid-row:1 / span 2;width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25);
+    box-shadow:0 0 0 0 rgba(251,176,64,0);transition:background .35s ease, box-shadow .35s ease}
+  .rgt-tick.is-lit .rgt-dot{background:var(--gold,#fbb040);box-shadow:0 0 0 4px rgba(251,176,64,.22)}
+  .rgt-when{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold,#fbb040)}
+  .rgt-what{grid-column:2;font-size:13px;color:rgba(255,255,255,.85)}
+  .rgt-amt{grid-column:3;grid-row:1 / span 2;align-self:center;font-size:13px;font-weight:800;white-space:nowrap;color:#fff}
+  .rgt-total{text-align:center}
+  .rgt-num{font-size:clamp(34px,9vw,56px);font-weight:800;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:#fff}
+  .rgt-cap{margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
+  @media(max-width:560px){.rgt-tube{width:40px;flex-basis:40px;min-height:260px}.rgt-what{font-size:12px}}
+  /* reduced-motion: JS renders the final total outright (no scroll scrub) */
+
+  /* ===================== CONNOR (photo + quote) ===================== */
+  .person{display:grid;grid-template-columns:1fr;overflow:hidden}
+  @media(min-width:720px){.person{grid-template-columns:.85fr 1.15fr}}
+  .person__img{position:relative;min-height:240px;background:var(--panel-2)}
+  .person__img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .person__body{padding:28px 28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+  .person__body .mark{font-size:48px;line-height:.3;color:var(--gold);font-weight:800;height:26px}
+  .person__body blockquote{margin:0;font-size:clamp(18px,2.6vw,24px);font-weight:700;line-height:1.32;color:var(--ink)}
+  .person__body .attrib{font-weight:700;color:var(--gold-deep);font-size:14px}
+  .person__body .attrib span{display:block;color:var(--muted);font-weight:400;font-size:13px;margin-top:2px}
+
+  /* ===================== MOSAIC CARD-BOX GRID (2x2 thumbs) ===================== */
+  .mosaic-row{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:1000px){.mosaic-row{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.mosaic-row{grid-template-columns:1fr}}
+  .mosaic{padding:18px 18px 16px;display:flex;flex-direction:column}
+  .mosaic__title{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0}
+  .mosaic__title a{font-size:19px;font-weight:700;color:var(--ink);display:inline-flex;align-items:baseline;gap:5px}
+  .mosaic__title a:hover{color:var(--link-hover);text-decoration:none}
+  .mosaic__title .cx{color:var(--gold-deep);font-weight:700}
+  .mosaic__grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .mcell{display:flex;flex-direction:column;text-decoration:none}
+  .mcell .thumb{aspect-ratio:1/1;border-radius:4px;overflow:hidden;background:var(--panel-2)}
+  .mcell .thumb img{width:100%;height:100%;object-fit:cover}
+  .mcell .lbl{margin-top:6px;font-size:12px;line-height:1.3;color:var(--link);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .mcell:hover .lbl{color:var(--link-hover);text-decoration:underline}
+  .mcell .amt{font-size:12px;color:var(--gold-deep);font-weight:700;margin-top:2px}
+  .mosaic__more{margin-top:14px;font-size:13px;color:var(--link);display:inline-flex;align-items:center;gap:4px}
+  .mosaic__more:hover{color:var(--link-hover);text-decoration:underline}
+
+  /* charity logo list (Where we helped in Lafayette) */
+  .logohelp{list-style:none;margin:14px 0 auto;padding:0;display:flex;flex-direction:column;gap:11px}
+  .lh{display:flex;align-items:center;gap:11px}
+  .lh__chip{
+    flex:0 0 48px;width:48px;height:48px;background:#fff;border:1px solid var(--border);border-radius:8px;
+    display:flex;align-items:center;justify-content:center;padding:6px;
+  }
+  .lh__chip img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+  .lh__body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .lh__name{font-size:13px;font-weight:700;color:var(--link);line-height:1.2;overflow-wrap:anywhere}
+  .lh__name:hover{color:var(--link-hover);text-decoration:underline}
+  .lh__desc{font-size:12px;color:var(--muted);line-height:1.3}
+  .lh__amt{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--gold-deep);white-space:nowrap}
+
+  /* ===================== MAP + CHARITIES ===================== */
+  .map-grid{display:grid;gap:16px;grid-template-columns:1fr}
+  @media(min-width:900px){.map-grid{grid-template-columns:1.2fr 1fr}}
+  .map-card{overflow:hidden;display:flex;flex-direction:column}
+  .gmap{width:100%;min-height:420px;flex:1}
+  .map-fallback{
+    min-height:420px;flex:1;position:relative;
+    background:linear-gradient(135deg,#1a1f28 0%, #0f141b 100%);
+    color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px;
+  }
+  /* the fallback stays hidden unless the live map fails (class specificity was overriding [hidden]) */
+  .map-fallback[hidden]{display:none}
+  .map-fallback .pin{font-size:40px}
+  .map-fallback h4{margin:0;font-size:20px;font-weight:700}
+  .map-fallback p{margin:0;max-width:34ch;color:rgba(255,255,255,.78);font-size:14px}
+  .map-fallback .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:4px}
+  .map-fallback .chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:#fff}
+  .map-note{padding:12px 16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+  .charity-list{display:grid;gap:12px;grid-template-columns:1fr}
+  @media(min-width:520px){.charity-list{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:900px){.charity-list{grid-template-columns:1fr}}
+  @media(min-width:1120px){.charity-list{grid-template-columns:repeat(2,1fr)}}
+  .charity{display:flex;flex-direction:column;gap:5px;padding:14px 14px}
+  .charity .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .charity .name{font-weight:700;font-size:14px;line-height:1.2;color:var(--ink)}
+  .charity .amt{font-weight:700;color:var(--gold-deep);font-size:13px;white-space:nowrap}
+  .charity .desc{font-size:12px;color:var(--muted);line-height:1.4}
+  .charity .go{margin-top:2px;font-size:13px}
+  .charity .go a{color:var(--link);display:inline-flex;align-items:center;gap:5px}
+  .charity .go a:hover{color:var(--link-hover);text-decoration:underline}
+
+  /* ===================== PHOTO CAROUSEL =====================
+     Trick to avoid weird crops: fix the HEIGHT, let WIDTH follow each photo's
+     natural aspect ratio. Nothing gets cropped; cards just vary in width and
+     scroll. Portrait shots become narrow cards, landscapes wide, same height. */
+  .photo-track .shelf__item{flex:0 0 auto;min-width:140px}
+  .gphoto{border-radius:8px;overflow:hidden;background:var(--panel-2);border:1px solid var(--border);width:max-content}
+  .gphoto img{height:240px;width:auto;max-width:80vw;display:block}
+  .gphoto figcaption{padding:10px 12px;font-size:12px;color:var(--muted)}
+  @media(max-width:600px){.gphoto img{height:172px}} /* smaller = more cards on screen */
+
+  /* ===================== WATCH ===================== */
+  .watch-grid{display:grid;gap:16px;grid-template-columns:1fr}
+  @media(min-width:820px){.watch-grid{grid-template-columns:repeat(2,1fr)}}
+  .watch-card{overflow:hidden}
+  .video16x9{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+  .video16x9 iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .watch-cap{padding:14px 16px}
+  .watch-cap h3{margin:0;font-size:15px;font-weight:700;line-height:1.25;color:var(--ink)}
+  .watch-cap p{margin:5px 0 0;color:var(--muted);font-size:13px}
+
+  /* ===================== IN THE NEWS (Craigslist-style link list) ===================== */
+  .newslist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+  .newslist li{border-bottom:1px solid var(--divider)}
+  .newslist li:first-child{border-top:1px solid var(--divider)}
+  .nrow{display:block;padding:11px 2px;text-decoration:none}
+  .nrow:hover{text-decoration:none}
+  .nrow .hd{color:var(--link);font-size:15px;font-weight:400;line-height:1.35;overflow-wrap:anywhere}
+  .nrow:hover .hd{color:var(--link-hover);text-decoration:underline}
+  .nrow .meta{display:block;margin-top:3px;font-size:12px;color:var(--muted)}
+
+  /* ===================== FAQ (accordion, native <details>) ===================== */
+  .faqwrap{border-top:1px solid var(--divider);max-width:900px}
+  .faq{border-bottom:1px solid var(--divider)}
+  .faq>summary{cursor:pointer;list-style:none;padding:18px 4px;font-size:16px;font-weight:700;
+    color:var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+  .faq>summary::-webkit-details-marker{display:none}
+  .faq>summary::after{content:"+";color:var(--gold-deep);font-weight:700;font-size:22px;line-height:1;flex:0 0 auto}
+  .faq[open]>summary::after{content:"-"}
+  .faq>summary:hover{color:var(--link-hover)}
+  .faq__a{padding:0 4px 18px;max-width:72ch}
+  .faq__a p{margin:0 0 10px;font-size:14px;line-height:1.6;color:var(--muted)}
+  .faq__a p:last-child{margin-bottom:0}
+  .faq__a a{color:var(--link)}
+  .faq__a a:hover{color:var(--link-hover);text-decoration:underline}
+
+  /* ===================== UPCOMING + NOMINATE (merged, set-apart band) ===================== */
+  .next-band{background:var(--charcoal);padding:44px 0;margin:44px auto 0}
+  .next-inner{display:flex;flex-direction:column}
+  .next-ey{font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--gold);margin:0 0 5px;text-align:center}
+  .next-h{font-size:clamp(22px,4vw,30px);font-weight:700;color:#fff;margin:0 0 22px;text-align:center;line-height:1.2}
+  .up-grid{display:grid;gap:16px;grid-template-columns:1fr}
+  @media(min-width:600px){.up-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:980px){.up-grid{grid-template-columns:repeat(3,1fr)}}
+  .up-card{padding:18px 18px;display:flex;flex-direction:column;gap:8px}
+  .up-when{align-self:flex-start;background:var(--panel);border:1px solid var(--border);border-radius:999px;
+    font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--gold-deep);padding:4px 12px}
+  .up-card h3{margin:0;font-size:16px;font-weight:700;line-height:1.2;color:var(--ink)}
+  .up-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+  .next-cta{margin-top:30px;text-align:center}
+  .next-cta h3{font-size:clamp(20px,3.6vw,27px);font-weight:700;color:#fff;margin:0 0 10px;line-height:1.2}
+  .next-cta p{max-width:52ch;margin:0 auto 18px;font-size:15px;color:rgba(255,255,255,.74)}
+  .next-cta .cta-gold{align-self:center}
+
+  /* ===================== FOOTER ===================== */
+  footer{background:var(--charcoal);color:rgba(255,255,255,.72);padding:44px 0 40px;margin-top:0}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
+  footer img.flogo{width:190px;max-width:60vw;height:auto}
+  footer .fcol{max-width:420px}
+  footer h4{color:#fff;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+  footer p{margin:0 0 8px;font-size:14px}
+  footer a{color:var(--gold)}
+  footer .serving{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+  footer .divider{height:1px;background:rgba(255,255,255,.14);margin:30px 0 18px}
+  footer .fine{font-size:12px;color:rgba(255,255,255,.5)}
+  footer b{color:var(--gold)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===================== MOBILE LAYOUT + DENSITY (<=600px) ===================== */
+  @media(max-width:600px){
+    /* --- section spacing / rhythm --- */
+    .row{padding:0 12px}
+    .stack{margin:30px auto}
+    .stack:first-of-type{margin-top:22px}
+    .shead{margin-bottom:10px}
+    .shead h2{font-size:18px}
+
+    /* --- mosaic 2x2 (keep 2 cols, tighten) --- */
+    .mosaic{padding:14px}
+    .mosaic__title a{font-size:17px}
+    .mosaic__grid{gap:10px;margin-top:12px}
+    .mcell .lbl{font-size:12px}
+    .mosaic__more{margin-top:12px}
+
+    /* --- stat cards --- */
+    .qstats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+    .qstat{padding:12px}
+    .qstat .n{font-size:20px}
+
+    /* --- Tyler spotlight --- */
+    .spot__img{min-height:210px}
+    .spot__body{padding:20px 18px;gap:10px}
+    .spot__body h3{font-size:22px;line-height:1.16}
+    .spot__body p{font-size:15px}
+
+    /* --- Ryan quote + thermometer (de-nest padding) --- */
+    .climb{padding:20px 16px}
+    .climb-grid{gap:20px}
+    .therm-card{padding:16px 14px}
+    .therm-wrap{gap:14px}
+    .therm{min-height:260px}
+
+    /* --- Connor quote + photo --- */
+    .person__img{min-height:200px}
+    .person__body{padding:20px 18px;gap:10px}
+
+    /* --- next band + upcoming --- */
+    .next-band{padding:32px 0}
+    .up-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .up-card{padding:12px;gap:6px}
+    .up-card h3{font-size:15px}
+    .up-card p{font-size:12px}
+
+    /* watch stays 1-col, trim caption */
+    .watch-cap{padding:12px 14px}
+    .watch-cap h3{font-size:14px}
+
+    /* --- overflow guard --- */
+    .nrow .hd, .charity .name, .mosaic__title a, .up-card h3, .lh__name{overflow-wrap:anywhere}
+  }
+
+  /* ===================== MOBILE SHELVES / CAROUSELS (<=480px) ===================== */
+  @media(max-width:480px){
+    /* full-bleed track: cards run to the physical screen edge, 1st card on the 12px gutter.
+       margin-inline matches the .row 12px mobile padding exactly, so track = 100vw, no page overflow */
+    .shelf__track{
+      gap:12px;
+      margin-inline:-12px;
+      padding-inline:12px;
+      scroll-padding-inline:12px;
+    }
+    .shelf__track::after{content:"";flex:0 0 4px}
+
+    /* comfortable tap targets for the small header/more links */
+    .shead .see,
+    .promo__more,
+    .mosaic__more{min-height:44px;display:inline-flex;align-items:center}
+  }
+
+  /* ===================== THERMOMETER: current-year hero + lifetime footnote ===================== */
+  .rgt-eyebrow{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+  .rgt-foot{margin-top:12px;font-size:13px;color:rgba(255,255,255,.62);line-height:1.4}
+  .rgt-foot b{color:rgba(255,255,255,.92);font-weight:800}
+  .rgt-foot span{display:block;margin-top:2px;font-size:12px;color:rgba(255,255,255,.45)}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+    .shelf__track{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<nav style="position:sticky;top:0;z-index:9999;background:rgba(11,14,18,.94);border-bottom:1px solid rgba(251,176,64,.35);display:flex;gap:6px;align-items:center;justify-content:center;padding:7px 12px;font:600 12px/1 system-ui,-apple-system,Arial,sans-serif;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)"><span style="color:#8b94a3;letter-spacing:.05em;text-transform:uppercase;font-size:10px;margin-right:4px">Report style</span><a href="preview-a.html" style="color:#111;text-decoration:none;padding:5px 12px;border-radius:999px;background:#fbb040">A &middot; Thermometer</a><a href="preview-b.html" style="color:#cdd3db;text-decoration:none;padding:5px 12px;border-radius:999px;background:transparent">B &middot; Odometer</a></nav>
+
+<!-- ========== HERO (logo only, top-weighted) ========== -->
+<header class="hero">
+  <div class="hero__bg" role="img" aria-label="Rohrman team volunteers packing meals in the community"></div>
+  <div class="hero__scrim"></div>
+  <div class="hero__inner">
+    <h1 class="visually-hidden">Rohrman Impact</h1>
+    <img class="hero__logo" src="assets/logo-light-trim.png" alt="Rohrman Impact" width="820" height="206">
+    <h2 class="hero__tag"><b>Driven to give back</b><br>in the places we call home.</h2>
+    <p class="hero__loc">Greater Lafayette, Indiana</p>
+  </div>
+</header>
+
+<!-- ========== MOST RECENT PROJECT (slot: Featured Project, right under hero) ==========
+     Dashboard slot "Featured Project": the single newest post. Publishing a newer
+     one bumps this into the Signature Campaigns strip below. -->
+<div class="row stack">
+  <article class="card spot reveal">
+    <div class="spot__img">
+      <span class="spot__badge">Most recent project</span>
+      <img src="assets/vol-mealpack-group.jpg" alt="Rohrman Automotive Group teammates packing meals by hand at Feed My Starving Children" loading="lazy">
+    </div>
+    <div class="spot__body">
+      <span class="spot__ey">July 2026, Feed My Starving Children</span>
+      <h2>30 teammates, 90 hours, meals packed by hand</h2>
+      <p>Our newest hands-on project: 30 Rohrman teammates spent the day at Feed My Starving Children, packing meals headed for kids who need them. It's the kind of day that says more than any check ever could.</p>
+      <p class="sub">One of 12 volunteer projects our people have shown up for so far in 2026, from blood drives to yard cleanups to meal packing.</p>
+      <a class="cta-gold" href="https://www.fmsc.org" target="_blank" rel="noopener">About Feed My Starving Children &#8599;</a>
+    </div>
+  </article>
+</div>
+
+<!-- ========== SIGNATURE CAMPAIGNS (slot: Signature Campaigns strip) ==========
+     Dashboard slot "Signature Campaigns": newest on the LEFT, scroll right for more.
+     Bumped featured projects land here at the front, ahead of the standing programs. -->
+<div class="row stack">
+  <div class="shead reveal">
+    <div>
+      <p class="ey">2026 signature campaigns</p>
+      <h2>How we're showing up this year</h2>
+    </div>
+    <a class="see" href="#climb">See the total &#8250;</a>
+  </div>
+  <div class="shelf" aria-roledescription="carousel" aria-label="2026 signature campaigns">
+    <div class="shelf__viewport">
+      <button class="shelf__btn shelf__btn--prev" type="button" aria-label="Scroll campaigns left" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="shelf__track promo-track" tabindex="0" role="group" aria-label="Campaigns, scroll horizontally">
+
+        <li class="shelf__item">
+          <article class="card promo">
+            <span class="promo__ey">September, Chicagoland</span>
+            <h3 class="promo__hd">Schaumburg Fest &amp; Labor Day Parade</h3>
+            <div class="promo__amt">$10,000 <span>six stores</span></div>
+            <div class="promo__img"><img src="assets/mp-14.jpg" alt="Rohrman team at a parade" loading="lazy"></div>
+            <span class="promo__more">Candy, giveaways, and a whole lot of neighbors &#8250;</span>
+          </article>
+        </li>
+
+        <li class="shelf__item">
+          <article class="card promo">
+            <span class="promo__ey">July, Chicagoland</span>
+            <h3 class="promo__hd">Arlington Heights Frontier Days</h3>
+            <div class="promo__amt">$8,000 <span>platinum sponsor</span></div>
+            <div class="promo__img"><img src="assets/mp-06.jpg" alt="Community festival crowd" loading="lazy"></div>
+            <span class="promo__more">Plus the 4th of July parade &#8250;</span>
+          </article>
+        </li>
+
+        <li class="shelf__item">
+          <article class="card promo">
+            <span class="promo__ey">Summer, Fort Wayne</span>
+            <h3 class="promo__hd">Toyota Big Summer Giveback</h3>
+            <div class="promo__amt">$5,000 <span>backpacks &amp; supplies</span></div>
+            <div class="promo__img"><img src="assets/mp-09.jpg" alt="Volunteers giving back" loading="lazy"></div>
+            <span class="promo__more">Supplying a whole school for less-fortunate youth &#8250;</span>
+          </article>
+        </li>
+
+        <li class="shelf__item">
+          <article class="card promo">
+            <span class="promo__ey">June 2026</span>
+            <h3 class="promo__hd">Humane Society &amp; animal shelters</h3>
+            <div class="promo__amt">$89,100 <span>raised</span></div>
+            <div class="promo__img"><img src="assets/d-check-puppies.jpg" alt="Check presentation with rescue puppies" loading="lazy"></div>
+            <span class="promo__more">$50 per new car sold, all June &#8250;</span>
+          </article>
+        </li>
+
+        <li class="shelf__item">
+          <article class="card promo">
+            <span class="promo__ey">April 2026</span>
+            <h3 class="promo__hd">Blood Cancer United</h3>
+            <div class="promo__amt">$89,850 <span>raised</span></div>
+            <div class="promo__img"><img src="assets/d-lls-check.jpg" alt="Blood Cancer United check presentation" loading="lazy"></div>
+            <span class="promo__more">$50 for every new vehicle sold, all April &#8250;</span>
+          </article>
+        </li>
+
+        <li class="shelf__item">
+          <article class="card promo">
+            <span class="promo__ey">All year, group-wide</span>
+            <h3 class="promo__hd">60+ local sponsorships</h3>
+            <div class="promo__amt">$249,016 <span>and counting</span></div>
+            <div class="promo__img"><img src="assets/vol-mealpack-group.jpg" alt="Volunteers packing meals by hand" loading="lazy"></div>
+            <span class="promo__more">Little leagues, festivals, and causes in every region &#8250;</span>
+          </article>
+        </li>
+
+      </ul>
+      <button class="shelf__btn shelf__btn--next" type="button" aria-label="Scroll campaigns right">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== RYAN QUOTE ========== -->
+<div class="row stack" id="climb">
+  <article class="card climb reveal">
+    <div class="qblock qblock--wide">
+      <div class="mark">&#8220;</div>
+      <blockquote>We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home.</blockquote>
+      <div class="attrib">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
+      <div class="qstats qstats--wide" id="ryanStats">
+        <div class="qstat"><div class="n" data-count="525">0</div><div class="l">Volunteer hours in 2026</div></div>
+        <div class="qstat"><div class="n" data-count="206">0</div><div class="l">Teammates who showed up</div></div>
+        <div class="qstat"><div class="n" data-count="12">0</div><div class="l">Service projects, so far</div></div>
+        <div class="qstat"><div class="n" data-count="249016" data-prefix="$">$0</div><div class="l">Given back in 2026</div></div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- ========== PINNED GIVING THERMOMETER (vertical, sticky-pin scrub) ========== -->
+<section class="rgt-track" id="rgtTrack">
+  <div class="rgt-stage">
+    <div class="rgt-inner">
+
+      <header class="rgt-head">
+        <img class="rgt-logo" src="assets/logo-light-trim.png" alt="Rohrman Impact" width="820" height="206">
+        <p class="rgt-report">2026 Community Giving</p>
+      </header>
+
+      <div class="rgt-body">
+        <div class="rgt-tube" role="progressbar" aria-label="Given back so far in 2026"
+             aria-valuemin="0" aria-valuemax="249016" aria-valuenow="0" id="rgtBar">
+          <div class="rgt-fill" id="rgtFill"></div>
+        </div>
+
+        <ul class="rgt-ticks" aria-hidden="true">
+          <li class="rgt-tick" data-at="0.90"><span class="rgt-dot"></span><span class="rgt-when">All year</span><span class="rgt-what">60+ local sponsorships</span><span class="rgt-amt">$70,916</span></li>
+          <li class="rgt-tick" data-at="0.60"><span class="rgt-dot"></span><span class="rgt-when">June</span><span class="rgt-what">Humane Society &amp; shelters</span><span class="rgt-amt">$89,100</span></li>
+          <li class="rgt-tick" data-at="0.28"><span class="rgt-dot"></span><span class="rgt-when">April</span><span class="rgt-what">Blood Cancer United</span><span class="rgt-amt">$89,850</span></li>
+        </ul>
+      </div>
+
+      <div class="rgt-total">
+        <div class="rgt-eyebrow">Given back so far in 2026</div>
+        <div class="rgt-num" id="rgtNum">$0</div>
+        <div class="rgt-foot">On top of <b>$2,958,320</b> given since 1986. <span>$3,207,336 all-time, and counting.</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONNOR ROHRMAN: PHOTO + QUOTE ========== -->
+<div class="row stack">
+  <article class="card person reveal">
+    <div class="person__img">
+      <img src="assets/d-lls-check.jpg" alt="Connor Rohrman at the Leukemia and Lymphoma Society check presentation at Lexus of Fort Wayne" loading="lazy">
+    </div>
+    <div class="person__body">
+      <div class="mark">&#8220;</div>
+      <blockquote>I'm honored to inspire others in our community to work toward a future with a cure for these cancers and diseases.</blockquote>
+      <div class="attrib">Connor Rohrman<span>General Manager, Lexus of Fort Wayne</span></div>
+    </div>
+  </article>
+</div>
+
+<!-- ========== MOSAIC CARD-BOX ROW (three cards) ========== -->
+<div class="row stack">
+  <div class="mosaic-row">
+
+    <!-- Where we helped in Lafayette (charity logos) -->
+    <article class="card mosaic reveal">
+      <h2 class="mosaic__title"><a href="#map">Where we helped in Lafayette <span class="cx">&#8250;</span></a></h2>
+      <ul class="logohelp">
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/indiana-donor-network.png" alt="Indiana Donor Network logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://indianadonornetwork.org" target="_blank" rel="noopener">Indiana Donor Network</a>
+            <span class="lh__desc">In memory of donor hero Kaitlyn Isbell</span>
+          </div>
+          <span class="lh__amt">$77,200</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/humane-lafayette.png" alt="Humane Society for Greater Lafayette logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://humanesociety4greaterlafayette.org" target="_blank" rel="noopener">Humane Society for Greater Lafayette</a>
+            <span class="lh__desc">Care and shelter for animals awaiting homes</span>
+          </div>
+          <span class="lh__amt">$10,350</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/iu-health.png" alt="IU Health Arnett logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://iuhealth.org" target="_blank" rel="noopener">IU Health Arnett Hospital</a>
+            <span class="lh__desc">Patient care right here in Lafayette</span>
+          </div>
+          <span class="lh__amt">~$20,000</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/tyler-trent.png" alt="Tyler Trent Foundation logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://tylertrentfoundation.com" target="_blank" rel="noopener">Tyler Trent Foundation</a>
+            <span class="lh__desc">Fighting pediatric cancer, Purdue and Lafayette</span>
+          </div>
+          <span class="lh__amt">Childhood cancer</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/wabash.png" alt="Wabash College logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://wabash.edu" target="_blank" rel="noopener">Wabash College</a>
+            <span class="lh__desc">Scholarships and bikes for students</span>
+          </div>
+          <span class="lh__amt">Scholarships</span>
+        </li>
+      </ul>
+      <a class="mosaic__more" href="#map">See all Lafayette causes &#8250;</a>
+    </article>
+
+    <!-- In the news (preview links out to the news list below) -->
+    <article class="card mosaic reveal">
+      <h2 class="mosaic__title"><a href="#news">In the news <span class="cx">&#8250;</span></a></h2>
+      <div class="mosaic__grid">
+        <a class="mcell" href="https://www.21alivenews.com/2025/05/08/rohrman-automotive-group-raises-over-90k-leukemia-lymphoma-society-during-april-fundraiser/" target="_blank" rel="noopener">
+          <div class="thumb"><img src="assets/d-lls-check.jpg" alt="21Alive coverage of the Leukemia and Lymphoma Society donation" loading="lazy"></div>
+          <span class="lbl">Over $90k to Leukemia &amp; Lymphoma Society</span>
+        </a>
+        <a class="mcell" href="https://web.archive.org/web/20251213154945/https://www.wlfi.com/news/rohrman-automotive-group-donates-77-200-to-support-families-of-donor-heroes/article_da2b558d-a492-4d92-872d-74a3b1da7916.html" target="_blank" rel="noopener">
+          <div class="thumb"><img src="assets/mp-14.jpg" alt="WLFI coverage of the donor heroes donation" loading="lazy"></div>
+          <span class="lbl">$77,200 for families of donor heroes</span>
+        </a>
+        <a class="mcell" href="https://www.wfft.com/news/rohrman-auto-donates-27-5k-to-fort-wayne-pediatric-cancer-charities/article_4f60070e-4fc6-419f-a3ea-d476fdc3d272.html" target="_blank" rel="noopener">
+          <div class="thumb"><img src="assets/mp-12.jpg" alt="FOX 55 coverage of the pediatric cancer donation" loading="lazy"></div>
+          <span class="lbl">$27,500 to pediatric cancer charities</span>
+        </a>
+        <a class="mcell" href="https://web.archive.org/web/20250825210032/https://www.wlfi.com/community/rohrman-donates-10-350-to-humane-society-for-greater-lafayette/article_a88fec8e-4317-4510-a501-7ed4fc68bb06.html" target="_blank" rel="noopener">
+          <div class="thumb"><img src="assets/d-check-puppies.jpg" alt="WLFI coverage of the Humane Society donation" loading="lazy"></div>
+          <span class="lbl">$10,350 to Humane Society for Greater Lafayette</span>
+        </a>
+      </div>
+      <a class="mosaic__more" href="#news">Read all coverage &#8250;</a>
+    </article>
+
+    <!-- How we showed up -->
+    <article class="card mosaic reveal">
+      <h2 class="mosaic__title"><a href="#photos">How we showed up <span class="cx">&#8250;</span></a></h2>
+      <div class="mosaic__grid">
+        <a class="mcell" href="https://www.fmsc.org" target="_blank" rel="noopener">
+          <div class="thumb"><img src="assets/vol-mealpack-group.jpg" alt="Volunteers packing meals" loading="lazy"></div>
+          <span class="lbl">Meals packed by hand</span><span class="amt">22,228 meals</span>
+        </a>
+        <a class="mcell" href="https://www.neighborlinkfortwayne.org" target="_blank" rel="noopener">
+          <div class="thumb"><img src="assets/vol-yardcleanup.jpg" alt="Volunteers cleaning up a yard" loading="lazy"></div>
+          <span class="lbl">Yard cleanups for neighbors</span><span class="amt">3 properties</span>
+        </a>
+        <a class="mcell" href="#photos">
+          <div class="thumb"><img src="assets/vol-camp-selfie.jpg" alt="Volunteers at a children's camp" loading="lazy"></div>
+          <span class="lbl">Camp grounds readied</span><span class="amt">For the season</span>
+        </a>
+        <a class="mcell" href="https://www.shepherdcommunity.org" target="_blank" rel="noopener">
+          <div class="thumb"><img src="assets/vol-planting.jpg" alt="Volunteers painting and planting" loading="lazy"></div>
+          <span class="lbl">Paint and planting days</span><span class="amt">Fresh start</span>
+        </a>
+      </div>
+      <a class="mosaic__more" href="#photos">See the year in photos &#8250;</a>
+    </article>
+
+  </div>
+</div>
+
+<!-- ========== MAP + CHARITIES ========== -->
+<div class="row stack" id="map">
+  <div class="shead reveal">
+    <div>
+      <p class="ey">Where we helped, Greater Lafayette</p>
+      <h2>Close to home</h2>
+    </div>
+  </div>
+  <div class="map-grid">
+    <div class="card map-card reveal">
+      <div id="charityMap" class="gmap" aria-label="Map of Lafayette-area charities Rohrman supported"></div>
+      <div id="mapFallback" class="map-fallback" hidden>
+        <div class="pin">&#128205;</div>
+        <h4>Greater Lafayette, Indiana</h4>
+        <p>The organizations we supported this year, mapped across the Lafayette and West Lafayette area.</p>
+        <div class="chips">
+          <span class="chip">Indiana Donor Network</span>
+          <span class="chip">Humane Society for Greater Lafayette</span>
+          <span class="chip">IU Health Arnett</span>
+          <span class="chip">Tyler Trent / Purdue</span>
+          <span class="chip">Wabash College</span>
+        </div>
+      </div>
+      <div class="map-note">Every marker is a Lafayette-area organization Rohrman supported in 2025. The big campaigns run group-wide across 22 dealerships; here in Lafayette, that support stayed with our neighbors.</div>
+    </div>
+    <div class="charity-list">
+      <article class="card charity reveal">
+        <div class="top"><span class="name">Indiana Donor Network</span><span class="amt">$77,200</span></div>
+        <div class="desc">In memory of donor hero Kaitlyn Isbell, funding grief baskets for grieving families.</div>
+        <div class="go"><a href="https://indianadonornetwork.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
+      </article>
+      <article class="card charity reveal">
+        <div class="top"><span class="name">Humane Society for Greater Lafayette</span><span class="amt">$10,350</span></div>
+        <div class="desc">Care and shelter for animals waiting on their forever homes.</div>
+        <div class="go"><a href="https://humanesociety4greaterlafayette.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
+      </article>
+      <article class="card charity reveal">
+        <div class="top"><span class="name">IU Health Arnett Hospital</span><span class="amt">~$20,000</span></div>
+        <div class="desc">Supporting patient care right here in Lafayette.</div>
+        <div class="go"><a href="https://iuhealth.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
+      </article>
+      <article class="card charity reveal">
+        <div class="top"><span class="name">Tyler Trent Foundation</span><span class="amt">Childhood cancer</span></div>
+        <div class="desc">Honoring a Purdue legend, funding the fight against pediatric cancer.</div>
+        <div class="go"><a href="https://tylertrentfoundation.com" target="_blank" rel="noopener">Visit site &#8599;</a></div>
+      </article>
+      <article class="card charity reveal">
+        <div class="top"><span class="name">Wabash College</span><span class="amt">Scholarships</span></div>
+        <div class="desc">Scholarships and bikes for students in the region.</div>
+        <div class="go"><a href="https://wabash.edu" target="_blank" rel="noopener">Visit site &#8599;</a></div>
+      </article>
+      <article class="card charity reveal">
+        <div class="top"><span class="name">Leukemia &amp; Lymphoma Society</span><span class="amt">$92,950</span></div>
+        <div class="desc">Group-wide April drive, $50 for every new vehicle sold.</div>
+        <div class="go"><a href="https://www.lls.org" target="_blank" rel="noopener">Visit site &#8599;</a></div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PHOTO CAROUSEL: THE YEAR IN PHOTOS ========== -->
+<div class="row stack" id="photos">
+  <div class="shead reveal">
+    <div>
+      <p class="ey">The year in photos</p>
+      <h2>Real hands, real days</h2>
+    </div>
+  </div>
+  <div class="shelf" aria-roledescription="carousel" aria-label="The year in photos">
+    <div class="shelf__viewport">
+      <button class="shelf__btn shelf__btn--prev" type="button" aria-label="Scroll photos left" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="shelf__track photo-track" tabindex="0" role="group" aria-label="Photos, scroll horizontally">
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-01.jpg" alt="Meal packing event" loading="lazy"><figcaption>Meal packing floor</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-03.jpg" alt="Volunteers at work" loading="lazy"><figcaption>Boxing meals by hand</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-04.jpg" alt="Team packing boxes" loading="lazy"><figcaption>All hands on deck</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/ath-stadium-check.jpg" alt="Check presentation at Purdue" loading="lazy"><figcaption>On the field at Purdue</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-05.jpg" alt="Volunteers smiling" loading="lazy"><figcaption>The crew</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/vol-yardcleanup.jpg" alt="Yard cleanup crew" loading="lazy"><figcaption>Yard cleanup day</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-06.jpg" alt="Meal packing line" loading="lazy"><figcaption>On the line</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-09.jpg" alt="Group volunteering" loading="lazy"><figcaption>Together</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/d-check-puppies.jpg" alt="Check presentation with puppies" loading="lazy"><figcaption>For the shelters</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-12.jpg" alt="Volunteers packing food" loading="lazy"><figcaption>Packing food</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-14.jpg" alt="Team at packing event" loading="lazy"><figcaption>Giving back</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-18.jpg" alt="Volunteers together" loading="lazy"><figcaption>Neighbors helping neighbors</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-20.jpg" alt="Community event" loading="lazy"><figcaption>In the community</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/mp-22.jpg" alt="Volunteers packing meals" loading="lazy"><figcaption>By hand</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/vol-camp-selfie.jpg" alt="Camp volunteers selfie" loading="lazy"><figcaption>Camp prep</figcaption></figure></li>
+        <li class="shelf__item"><figure class="gphoto" style="margin:0"><img src="assets/vol-planting.jpg" alt="Planting day" loading="lazy"><figcaption>Paint and planting</figcaption></figure></li>
+      </ul>
+      <button class="shelf__btn shelf__btn--next" type="button" aria-label="Scroll photos right">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== WATCH ========== -->
+<div class="row stack">
+  <div class="shead reveal">
+    <div>
+      <p class="ey">Watch</p>
+      <h2>See it for yourself</h2>
+    </div>
+  </div>
+  <div class="watch-grid">
+    <article class="card watch-card reveal">
+      <div class="video16x9">
+        <iframe src="https://www.youtube-nocookie.com/embed/cR4rx6iGUck" title="Rohrman Automotive Group: 50 Bucks Incentive" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="watch-cap">
+        <h3>50 Bucks Incentive</h3>
+        <p>$50 from every new car sold, going straight back to the community.</p>
+      </div>
+    </article>
+    <article class="card watch-card reveal">
+      <div class="video16x9">
+        <iframe src="https://www.youtube-nocookie.com/embed/4xgfuCY5VTE" title="Rohrman Automotive Group: Toy Box Drive" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="watch-cap">
+        <h3>Toy Box Drive</h3>
+        <p>A community toy drive to put gifts in the hands of local kids.</p>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- ========== IN THE NEWS (Craigslist-style link list) ========== -->
+<div class="row stack" id="news">
+  <div class="shead reveal">
+    <div>
+      <p class="ey">In the news</p>
+      <h2>Real coverage</h2>
+    </div>
+  </div>
+  <ul class="newslist reveal">
+    <li><a class="nrow" href="https://www.fwbusiness.com/news/article_c515d555-d5ae-4e8b-9838-48336c218f18.html" target="_blank" rel="noopener">
+      <span class="hd">Rohrman Automotive Group donates to Humane Fort Wayne</span>
+      <span class="meta">&middot; Fort Wayne Business &middot; July 22, 2026</span>
+    </a></li>
+    <li><a class="nrow" href="https://web.archive.org/web/20251213154945/https://www.wlfi.com/news/rohrman-automotive-group-donates-77-200-to-support-families-of-donor-heroes/article_da2b558d-a492-4d92-872d-74a3b1da7916.html" target="_blank" rel="noopener">
+      <span class="hd">Rohrman Automotive Group donates $77,200 to support families of donor heroes</span>
+      <span class="meta">&middot; WLFI News 18 &middot; December 10, 2025</span>
+    </a></li>
+    <li><a class="nrow" href="https://www.autosuccessonline.com/rohrman-hyundai-childhood-cancer-donation/" target="_blank" rel="noopener">
+      <span class="hd">Rohrman, Hyundai donate $138,700 to fight childhood cancer</span>
+      <span class="meta">&middot; AutoSuccess &middot; October 2025</span>
+    </a></li>
+    <li><a class="nrow" href="https://www.wfft.com/news/rohrman-auto-donates-27-5k-to-fort-wayne-pediatric-cancer-charities/article_4f60070e-4fc6-419f-a3ea-d476fdc3d272.html" target="_blank" rel="noopener">
+      <span class="hd">Rohrman Auto donates $27.5K to Fort Wayne pediatric cancer charities</span>
+      <span class="meta">&middot; FOX 55 (WFFT) &middot; October 9, 2025</span>
+    </a></li>
+    <li><a class="nrow" href="https://web.archive.org/web/20250825210032/https://www.wlfi.com/community/rohrman-donates-10-350-to-humane-society-for-greater-lafayette/article_a88fec8e-4317-4510-a501-7ed4fc68bb06.html" target="_blank" rel="noopener">
+      <span class="hd">Rohrman donates $10,350 to Humane Society for Greater Lafayette</span>
+      <span class="meta">&middot; WLFI News 18 &middot; July 14, 2025</span>
+    </a></li>
+    <li><a class="nrow" href="https://www.21alivenews.com/2025/05/08/rohrman-automotive-group-raises-over-90k-leukemia-lymphoma-society-during-april-fundraiser/" target="_blank" rel="noopener">
+      <span class="hd">Rohrman Automotive Group donates over $90k to Leukemia &amp; Lymphoma Society during April fundraiser</span>
+      <span class="meta">&middot; 21Alive (WPTA) &middot; May 8, 2025</span>
+    </a></li>
+    <li><a class="nrow" href="https://www.journalgazette.net/local/rohrman-impact-report-shows-thousands-invested-in-its-auto-group-communities/article_7d3719d6-f097-11ef-bd07-f33dd16affa1.html" target="_blank" rel="noopener">
+      <span class="hd">Rohrman impact report shows thousands invested in its communities</span>
+      <span class="meta">&middot; Fort Wayne Journal Gazette &middot; February 21, 2025</span>
+    </a></li>
+    <li><a class="nrow" href="https://digitaldealer.com/news/dealer-magazine-interview-with-ryan-rohrman/163736/" target="_blank" rel="noopener">
+      <span class="hd">Dealer Magazine: an interview with Ryan Rohrman on the Rohrman Impact program</span>
+      <span class="meta">&middot; Digital Dealer &middot; February 12, 2025</span>
+    </a></li>
+    <li><a class="nrow" href="https://finance.yahoo.com/news/rohrman-automotive-group-donates-hospital-151002875.html" target="_blank" rel="noopener">
+      <span class="hd">Rohrman Automotive Group donates $19,500 to IU Health Arnett Hospital Child Life Program</span>
+      <span class="meta">&middot; Lafayette Journal &amp; Courier &middot; November 18, 2021</span>
+    </a></li>
+    <li><a class="nrow" href="https://www.prnewswire.com/news-releases/80-000-raised-for-chicago-area-childhood-cancer-awareness-groups-300951673.html" target="_blank" rel="noopener">
+      <span class="hd">$80,000 raised for Chicago-area childhood cancer awareness groups</span>
+      <span class="meta">&middot; PR Newswire &middot; November 5, 2019</span>
+    </a></li>
+  </ul>
+</div>
+
+<!-- ========== FAQ (answer-first, feeds FAQPage schema for AI extraction) ========== -->
+<div class="row stack" id="faq">
+  <div class="shead reveal">
+    <div>
+      <p class="ey">Good to know</p>
+      <h2>Frequently asked</h2>
+    </div>
+  </div>
+  <div class="faqwrap reveal">
+
+    <details class="faq">
+      <summary>Why did Rohrman start giving back?</summary>
+      <div class="faq__a">
+        <p>Giving back has been part of Rohrman Automotive Group since founder Bob Rohrman started the Bob Rohrman Automobile Dealerships Foundation in 1986. Rohrman Impact carries that legacy forward across all of the group's dealerships.</p>
+        <p>As CEO Ryan Rohrman puts it: "We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home."</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Who was Bob Rohrman, and what is his legacy?</summary>
+      <div class="faq__a">
+        <p>Bob Rohrman built one of the Midwest's largest family-owned dealer groups over more than 50 years before he passed away in 2020. His giving left a lasting mark on Greater Lafayette and beyond: a $15 million lead gift that named Rohrman Field at Purdue's Ross-Ade Stadium, the multimillion-dollar Jefferson High School Performing Arts Center, a tennis complex for Lafayette Central Catholic, and decades of support for Meals on Wheels, Make-A-Wish, and local schools. In 2021 he received the AIADA Lifetime Achievement Award for that legacy.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How much does Rohrman give back each year?</summary>
+      <div class="faq__a">
+        <p>In 2025, Rohrman Automotive Group gave $1,236,826 to more than 60 organizations across Indiana, Illinois, and Wisconsin. That included four signature campaigns: $92,950 to the Leukemia &amp; Lymphoma Society, $80,850 to animal shelters and rescues, $80,850 to childhood cancer causes, and $77,200 to the Indiana Donor Network.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>How does the $50-per-new-car program work?</summary>
+      <div class="faq__a">
+        <p>For each signature campaign, Rohrman donates $50 for every new vehicle sold across all of its dealerships that month, then presents the total to that cause. April supports blood cancer research, June supports animal shelters and rescues, September supports childhood cancer, and November supports the Indiana Donor Network in memory of donor hero Kaitlyn Isbell.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>What causes does Rohrman support in Greater Lafayette?</summary>
+      <div class="faq__a">
+        <p>In Greater Lafayette, Rohrman supports the Indiana Donor Network, the Humane Society for Greater Lafayette, IU Health Arnett Hospital, the Tyler Trent Foundation at Purdue, and Wabash College, among others. The group organizes its giving around five areas: volunteerism, education, athletics, cultural programs, and direct donations.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Does Rohrman give time as well as money?</summary>
+      <div class="faq__a">
+        <p>Yes. Alongside the dollars, Rohrman employees gave more than 400 hands-on volunteer hours in 2025: packing 22,228 meals with Feed My Starving Children, assembling 545 Operation Christmas Child shoeboxes, and refreshing homes and camp grounds across the communities the group serves.</p>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- ========== WHAT'S NEXT + NOMINATE A CAUSE (merged, set-apart band) ========== -->
+<section class="next-band" aria-labelledby="nexthd">
+  <div class="row">
+    <div class="next-inner reveal">
+      <p class="next-ey">What's next</p>
+      <h2 id="nexthd" class="next-h">Coming up in 2026</h2>
+      <div class="up-grid">
+        <article class="card up-card"><span class="up-when">April</span><h3>Blood Cancer United drive</h3><p>Bringing back the $50-per-new-car campaign for the Leukemia &amp; Lymphoma Society.</p></article>
+        <article class="card up-card"><span class="up-when">June</span><h3>Animal shelter donations</h3><p>Backing the Humane Society for Greater Lafayette and rescues across the region.</p></article>
+        <article class="card up-card"><span class="up-when">Summer</span><h3>Indianapolis meal-packing day</h3><p>Teams on the packing floor again, boxing meals by hand to fight hunger.</p></article>
+        <article class="card up-card"><span class="up-when">Summer</span><h3>Happy Hollow camp prep</h3><p>Readying cabins and grounds so kids arrive to a camp that's set for the season.</p></article>
+        <article class="card up-card"><span class="up-when">Fall</span><h3>NeighborLink cleanups</h3><p>Rakes, gloves, and trailers for neighbors who need a hand with their property.</p></article>
+      </div>
+      <div class="next-cta">
+        <h3>Know a cause that needs a hand?</h3>
+        <p>2025 was big. 2026 will be bigger. Tell us who in your community we should help next.</p>
+        <a class="cta-gold" href="#">Nominate a cause &#8250;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="row">
+    <div class="foot-grid">
+      <div class="fcol">
+        <img class="flogo" src="assets/logo-light.png" alt="Rohrman Impact">
+        <p style="margin-top:16px">The Bob Rohrman Automobile Dealerships Foundation has been giving since 1986.</p>
+        <p class="serving"><b>Proudly serving</b> Lafayette, West Lafayette, Battle Ground, Dayton, Delphi, Monticello, Brookston, Otterbein, Attica, Frankfort, Crawfordsville, Lebanon, and the Greater Lafayette area.</p>
+      </div>
+      <div class="fcol">
+        <h4>Rohrman Impact</h4>
+        <p>Nearly <b>$3 million</b> donated all-time.</p>
+        <p>Serving Indiana, Illinois, and Wisconsin.</p>
+        <p>22 dealerships, one commitment to community.</p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <p class="fine">Rohrman Automotive Group. Greater Lafayette. Lifetime giving of $2,958,320.18 reflects totals through 2025; 2026 figures update as the year unfolds. Some regional assignments are representative of where support was directed.</p>
+  </div>
+</footer>
+
+<!-- ========== JSON-LD (Organization + Rohrman Impact program) ========== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#webpage",
+      "url": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html",
+      "name": "Rohrman Impact, Greater Lafayette",
+      "description": "How Rohrman Automotive Group gives back in Greater Lafayette. In 2025 the group gave $1,236,826 to more than 60 organizations, plus 400+ volunteer hours.",
+      "inLanguage": "en-US",
+      "datePublished": "2026-07-23",
+      "dateModified": "2026-07-23",
+      "isPartOf": { "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/#website" },
+      "about": { "@id": "https://rohrman.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#primaryimage" },
+      "image": { "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#primaryimage" },
+      "thumbnailUrl": "https://dealerplateguy.github.io/rohrman-impact-mockups/assets/vol-mealpack-group.jpg",
+      "breadcrumb": { "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#breadcrumb" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".rgt-report", ".rgt-total"]
+      }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#primaryimage",
+      "url": "https://dealerplateguy.github.io/rohrman-impact-mockups/assets/vol-mealpack-group.jpg",
+      "contentUrl": "https://dealerplateguy.github.io/rohrman-impact-mockups/assets/vol-mealpack-group.jpg",
+      "width": 1800,
+      "height": 1350,
+      "caption": "Rohrman Automotive Group volunteers packing meals in the community"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/#website",
+      "url": "https://dealerplateguy.github.io/rohrman-impact-mockups/",
+      "name": "Rohrman Impact",
+      "publisher": { "@id": "https://rohrman.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rohrman.com" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://rohrman.com/about" },
+        { "@type": "ListItem", "position": 3, "name": "Rohrman Impact" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://rohrman.com/#organization",
+      "name": "Rohrman Automotive Group",
+      "url": "https://rohrman.com",
+      "logo": "https://dealerplateguy.github.io/rohrman-impact-mockups/assets/logo-dark.png",
+      "description": "Rohrman Impact is the community giving program of Rohrman Automotive Group. Through money and hands-on volunteer time, the group invests in the neighborhoods it serves. In 2025 it gave $1,236,826 across more than 60 organizations, plus 400+ volunteer hours.",
+      "areaServed": [
+        { "@type": "City", "name": "Lafayette, Indiana" },
+        { "@type": "City", "name": "West Lafayette, Indiana" },
+        { "@type": "AdministrativeArea", "name": "Tippecanoe County, Indiana" },
+        { "@type": "Place", "name": "Purdue University" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#faq",
+      "isPartOf": { "@id": "https://dealerplateguy.github.io/rohrman-impact-mockups/design-a.html#webpage" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why did Rohrman start giving back?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Giving back has been part of Rohrman Automotive Group since founder Bob Rohrman started the Bob Rohrman Automobile Dealerships Foundation in 1986. Rohrman Impact carries that legacy forward across all of the group's dealerships. As CEO Ryan Rohrman puts it: We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who was Bob Rohrman, and what is his legacy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bob Rohrman built one of the Midwest's largest family-owned dealer groups over more than 50 years before he passed away in 2020. His giving named Rohrman Field at Purdue's Ross-Ade Stadium with a $15 million lead gift, funded the Jefferson High School Performing Arts Center and a tennis complex for Lafayette Central Catholic, and supported Meals on Wheels, Make-A-Wish, and local schools for decades. In 2021 he received the AIADA Lifetime Achievement Award." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Rohrman give back each year?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In 2025, Rohrman Automotive Group gave $1,236,826 to more than 60 organizations across Indiana, Illinois, and Wisconsin. That included four signature campaigns: $92,950 to the Leukemia and Lymphoma Society, $80,850 to animal shelters and rescues, $80,850 to childhood cancer causes, and $77,200 to the Indiana Donor Network." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the $50-per-new-car program work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For each signature campaign, Rohrman donates $50 for every new vehicle sold across all of its dealerships that month, then presents the total to that cause. April supports blood cancer research, June supports animal shelters and rescues, September supports childhood cancer, and November supports the Indiana Donor Network in memory of donor hero Kaitlyn Isbell." }
+        },
+        {
+          "@type": "Question",
+          "name": "What causes does Rohrman support in Greater Lafayette?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In Greater Lafayette, Rohrman supports the Indiana Donor Network, the Humane Society for Greater Lafayette, IU Health Arnett Hospital, the Tyler Trent Foundation at Purdue, and Wabash College, among others. The group organizes its giving around five areas: volunteerism, education, athletics, cultural programs, and direct donations." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Rohrman give time as well as money?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Alongside the dollars, Rohrman employees gave more than 400 hands-on volunteer hours in 2025: packing 22,228 meals with Feed My Starving Children, assembling 545 Operation Christmas Child shoeboxes, and refreshing homes and camp grounds across the communities the group serves." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- COUNT-UP stats (Ryan section): numbers climb when scrolled into view ---------- */
+  (function(){
+    function fmt(n, prefix){ return (prefix||'') + Math.round(n).toLocaleString('en-US'); }
+    function run(el){
+      var target = parseFloat(el.getAttribute('data-count')) || 0;
+      var prefix = el.getAttribute('data-prefix') || '';
+      if(reduce){ el.textContent = fmt(target, prefix); return; }
+      var dur = 1400, t0 = null;
+      function step(ts){
+        if(t0 === null) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);      // easeOutCubic
+        el.textContent = fmt(target * eased, prefix);
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var wrap = document.getElementById('ryanStats');
+    if(!wrap) return;
+    var nums = Array.prototype.slice.call(wrap.querySelectorAll('[data-count]'));
+    var seen = false;
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting || seen) return;
+        seen = true;
+        nums.forEach(run);
+        cio.disconnect();
+      });
+    }, {threshold:0.4});
+    cio.observe(wrap);
+  })();
+
+  /* ---------- PINNED GIVING THERMOMETER (vertical, sticky-pin scrub) ----------
+     A tall .rgt-track (300vh) reserves scroll distance; the .rgt-stage pins via
+     position:sticky. Progress = how far the track has traveled through the pin,
+     mapped 0..1, driving the fill height, the animated counter, and tick reveals.
+     Real scroll position drives it, so it's reversible and accessible. */
+  (function(){
+    var track = document.getElementById('rgtTrack');
+    var fill  = document.getElementById('rgtFill');
+    var num   = document.getElementById('rgtNum');
+    var bar   = document.getElementById('rgtBar');
+    if(!track || !fill) return;
+    var TOTAL = 249016;       // 2026 so far is the hero; lifetime lives in the footnote (static)
+    var ticks = Array.prototype.slice.call(track.querySelectorAll('.rgt-tick'));
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function clamp(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
+    function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+    function setProgress(p){
+      p = clamp(p);
+      fill.style.height = (p * 100) + '%';
+      if(num) num.textContent = money(TOTAL * p);
+      if(bar) bar.setAttribute('aria-valuenow', Math.round(TOTAL * p));
+      for(var i = 0; i < ticks.length; i++){
+        var at = parseFloat(ticks[i].getAttribute('data-at')) || 0;
+        ticks[i].classList.toggle('is-lit', p >= at);
+      }
+    }
+    if(rm){ setProgress(1); return; }
+    // Scroll-LINKED: fill maps to the band's center travelling up through the
+    // viewport. Starts as the center enters from the bottom, full by the time
+    // the center reaches just above the middle (~0.55 viewport of scroll), so
+    // it fills fast, moves with the page, and never freezes the frame.
+    function computeProgress(){
+      var rect = track.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var center = rect.top + rect.height / 2;
+      var start = vh * 0.80;   // hold at $0 until the band is clearly on screen
+      var end   = vh * 0.40;   // full by the time it's near the middle (~0.4vh scroll)
+      return clamp((start - center) / (start - end));
+    }
+    var tickingT = false;
+    function onScrollT(){
+      if(tickingT) return;
+      tickingT = true;
+      requestAnimationFrame(function(){ setProgress(computeProgress()); tickingT = false; });
+    }
+    window.addEventListener('scroll', onScrollT, { passive: true });
+    window.addEventListener('resize', onScrollT, { passive: true });
+    window.addEventListener('load', onScrollT);
+    setProgress(computeProgress());
+  })();
+
+  /* ---------- HORIZONTAL SCROLL SHELVES (promo row + photo carousel) ---------- */
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function initShelf(shelf){
+    var track = shelf.querySelector('.shelf__track');
+    var prev  = shelf.querySelector('.shelf__btn--prev');
+    var next  = shelf.querySelector('.shelf__btn--next');
+    if(!track) return;
+    function page(){ return Math.max(track.clientWidth * 0.9, 200); }
+    function scrollByPage(dir){ track.scrollBy({ left: dir*page(), behavior: REDUCED.matches ? 'auto' : 'smooth' }); }
+    function updateButtons(){
+      var max = track.scrollWidth - track.clientWidth;
+      var x = track.scrollLeft;
+      var atStart = x <= 1, atEnd = x >= max - 1;
+      if(prev){ prev.hidden = atStart; prev.disabled = atStart; }
+      if(next){ next.hidden = atEnd;   next.disabled = atEnd; }
+    }
+    prev && prev.addEventListener('click', function(){ scrollByPage(-1); });
+    next && next.addEventListener('click', function(){ scrollByPage(1); });
+    var t = false;
+    track.addEventListener('scroll', function(){ if(t) return; t = true; requestAnimationFrame(function(){ updateButtons(); t = false; }); }, {passive:true});
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(updateButtons, 150); });
+    track.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight'){ e.preventDefault(); scrollByPage(1); }
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); scrollByPage(-1); }
+    });
+    updateButtons();
+    if(track.scrollWidth <= track.clientWidth + 1){ prev && (prev.hidden = true); next && (next.hidden = true); }
+  }
+  document.querySelectorAll('.shelf').forEach(initShelf);
+})();
+
+/* ---------- GOOGLE MAP (pre-pinned charities, graceful fallback) ----------
+   Exactly one map shows: the live map by default; the static fallback only if the map fails. */
+var __rohrmanMapReady = false;
+function showMapFallback(){
+  if(__rohrmanMapReady) return;            /* live map already up, never swap in the fallback */
+  var map = document.getElementById('charityMap');
+  var fb  = document.getElementById('mapFallback');
+  if(map) map.style.display = 'none';
+  if(fb)  fb.hidden = false;
+}
+window.gm_authFailure = showMapFallback;
+
+function initCharityMap(){
+  try {
+    if(!(window.google && google.maps)){ showMapFallback(); return; }
+    __rohrmanMapReady = true;
+    var fb = document.getElementById('mapFallback');
+    if(fb) fb.hidden = true;               /* success: keep the fallback hidden */
+    var center = {lat:40.15, lng:-86.6};
+    var map = new google.maps.Map(document.getElementById('charityMap'), {
+      center: center, zoom: 9, mapTypeControl:false, streetViewControl:false, fullscreenControl:false
+    });
+    var places = [
+      // Indiana Donor Network has no Lafayette office; this is its real Indianapolis HQ (3750 Guion Rd).
+      {name:'Indiana Donor Network', lat:39.8206, lng:-86.2364, url:'https://indianadonornetwork.org'},
+      {name:'Humane Society for Greater Lafayette', lat:40.38, lng:-86.86, url:'https://humanesociety4greaterlafayette.org'},
+      {name:'IU Health Arnett Hospital', lat:40.381, lng:-86.862, url:'https://iuhealth.org'},
+      {name:'Tyler Trent Foundation (Purdue)', lat:40.428, lng:-86.914, url:'https://tylertrentfoundation.com'},
+      {name:'Wabash College (Crawfordsville)', lat:40.04, lng:-86.91, url:'https://wabash.edu'}
+    ];
+    var info = new google.maps.InfoWindow();
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(pl){
+      var pos = {lat:pl.lat, lng:pl.lng};
+      var marker = new google.maps.Marker({ position:pos, map:map, title:pl.name });
+      bounds.extend(pos);
+      marker.addListener('click', function(){
+        info.setContent('<div style="font-family:Arial,sans-serif;max-width:200px"><strong>'+pl.name+'</strong><br><a href="'+pl.url+'" target="_blank" rel="noopener" style="color:#a96a10;font-weight:700;text-decoration:none">Visit site &#8599;</a></div>');
+        info.open(map, marker);
+      });
+    });
+    // Frame every point (with padding) so none get cut off, e.g. Crawfordsville to the south.
+    map.fitBounds(bounds, {top:56, right:40, bottom:40, left:40});
+    // Don't let a tight cluster over-zoom if points are ever dropped.
+    google.maps.event.addListenerOnce(map, 'idle', function(){ if(map.getZoom() > 11) map.setZoom(11); });
+  } catch(err){ showMapFallback(); }
+}
+setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApZi7xiWJXSr0dw1MA3RAqAAcuW2UIoT0&callback=initCharityMap" onerror="showMapFallback()"></script>
+
+</body>
+</html>
