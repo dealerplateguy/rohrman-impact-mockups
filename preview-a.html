@@ -216,7 +216,7 @@
   .rgt-inner{width:100%;max-width:720px;margin:0 auto;padding:24px 20px;display:flex;flex-direction:column;gap:18px}
   .rgt-head{text-align:center}
   .rgt-logo{display:block;width:auto;max-width:400px;height:auto;margin:0 auto 14px}
-  .rgt-report{margin:0;font-size:clamp(28px,6vw,46px);font-weight:800;line-height:1.04;letter-spacing:-.01em;color:#fff}
+  .rgt-report{margin:0;font-size:clamp(21px,4.5vw,32px);font-weight:800;line-height:1.08;letter-spacing:0;color:#fff}
   @media(max-width:560px){.rgt-logo{max-width:280px}}
   .rgt-body{display:flex;gap:20px;align-items:stretch;justify-content:center}
   .rgt-tube{position:relative;width:52px;flex:0 0 52px;min-height:256px;background:rgba(255,255,255,.10);
@@ -233,8 +233,12 @@
   .rgt-what{grid-column:2;font-size:13px;color:rgba(255,255,255,.85)}
   .rgt-amt{grid-column:3;grid-row:1 / span 2;align-self:center;font-size:13px;font-weight:800;white-space:nowrap;color:#fff}
   .rgt-total{text-align:center}
-  .rgt-num{font-size:clamp(34px,9vw,56px);font-weight:800;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:#fff}
+  .rgt-num{font-size:clamp(42px,11vw,72px);font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff}
   .rgt-cap{margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
+  .rgt-alltime{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+  .rgt-alltime.show{opacity:1;transform:none}
+  .rgt-at-label{display:block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
+  .rgt-at-num{display:block;margin-top:4px;font-size:clamp(26px,6vw,40px);font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
   @media(max-width:560px){.rgt-tube{width:40px;flex-basis:40px;min-height:260px}.rgt-what{font-size:12px}}
   /* reduced-motion: JS renders the final total outright (no scroll scrub) */
 
@@ -479,7 +483,7 @@
   }
 
   /* ===================== ROHRMAN IMPACT combined section (CEO + report + stats) ===================== */
-  .ceo-band{background:var(--charcoal,#131921);color:#fff;padding:clamp(42px,7vh,74px) 16px clamp(18px,3vh,28px)}
+  .ceo-band{background:var(--page);padding:clamp(40px,7vh,66px) 16px}
   .ceo-inner{max-width:840px;margin:0 auto;display:flex;gap:26px;align-items:center;flex-direction:column;text-align:center}
   @media(min-width:720px){.ceo-inner{flex-direction:row;text-align:left}}
   .ceo-photo{flex:0 0 auto;width:120px;height:120px;border-radius:50%;background:linear-gradient(160deg,#2a3340,#151a22);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:var(--gold);overflow:hidden}
@@ -507,8 +511,8 @@
 
   /* ===================== CEO section: standalone standout card ===================== */
   .ceo-wrap{max-width:860px;margin:0 auto}
-  .ceo-eyebrow{text-align:center;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 16px}
-  .ceo-card{position:relative;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:clamp(22px,3.4vw,36px);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  .ceo-eyebrow{text-align:center;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 16px}
+  .ceo-card{position:relative;overflow:hidden;background:var(--charcoal,#131921);color:#fff;border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(24px,3.4vw,38px);box-shadow:0 22px 55px rgba(15,17,17,.28)}
   .ceo-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--gold),#f0980f)}
   .ceo-photo.noimg::after{content:"RR";font-size:34px;font-weight:800;color:var(--gold)}
   .ceo-sig text{}
@@ -681,9 +685,12 @@
       </div>
 
       <div class="rgt-total">
-        <div class="rgt-eyebrow">Given back so far in 2026</div>
         <div class="rgt-num" id="rgtNum">$0</div>
-        <div class="rgt-foot">On top of <b>$2,958,320</b> given since 1986. <span>$3,207,336 all-time, and counting.</span></div>
+        <div class="rgt-cap">Given back so far this year</div>
+        <div class="rgt-alltime" id="rgtAllWrap">
+          <span class="rgt-at-label">And a lifetime of giving since 1986</span>
+          <span class="rgt-at-num" id="rgtAllTime">$0</span>
+        </div>
       </div>
 
     </div>
@@ -1235,18 +1242,29 @@
     if(!track || !fill) return;
     var TOTAL = 249016;       // 2026 so far is the hero; lifetime lives in the footnote (static)
     var ticks = Array.prototype.slice.call(track.querySelectorAll('.rgt-tick'));
+    var allFired = false;
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function clamp(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
     function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
     function setProgress(p){
       p = clamp(p);
       fill.style.height = (p * 100) + '%';
-      if(num) num.textContent = money(TOTAL * p);
+      if(num) num.textContent = money(TOTAL * (1-(1-p)*(1-p)));
       if(bar) bar.setAttribute('aria-valuenow', Math.round(TOTAL * p));
       for(var i = 0; i < ticks.length; i++){
         var at = parseFloat(ticks[i].getAttribute('data-at')) || 0;
         ticks[i].classList.toggle('is-lit', p >= at);
       }
+      if(p >= 0.995 && !allFired){ allFired = true; countUpAll(); }
+    }
+    function countUpAll(){
+      var wrap=document.getElementById('rgtAllWrap'), el=document.getElementById('rgtAllTime');
+      if(wrap) wrap.classList.add('show');
+      if(!el) return;
+      if(rm){ el.textContent = money(3207336); return; }
+      var t0=null, T=3207336;
+      function step(ts){ if(t0===null)t0=ts; var q=Math.min((ts-t0)/1500,1); var e=1-Math.pow(1-q,3); el.textContent=money(T*e); if(q<1)requestAnimationFrame(step); }
+      requestAnimationFrame(step);
     }
     if(rm){ setProgress(1); return; }
     // Scroll-LINKED: fill maps to the band's center travelling up through the
@@ -1257,8 +1275,8 @@
       var rect = track.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
       var center = rect.top + rect.height / 2;
-      var start = vh * 0.80;   // hold at $0 until the band is clearly on screen
-      var end   = vh * 0.40;   // full by the time it's near the middle (~0.4vh scroll)
+      var start = vh * 0.92;   // hold at $0 until the band is clearly on screen
+      var end   = vh * 0.15;   // full by the time it's near the middle (~0.4vh scroll)
       return clamp((start - center) / (start - end));
     }
     var tickingT = false;
