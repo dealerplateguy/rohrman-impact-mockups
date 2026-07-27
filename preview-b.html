@@ -1236,6 +1236,8 @@
     var track = document.getElementById('rgtTrack');
     var fill  = document.getElementById('rgtFill');
     var num   = document.getElementById('rgtNum');
+    var allNum = document.getElementById('rgtAllTime');
+    var allWrap = document.getElementById('rgtAllWrap');
     var bar   = document.getElementById('rgtBar');
     if(!track || !fill) return;
     var TOTAL = 249016;       // 2026 so far is the hero; lifetime lives in the footnote (static)
@@ -1253,7 +1255,7 @@
         var at = parseFloat(ticks[i].getAttribute('data-at')) || 0;
         ticks[i].classList.toggle('is-lit', p >= at);
       }
-      if(p >= 0.995 && !allFired){ allFired = true; countUpAll(); }
+      if(allNum) allNum.textContent = money(3207336 * (1-(1-p)*(1-p)));
     }
     function countUpAll(){
       var wrap=document.getElementById('rgtAllWrap'), el=document.getElementById('rgtAllTime');
@@ -1264,6 +1266,7 @@
       function step(ts){ if(t0===null)t0=ts; var q=Math.min((ts-t0)/1500,1); var e=1-Math.pow(1-q,3); el.textContent=money(T*e); if(q<1)requestAnimationFrame(step); }
       requestAnimationFrame(step);
     }
+    if(allWrap) allWrap.classList.add('show');
     if(rm){ setProgress(1); return; }
     // Scroll-LINKED: fill maps to the band's center travelling up through the
     // viewport. Starts as the center enters from the bottom, full by the time
@@ -1419,9 +1422,9 @@ setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
   function frame(){
     if(rm){ render(yearHost,1); render(allHost,1); allWrap.classList.add('show'); return; }
     var p=compute();
-    render(yearHost, clamp(p/0.62));          // beat 1: this year fills first
-    render(allHost, clamp((p-0.5)/0.5));       // beat 2: all-time rolls after
-    allWrap.classList.toggle('show', p>0.5);
+    render(yearHost, p);                        // this year and all-time roll IN UNISON
+    render(allHost, p);
+    if(p>0.02) allWrap.classList.add('show');
   }
   if(rm){ frame(); return; }
   var t=false;

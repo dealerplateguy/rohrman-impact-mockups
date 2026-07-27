@@ -677,9 +677,9 @@
         </div>
 
         <ul class="rgt-ticks" aria-hidden="true">
-          <li class="rgt-tick" data-at="0.90"><span class="rgt-dot"></span><span class="rgt-when">All year</span><span class="rgt-what">60+ local sponsorships</span><span class="rgt-amt">$70,916</span></li>
-          <li class="rgt-tick" data-at="0.60"><span class="rgt-dot"></span><span class="rgt-when">June</span><span class="rgt-what">Humane Society &amp; shelters</span><span class="rgt-amt">$89,100</span></li>
-          <li class="rgt-tick" data-at="0.28"><span class="rgt-dot"></span><span class="rgt-when">April</span><span class="rgt-what">Blood Cancer United</span><span class="rgt-amt">$89,850</span></li>
+          <li class="rgt-tick" data-at="0.88"><span class="rgt-dot"></span><span class="rgt-when">June</span><span class="rgt-what">Humane Society &amp; shelters</span><span class="rgt-amt">+$89,100</span></li>
+          <li class="rgt-tick" data-at="0.55"><span class="rgt-dot"></span><span class="rgt-when">April</span><span class="rgt-what">Blood Cancer United</span><span class="rgt-amt">+$89,850</span></li>
+          <li class="rgt-tick" data-at="0.22"><span class="rgt-dot"></span><span class="rgt-when">All year</span><span class="rgt-what">60+ local sponsorships, the base</span><span class="rgt-amt">$70,066</span></li>
         </ul>
       </div>
 
@@ -1237,6 +1237,8 @@
     var track = document.getElementById('rgtTrack');
     var fill  = document.getElementById('rgtFill');
     var num   = document.getElementById('rgtNum');
+    var allNum = document.getElementById('rgtAllTime');
+    var allWrap = document.getElementById('rgtAllWrap');
     var bar   = document.getElementById('rgtBar');
     if(!track || !fill) return;
     var TOTAL = 249016;       // 2026 so far is the hero; lifetime lives in the footnote (static)
@@ -1254,7 +1256,7 @@
         var at = parseFloat(ticks[i].getAttribute('data-at')) || 0;
         ticks[i].classList.toggle('is-lit', p >= at);
       }
-      if(p >= 0.995 && !allFired){ allFired = true; countUpAll(); }
+      if(allNum) allNum.textContent = money(3207336 * (1-(1-p)*(1-p)));
     }
     function countUpAll(){
       var wrap=document.getElementById('rgtAllWrap'), el=document.getElementById('rgtAllTime');
@@ -1265,6 +1267,7 @@
       function step(ts){ if(t0===null)t0=ts; var q=Math.min((ts-t0)/1500,1); var e=1-Math.pow(1-q,3); el.textContent=money(T*e); if(q<1)requestAnimationFrame(step); }
       requestAnimationFrame(step);
     }
+    if(allWrap) allWrap.classList.add('show');
     if(rm){ setProgress(1); return; }
     // Scroll-LINKED: fill maps to the band's center travelling up through the
     // viewport. Starts as the center enters from the bottom, full by the time
