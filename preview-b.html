@@ -1276,8 +1276,8 @@
       var rect = track.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
       var center = rect.top + rect.height / 2;
-      var start = vh * 0.92;   // hold at $0 until the band is clearly on screen
-      var end   = vh * 0.15;   // full by the time it's near the middle (~0.4vh scroll)
+      var start = vh * 0.98;   // hold at $0 until the band is clearly on screen
+      var end   = vh * 0.55;   // full by the time it's near the middle (~0.4vh scroll)
       return clamp((start - center) / (start - end));
     }
     var tickingT = false;
@@ -1416,7 +1416,7 @@ setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
   function clamp(v){return v<0?0:(v>1?1:v);}
   function compute(){
     var rect=track.getBoundingClientRect(), vh=window.innerHeight||document.documentElement.clientHeight;
-    var center=rect.top+rect.height/2, start=vh*0.92, end=vh*0.12;
+    var center=rect.top+rect.height/2, start=vh*0.98, end=vh*0.55;
     return clamp((start-center)/(start-end));
   }
   function frame(){
