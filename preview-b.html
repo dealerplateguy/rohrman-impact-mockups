@@ -520,6 +520,13 @@
   .gmap--compact{min-height:460px}
   @media(max-width:600px){.gmap--compact{min-height:320px}}
 
+  /* ===================== mosaic 2-up + tall map beside 'where we helped' ===================== */
+  .mosaic-row.mosaic-row--two{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:640px){.mosaic-row.mosaic-row--two{grid-template-columns:1fr}}
+  .gmap--tall{min-height:580px}
+  @media(max-width:600px){.gmap--tall{min-height:340px}}
+  .map-card--charity .logohelp{gap:13px}
+
   /* ===================== ODOMETER REPORT (scroll-linked, two-beat) ===================== */
   .odo-track{position:relative;background:var(--charcoal,#131921);color:#fff;padding:clamp(38px,7vh,72px) 16px}
   .odo-inner{max-width:760px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
@@ -663,16 +670,12 @@
 <!-- ========== ROHRMAN IMPACT: CEO letter + Community Giving Report + stats (combined) ========== -->
 <section class="ceo-band">
   <div class="ceo-wrap">
-    <p class="ceo-eyebrow">A note from our CEO</p>
     <div class="ceo-inner ceo-card">
       <div class="ceo-photo"><img src="assets/ryan-rohrman.jpg" alt="Ryan Rohrman, CEO of Rohrman Automotive Group" onerror="this.parentElement.classList.add('noimg');this.remove();"></div>
       <div class="ceo-body">
         <div class="ceo-mark">&#8220;</div>
         <blockquote>We believe that a thriving community lifts everyone up. It's not just about selling cars; it's about investing in the places we call home.</blockquote>
         <div class="ceo-sign">
-          <svg class="ceo-sig" viewBox="0 0 300 72" role="img" aria-label="Ryan Rohrman signature (placeholder)">
-            <text x="2" y="50" font-family="'Snell Roundhand','Apple Chancery','Segoe Script','Brush Script MT',cursive" font-size="46" font-style="italic" fill="#fbb040">Ryan Rohrman</text>
-          </svg>
           <div class="ceo-name">Ryan Rohrman<span>CEO, Rohrman Automotive Group</span></div>
         </div>
       </div>
@@ -723,55 +726,7 @@
 
 <!-- ========== MOSAIC CARD-BOX ROW (three cards) ========== -->
 <div class="row stack">
-  <div class="mosaic-row">
-
-    <!-- Where we helped in Lafayette (charity logos) -->
-    <article class="card mosaic reveal">
-      <h2 class="mosaic__title"><a href="#map">Where we helped in Lafayette <span class="cx">&#8250;</span></a></h2>
-      <ul class="logohelp">
-        <li class="lh">
-          <span class="lh__chip"><img src="assets/logos/indiana-donor-network.png" alt="Indiana Donor Network logo" loading="lazy"></span>
-          <div class="lh__body">
-            <a class="lh__name" href="https://indianadonornetwork.org" target="_blank" rel="noopener">Indiana Donor Network</a>
-            <span class="lh__desc">In memory of donor hero Kaitlyn Isbell</span>
-          </div>
-          <span class="lh__amt">$77,200</span>
-        </li>
-        <li class="lh">
-          <span class="lh__chip"><img src="assets/logos/humane-lafayette.png" alt="Humane Society for Greater Lafayette logo" loading="lazy"></span>
-          <div class="lh__body">
-            <a class="lh__name" href="https://humanesociety4greaterlafayette.org" target="_blank" rel="noopener">Humane Society for Greater Lafayette</a>
-            <span class="lh__desc">Care and shelter for animals awaiting homes</span>
-          </div>
-          <span class="lh__amt">$10,350</span>
-        </li>
-        <li class="lh">
-          <span class="lh__chip"><img src="assets/logos/iu-health.png" alt="IU Health Arnett logo" loading="lazy"></span>
-          <div class="lh__body">
-            <a class="lh__name" href="https://iuhealth.org" target="_blank" rel="noopener">IU Health Arnett Hospital</a>
-            <span class="lh__desc">Patient care right here in Lafayette</span>
-          </div>
-          <span class="lh__amt">~$20,000</span>
-        </li>
-        <li class="lh">
-          <span class="lh__chip"><img src="assets/logos/tyler-trent.png" alt="Tyler Trent Foundation logo" loading="lazy"></span>
-          <div class="lh__body">
-            <a class="lh__name" href="https://tylertrentfoundation.com" target="_blank" rel="noopener">Tyler Trent Foundation</a>
-            <span class="lh__desc">Fighting pediatric cancer, Purdue and Lafayette</span>
-          </div>
-          <span class="lh__amt">Childhood cancer</span>
-        </li>
-        <li class="lh">
-          <span class="lh__chip"><img src="assets/logos/wabash.png" alt="Wabash College logo" loading="lazy"></span>
-          <div class="lh__body">
-            <a class="lh__name" href="https://wabash.edu" target="_blank" rel="noopener">Wabash College</a>
-            <span class="lh__desc">Scholarships and bikes for students</span>
-          </div>
-          <span class="lh__amt">Scholarships</span>
-        </li>
-      </ul>
-      <a class="mosaic__more" href="#map">See all Lafayette causes &#8250;</a>
-    </article>
+  <div class="mosaic-row mosaic-row--two">
 
     <!-- In the news (preview links out to the news list below) -->
     <article class="card mosaic reveal">
@@ -824,7 +779,7 @@
   </div>
 </div>
 
-<!-- ========== MAP: whole-group footprint (compact) ========== -->
+<!-- ========== MAP + WHERE WE HELPED (side by side) ========== -->
 <div class="row stack" id="map">
   <div class="shead reveal">
     <div>
@@ -832,27 +787,74 @@
       <h2>Everywhere the group showed up in 2026</h2>
     </div>
   </div>
-  <div class="card map-card reveal">
-    <div id="charityMap" class="gmap gmap--compact" aria-label="Map of Rohrman Impact projects across the group"></div>
-    <div id="mapFallback" class="map-fallback" hidden>
-      <div class="pin">&#128205;</div>
-      <h4>Indiana, Illinois &amp; Wisconsin</h4>
-      <p>Every dealership in the group giving back in its own community, from Greater Lafayette to Chicagoland to Fort Wayne to Indianapolis.</p>
-      <div class="chips">
-        <span class="chip">Chicagoland</span>
-        <span class="chip">Fort Wayne</span>
-        <span class="chip">Indianapolis</span>
-        <span class="chip">Greater Lafayette</span>
-        <span class="chip">Kenosha &amp; Racine, WI</span>
+  <div class="map-grid">
+    <div class="card map-card reveal">
+      <div id="charityMap" class="gmap gmap--tall" aria-label="Map of Rohrman Impact projects across the group"></div>
+      <div id="mapFallback" class="map-fallback" hidden>
+        <div class="pin">&#128205;</div>
+        <h4>Indiana, Illinois &amp; Wisconsin</h4>
+        <p>Every dealership in the group giving back in its own community, from Greater Lafayette to Chicagoland to Fort Wayne to Indianapolis.</p>
+        <div class="chips">
+          <span class="chip">Chicagoland</span>
+          <span class="chip">Fort Wayne</span>
+          <span class="chip">Indianapolis</span>
+          <span class="chip">Greater Lafayette</span>
+          <span class="chip">Kenosha &amp; Racine, WI</span>
+        </div>
+      </div>
+      <div class="map-regionbar">
+        <span class="mrb"><b>18</b>Chicagoland</span>
+        <span class="mrb"><b>10</b>Fort Wayne</span>
+        <span class="mrb"><b>5</b>Indianapolis</span>
+        <span class="mrb"><b>2</b>Greater Lafayette</span>
+        <span class="mrb"><b>3</b>Group-wide campaigns</span>
       </div>
     </div>
-    <div class="map-regionbar">
-      <span class="mrb"><b>18</b>Chicagoland</span>
-      <span class="mrb"><b>10</b>Fort Wayne</span>
-      <span class="mrb"><b>5</b>Indianapolis</span>
-      <span class="mrb"><b>2</b>Greater Lafayette</span>
-      <span class="mrb"><b>3</b>Group-wide campaigns</span>
-    </div>
+    <article class="card mosaic map-card--charity reveal">
+      <h2 class="mosaic__title">Where we've helped in Lafayette</h2>
+      <ul class="logohelp">
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/indiana-donor-network.png" alt="Indiana Donor Network logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://indianadonornetwork.org" target="_blank" rel="noopener">Indiana Donor Network</a>
+            <span class="lh__desc">In memory of donor hero Kaitlyn Isbell</span>
+          </div>
+          <span class="lh__amt">$77,200</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/humane-lafayette.png" alt="Humane Society for Greater Lafayette logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://humanesociety4greaterlafayette.org" target="_blank" rel="noopener">Humane Society for Greater Lafayette</a>
+            <span class="lh__desc">Care and shelter for animals awaiting homes</span>
+          </div>
+          <span class="lh__amt">$10,350</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/iu-health.png" alt="IU Health Arnett logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://iuhealth.org" target="_blank" rel="noopener">IU Health Arnett Hospital</a>
+            <span class="lh__desc">Patient care right here in Lafayette</span>
+          </div>
+          <span class="lh__amt">~$20,000</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/tyler-trent.png" alt="Tyler Trent Foundation logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://tylertrentfoundation.com" target="_blank" rel="noopener">Tyler Trent Foundation</a>
+            <span class="lh__desc">Fighting pediatric cancer, Purdue and Lafayette</span>
+          </div>
+          <span class="lh__amt">Childhood cancer</span>
+        </li>
+        <li class="lh">
+          <span class="lh__chip"><img src="assets/logos/wabash.png" alt="Wabash College logo" loading="lazy"></span>
+          <div class="lh__body">
+            <a class="lh__name" href="https://wabash.edu" target="_blank" rel="noopener">Wabash College</a>
+            <span class="lh__desc">Scholarships and bikes for students</span>
+          </div>
+          <span class="lh__amt">Scholarships</span>
+        </li>
+      </ul>
+    </article>
   </div>
 </div>
 
