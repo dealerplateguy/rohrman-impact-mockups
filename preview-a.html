@@ -86,7 +86,7 @@
      stays legible over ANY hero photo (they rotate) via a dual scrim. */
   .hero{
     position:relative;
-    min-height:clamp(520px,78vh,800px);
+    min-height:clamp(480px,64vh,680px);
     display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
     color:#fff;background:#0b0e12;overflow:hidden;
     padding:clamp(40px,9vh,96px) clamp(24px,6vw,84px);
@@ -547,6 +547,12 @@
   .row.map-section{max-width:1040px}
   .gmap--tall{min-height:430px}
   @media(max-width:600px){.gmap--tall{min-height:300px}}
+
+  /* service stats: small 2x2 stack tucked under the report title */
+  .report-stats{list-style:none;padding:0;max-width:560px;margin:14px auto 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px 32px}
+  .report-stats li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+  .report-stats .odo-num{font-size:clamp(17px,3.4vw,23px)}
+  .report-stats .l{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.03em;line-height:1.25}
 </style>
 </head>
 <body>
@@ -554,9 +560,11 @@
 
 <!-- ========== HERO (logo only, top-weighted) ========== -->
 <header class="hero">
-  <div class="hero__bg is-active" role="img" aria-label="Rohrman team volunteers packing meals in the community" style="background-image:url('assets/vol-mealpack-group.jpg')"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/d-check-puppies.jpg')"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/vol-yardcleanup.jpg')"></div>
+  <div class="hero__bg is-active" role="img" aria-label="Rohrman teammates giving back in the community" style="background-image:url('assets/vol-mealpack-group.jpg');background-position:center 36%"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/ath-stadium-check.jpg');background-position:center 32%"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/d-check-puppies.jpg');background-position:center 22%"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/mp-06.jpg');background-position:center 38%"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/vol-yardcleanup.jpg');background-position:center 44%"></div>
   <div class="hero__scrim"></div>
   <div class="hero__inner">
     <h1 class="visually-hidden">Rohrman Impact</h1>
@@ -687,16 +695,6 @@
   </div>
 </section>
 
-<!-- ========== SERVICE STATS (odometers, above the money) ========== -->
-<section class="stat-band">
-  <ul class="stat-row" id="statRow">
-    <li><div class="odo-num odo-mini" data-value="525"></div><div class="l">Volunteer hours in 2026</div></li>
-    <li><div class="odo-num odo-mini" data-value="206"></div><div class="l">Teammates who showed up</div></li>
-    <li><div class="odo-num odo-mini" data-value="12"></div><div class="l">Service projects</div></li>
-    <li><div class="odo-num odo-mini" data-value="60" data-suffix="+"></div><div class="l">Organizations served</div></li>
-  </ul>
-</section>
-
 <!-- ========== COMMUNITY GIVING REPORT ========== -->
 <section class="rgt-track" id="rgtTrack">
   <div class="rgt-stage">
@@ -706,6 +704,14 @@
         <img class="rgt-logo" src="assets/logo-light-trim.png" alt="Rohrman Impact" width="820" height="206">
         <p class="rgt-report">2026 Community Giving</p>
       </header>
+
+      <ul class="report-stats" id="statRow">
+        <li><div class="odo-num odo-mini" data-value="525"></div><div class="l">Volunteer hours in 2026</div></li>
+        <li><div class="odo-num odo-mini" data-value="206"></div><div class="l">Teammates who showed up</div></li>
+        <li><div class="odo-num odo-mini" data-value="12"></div><div class="l">Service projects</div></li>
+        <li><div class="odo-num odo-mini" data-value="60" data-suffix="+"></div><div class="l">Organizations served</div></li>
+      </ul>
+
 
       <div class="rgt-body">
         <div class="rgt-tube" role="progressbar" aria-label="Given back so far in 2026"
