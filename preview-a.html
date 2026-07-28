@@ -86,12 +86,12 @@
      stays legible over ANY hero photo (they rotate) via a dual scrim. */
   .hero{
     position:relative;
-    min-height:clamp(440px,58vh,640px);
+    min-height:clamp(500px,70vh,760px);
     display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
     color:#fff;background:#0b0e12;overflow:hidden;
     padding:clamp(40px,9vh,96px) clamp(24px,6vw,84px);
   }
-  .hero__bg{position:absolute;inset:0;background-size:cover;background-position:center 42%;opacity:0;transition:opacity 1.6s ease}
+  .hero__bg{position:absolute;inset:0;background-size:cover;background-position:center 38%;opacity:0;transition:opacity 1.6s ease}
   .hero__bg.is-active{opacity:1}
   /* Two stacked gradients: bottom fade + left fade, so the bottom-left corner
      where the logo/copy live is always dark enough, whatever photo loads. */
@@ -551,7 +551,7 @@
   @media(max-width:520px){.report-stats{grid-template-columns:repeat(2,1fr)}}
   .report-stats li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
   .report-stats .odo-num{font-size:clamp(17px,3.4vw,23px)}
-  .report-stats .l{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.03em;line-height:1.25}
+  .report-stats .l{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.03em;line-height:1.25}
 </style>
 </head>
 <body>
@@ -559,10 +559,10 @@
 
 <!-- ========== HERO (logo only, top-weighted) ========== -->
 <header class="hero">
-  <div class="hero__bg is-active" role="img" aria-label="Rohrman teammates giving back in the community" style="background-image:url('assets/hero/hero-1.jpg')"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/hero/hero-2.jpg')"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/hero/hero-3.jpg')"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/hero/hero-4.jpg')"></div>
+  <div class="hero__bg is-active" role="img" aria-label="Rohrman teammates giving back in the community" style="background-image:url('assets/vol-mealpack-group.jpg')"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/ath-stadium-check.jpg')"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/vol-yardcleanup.jpg')"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/vol-planting.jpg')"></div>
   <div class="hero__scrim"></div>
   <div class="hero__inner">
     <h1 class="visually-hidden">Rohrman Impact</h1>
@@ -704,8 +704,8 @@
       </header>
 
       <ul class="report-stats" id="statRow">
-        <li><div class="odo-num odo-mini" data-value="525"></div><div class="l">Volunteer hours in 2026</div></li>
-        <li><div class="odo-num odo-mini" data-value="206"></div><div class="l">Teammates who showed up</div></li>
+        <li><div class="odo-num odo-mini" data-value="206"></div><div class="l">Volunteers</div></li>
+        <li><div class="odo-num odo-mini" data-value="525"></div><div class="l">Volunteer Hours</div></li>
         <li><div class="odo-num odo-mini" data-value="12"></div><div class="l">Service projects</div></li>
         <li><div class="odo-num odo-mini" data-value="60" data-suffix="+"></div><div class="l">Organizations served</div></li>
       </ul>
@@ -1002,6 +1002,13 @@
       </div>
     </details>
 
+    <details class="faq">
+      <summary>Do Rohrman employees get time off to volunteer?</summary>
+      <div class="faq__a">
+        <p>Yes. Every Rohrman employee gets three paid charity days a year as part of their benefits. They can take a paid day to go volunteer for a charity of their choice, and get paid for it. That is on top of the Rohrman Impact program, and it counts hours and projects our people give beyond it.</p>
+      </div>
+    </details>
+
   </div>
 </div>
 
@@ -1124,6 +1131,11 @@
           "@type": "Question",
           "name": "Does Rohrman give time as well as money?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes. Alongside the dollars, Rohrman employees gave more than 400 hands-on volunteer hours in 2025: packing 22,228 meals with Feed My Starving Children, assembling 545 Operation Christmas Child shoeboxes, and refreshing homes and camp grounds across the communities the group serves." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Rohrman employees get time off to volunteer?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Rohrman employee gets three paid charity days a year as part of their benefits. They can take a paid day to go volunteer for a charity of their choice, and get paid for it. That is on top of the Rohrman Impact program, and it counts hours and projects our people give beyond it." }
         }
       ]
     }
@@ -1219,28 +1231,10 @@
     }
     if(allWrap) allWrap.classList.add('show');
     if(rm){ setProgress(1); return; }
-    // Scroll-LINKED: fill maps to the band's center travelling up through the
-    // viewport. Starts as the center enters from the bottom, full by the time
-    // the center reaches just above the middle (~0.55 viewport of scroll), so
-    // it fills fast, moves with the page, and never freezes the frame.
-    function computeProgress(){
-      var rect = track.getBoundingClientRect();
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      var center = rect.top + rect.height / 2;
-      var start = vh * 0.98;   // hold at $0 until the band is clearly on screen
-      var end   = vh * 0.55;   // full by the time it's near the middle (~0.4vh scroll)
-      return clamp((start - center) / (start - end));
-    }
-    var tickingT = false;
-    function onScrollT(){
-      if(tickingT) return;
-      tickingT = true;
-      requestAnimationFrame(function(){ setProgress(computeProgress()); tickingT = false; });
-    }
-    window.addEventListener('scroll', onScrollT, { passive: true });
-    window.addEventListener('resize', onScrollT, { passive: true });
-    window.addEventListener('load', onScrollT);
-    setProgress(computeProgress());
+    // Animate to the final totals on load (no scroll dependency), then hold.
+    var t0T = null;
+    function stepT(ts){ if(t0T===null)t0T=ts; var p=Math.min((ts-t0T)/1700,1); setProgress(1-Math.pow(1-p,3)); if(p<1) requestAnimationFrame(stepT); }
+    requestAnimationFrame(stepT);
   })();
 
   /* ---------- HORIZONTAL SCROLL SHELVES (promo row + photo carousel) ---------- */
@@ -1372,10 +1366,13 @@ setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
   var hosts=[].slice.call(document.querySelectorAll('.odo-num[data-value]'));
   if(!hosts.length) return;
   hosts.forEach(build);
-  function frame(){ hosts.forEach(function(h){ render(h, rm?1:compute(h)); }); }
-  if(rm){ frame(); return; }
-  var t=false; function onS(){ if(t)return; t=true; requestAnimationFrame(function(){ frame(); t=false; }); }
-  window.addEventListener('scroll',onS,{passive:true}); window.addEventListener('resize',onS,{passive:true}); window.addEventListener('load',onS); frame();
+  function ease(p){ return 1-Math.pow(1-p,3); }
+  if(rm){ hosts.forEach(function(h){ render(h,1); }); return; }
+  hosts.forEach(function(h,i){
+    var dur=1500, delay=i*110, t0=null;
+    function step(ts){ if(t0===null)t0=ts; var p=Math.min(Math.max((ts-t0-delay)/dur,0),1); render(h,ease(p)); if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  });
 })();
 </script>
 </body>
