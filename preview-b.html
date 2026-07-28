@@ -534,7 +534,7 @@
   .odo-d{position:relative;height:1em;overflow:hidden;width:.64em;
     background:linear-gradient(180deg,#080b10 0%, #1a1f28 50%, #080b10 100%);
     border:1px solid rgba(0,0,0,.6);border-radius:3px;box-shadow:inset 0 0 5px rgba(0,0,0,.55)}
-  .odo-reel{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.16,1,.3,1);will-change:transform}
+  .odo-reel{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;transition:none;will-change:transform}
   .odo-reel span{height:1em;display:flex;align-items:center;justify-content:center;color:#f2f0ea;text-shadow:0 1px 1px rgba(0,0,0,.5)}
   .odo-sep{display:flex;align-items:center;justify-content:center;padding:0 .05em;color:#f2f0ea}
   .odo-sep.odo-comma{align-items:flex-end;padding-bottom:.06em;font-size:.66em;color:rgba(244,241,230,.85)}
@@ -552,6 +552,9 @@
   .report-stats li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
   .report-stats .odo-num{font-size:clamp(17px,3.4vw,23px)}
   .report-stats .l{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.03em;line-height:1.25}
+
+  /* money caption sits BELOW its number */
+  .odo-caption{margin-top:11px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 
   /* ===================== ODOMETER money section (layout; drums are shared) ===================== */
   .odo-track{position:relative;background:var(--charcoal,#131921);color:#fff;padding:clamp(38px,7vh,72px) 16px}
@@ -715,11 +718,11 @@
       <li><div class="odo-num odo-mini" data-value="12"></div><div class="l">Service projects</div></li>
       <li><div class="odo-num odo-mini" data-value="60" data-suffix="+"></div><div class="l">Organizations served</div></li>
     </ul>
-    <div class="odo-eyebrow">Given back so far this year</div>
     <div class="odo-num odo-money" data-value="249016"></div>
+    <div class="odo-caption">Given back so far this year</div>
     <div class="odo-alltime">
-      <span class="odo-at-label">And a lifetime of giving since 1986</span>
       <div class="odo-num odo-money odo-money--sm" data-value="3207336"></div>
+      <div class="odo-caption">And a lifetime of giving since 1986</div>
     </div>
   </div>
 </section>
@@ -1338,7 +1341,7 @@ setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
     for(var idx=0;idx<places.length;idx++){
       var d=document.createElement('span'); d.className='odo-d';
       var reel=document.createElement('span'); reel.className='odo-reel';
-      for(var i=0;i<10;i++){ var g=document.createElement('span'); g.textContent=i; reel.appendChild(g); }
+      for(var i=0;i<=10;i++){ var g=document.createElement('span'); g.textContent=(i%10); reel.appendChild(g); }
       d.appendChild(reel); host.appendChild(d);
       reels.push({reel:reel,place:places[idx]});
       var rem=places.length-1-idx;
@@ -1347,19 +1350,16 @@ setTimeout(function(){ if(!__rohrmanMapReady) showMapFallback(); }, 4000);
     if(suffix){ var sp=document.createElement('span'); sp.className='odo-sep'; sp.textContent=suffix; host.appendChild(sp); }
     host._reels=reels; host._val=val;
   }
-  function render(host,prog){ var shown=Math.round(host._val*prog); host._reels.forEach(function(r){ r.reel.style.transform='translateY(-'+(Math.floor(shown/r.place)%10)+'em)'; }); }
+  function render(host,prog){ var shown=host._val*prog, snap=prog>=0.999; host._reels.forEach(function(r){ var w=snap?(Math.floor(host._val/r.place)%10):((shown/r.place)%10); if(w<0)w=0; r.reel.style.transform='translateY(-'+w+'em)'; }); }
   function clamp(v){return v<0?0:(v>1?1:v);}
-  function compute(el){ var r=el.getBoundingClientRect(), vh=window.innerHeight||document.documentElement.clientHeight; var c=r.top+r.height/2; var s=vh*0.98,e=vh*0.55; return clamp((s-c)/(s-e)); }
+  function compute(el){ var r=el.getBoundingClientRect(), vh=window.innerHeight||document.documentElement.clientHeight; var c=r.top+r.height/2; var s=vh*1.06,e=vh*0.46; return clamp((s-c)/(s-e)); }
   var hosts=[].slice.call(document.querySelectorAll('.odo-num[data-value]'));
   if(!hosts.length) return;
   hosts.forEach(build);
-  function ease(p){ return 1-Math.pow(1-p,3); }
   if(rm){ hosts.forEach(function(h){ render(h,1); }); return; }
-  hosts.forEach(function(h,i){
-    var dur=1500, delay=i*110, t0=null;
-    function step(ts){ if(t0===null)t0=ts; var p=Math.min(Math.max((ts-t0-delay)/dur,0),1); render(h,ease(p)); if(p<1)requestAnimationFrame(step); }
-    requestAnimationFrame(step);
-  });
+  function frame(){ hosts.forEach(function(h){ render(h, compute(h)); }); }
+  var tk=false; function onS(){ if(tk)return; tk=true; requestAnimationFrame(function(){ frame(); tk=false; }); }
+  window.addEventListener('scroll',onS,{passive:true}); window.addEventListener('resize',onS,{passive:true}); window.addEventListener('load',onS); frame();
 })();
 </script>
 </body>
