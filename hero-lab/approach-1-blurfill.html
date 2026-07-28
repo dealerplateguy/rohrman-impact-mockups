@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohrman Impact, Hero (Blurred-Fill Contain)</title>
+<style>
+  :root{
+    --charcoal:#131921;
+    --charcoal-2:#0e131a;
+    --gold:#fbb040;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;overflow-x:hidden;}
+  body{
+    background:var(--charcoal);
+    color:var(--white);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    width:100%;
+    height:clamp(420px,60vh,680px);
+    overflow:hidden;
+    background:var(--charcoal);
+    isolation:isolate;
+  }
+
+  /* Each rotating photo lives in a "slide" layer that holds both the
+     blurred fill and the contained (un-cropped) sharp photo. */
+  .slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 1.2s ease-in-out;
+    will-change:opacity;
+  }
+  .slide.is-active{opacity:1;}
+
+  /* Blurred, darkened, scaled-up copy fills the whole frame so there
+     are no letterbox bars behind the contained photo. */
+  .slide__fill{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    filter:blur(30px) brightness(.5) saturate(1.05);
+    transform:scale(1.18);
+  }
+
+  /* The FULL photo, contained so nothing is ever cropped. */
+  .slide__photo{
+    position:absolute;
+    inset:0;
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
+
+  /* Readability scrim so white/gold copy stays legible over any photo. */
+  .hero__scrim{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    background:
+      linear-gradient(180deg, rgba(19,25,33,.55) 0%, rgba(19,25,33,.15) 30%, rgba(19,25,33,.30) 62%, rgba(19,25,33,.86) 100%),
+      linear-gradient(90deg, rgba(19,25,33,.60) 0%, rgba(19,25,33,.12) 45%, rgba(19,25,33,0) 70%);
+    pointer-events:none;
+  }
+
+  .hero__content{
+    position:absolute;
+    inset:0;
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:clamp(22px,5vw,64px);
+    padding-bottom:clamp(28px,6vw,64px);
+  }
+  .hero__logo{
+    width:clamp(260px,34vw,440px);
+    height:auto;
+    display:block;
+    margin-bottom:clamp(16px,2.4vw,26px);
+    filter:drop-shadow(0 3px 14px rgba(0,0,0,.55));
+  }
+  .hero__tagline{
+    font-size:clamp(1.5rem,4.6vw,3rem);
+    font-weight:800;
+    line-height:1.08;
+    letter-spacing:-.01em;
+    max-width:20ch;
+    text-shadow:0 2px 18px rgba(0,0,0,.5);
+  }
+  .hero__tagline .gold{color:var(--gold);}
+  .hero__location{
+    margin-top:clamp(12px,1.8vw,18px);
+    font-size:clamp(.72rem,1.2vw,.86rem);
+    font-weight:700;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.9);
+  }
+  .hero__location::before{
+    content:"";
+    display:inline-block;
+    width:26px;
+    height:2px;
+    background:var(--gold);
+    vertical-align:middle;
+    margin-right:12px;
+    margin-bottom:3px;
+  }
+
+  /* ===== DUMMY CONTENT BELOW ===== */
+  .band{
+    background:var(--charcoal-2);
+    padding:clamp(40px,7vw,72px) clamp(22px,5vw,64px);
+    border-top:1px solid rgba(251,176,64,.18);
+  }
+  .band__inner{max-width:920px;margin:0 auto;}
+  .band__eyebrow{
+    color:var(--gold);
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .band h2{
+    font-size:clamp(1.4rem,3.4vw,2.1rem);
+    font-weight:800;
+    line-height:1.15;
+    margin-bottom:14px;
+  }
+  .band p{
+    font-size:clamp(1rem,1.6vw,1.12rem);
+    line-height:1.6;
+    color:rgba(255,255,255,.78);
+    max-width:64ch;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .slide{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero" aria-label="Rohrman Impact">
+    <div class="hero__stage" id="heroStage" aria-hidden="true">
+      <!-- Slides are injected by JS so the markup stays clean -->
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="hero__content">
+      <img class="hero__logo" src="../assets/logo-light-trim.png" alt="Rohrman Impact" width="820" height="206">
+      <h1 class="hero__tagline">
+        <span class="gold">Driven to give back</span><br>
+        in the places we call home.
+      </h1>
+      <p class="hero__location">Greater Lafayette, Indiana</p>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="band__inner">
+      <p class="band__eyebrow">Our Community Commitment</p>
+      <h2>Twenty stores, one neighborhood at a time.</h2>
+      <p>From youth sports and food drives to scholarships and disaster relief, the Rohrman family of dealerships shows up where it counts. This is a quick look at the work our teams put in across Greater Lafayette and beyond.</p>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var photos = [
+    "../assets/hero/hero-1.jpg",
+    "../assets/hero/hero-2.jpg",
+    "../assets/hero/hero-3.jpg",
+    "../assets/hero/hero-4.jpg"
+  ];
+  var stage = document.getElementById("heroStage");
+  if(!stage) return;
+
+  // Build a slide (blurred fill + contained sharp photo) per image.
+  var slides = photos.map(function(src, i){
+    var slide = document.createElement("div");
+    slide.className = "slide" + (i === 0 ? " is-active" : "");
+
+    var fill = document.createElement("div");
+    fill.className = "slide__fill";
+    fill.style.backgroundImage = "url('" + src + "')";
+
+    var photo = document.createElement("div");
+    photo.className = "slide__photo";
+    photo.style.backgroundImage = "url('" + src + "')";
+
+    slide.appendChild(fill);
+    slide.appendChild(photo);
+    stage.appendChild(slide);
+    return slide;
+  });
+
+  if(slides.length < 2) return;
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce) return; // hold on the first photo, no rotation
+
+  var idx = 0;
+  setInterval(function(){
+    slides[idx].classList.remove("is-active");
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add("is-active");
+  }, 5000);
+})();
+</script>
+
+</body>
+</html>

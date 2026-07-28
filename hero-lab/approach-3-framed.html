@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohrman Impact , Framed Cinematic Gallery Hero</title>
+<style>
+  :root {
+    --charcoal: #131921;
+    --charcoal-2: #1b232e;
+    --gold: #fbb040;
+    --gold-dark: #a96a10;
+    --white: #ffffff;
+    --muted: #c7ccd2;
+    --frame-line: rgba(251, 176, 64, 0.28);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--charcoal);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    width: 100%;
+    /* layered depth: dark base + soft radial glow behind the framed card */
+    background:
+      radial-gradient(120% 80% at 50% 18%, #1d2733 0%, #141b24 45%, #0e141b 100%);
+    padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 48px) clamp(48px, 6vw, 88px);
+  }
+
+  .hero__eyebrow {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: clamp(10px, 1.4vw, 12px);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: clamp(20px, 3vw, 32px);
+  }
+  .hero__eyebrow span {
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--frame-line);
+  }
+
+  /* The framed cinematic card, centered and size-controlled */
+  .frame {
+    position: relative;
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    /* charcoal frame: subtle border, soft outer shadow, inner matte */
+    background: var(--charcoal-2);
+    padding: clamp(8px, 1.4vw, 14px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    box-shadow:
+      0 2px 0 rgba(255, 255, 255, 0.03) inset,
+      0 30px 70px -28px rgba(0, 0, 0, 0.85),
+      0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  /* thin gold accent line just inside the frame */
+  .frame::after {
+    content: "";
+    position: absolute;
+    inset: clamp(8px, 1.4vw, 14px);
+    border: 1px solid var(--frame-line);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* The photo stage: locks the natural 16:10 ratio so nothing crops */
+  .stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10; /* matches 1760x1100 exactly */
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0c1117;
+  }
+
+  .stage__slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* CONTAIN, never cover: the whole photo shows, faces never cut */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
+    /* very gentle Ken Burns that only scales the frame slightly; contain
+       keeps the full image visible, so faces stay in view */
+    transform: scale(1.0);
+  }
+  .stage__slide.is-active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  /* soft vignette on top of the photo for a premium slideshow feel */
+  .stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    box-shadow: inset 0 0 90px 12px rgba(0, 0, 0, 0.45);
+    border-radius: 8px;
+  }
+
+  /* scrim only at the very bottom for the caption bar overlay option */
+  .stage__scrim {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 34%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(10,14,20,0.72) 0%, rgba(10,14,20,0.0) 100%);
+  }
+
+  /* ===== Charcoal caption bar directly beneath the framed photo ===== */
+  .caption {
+    max-width: 940px;
+    margin: clamp(16px, 2vw, 22px) auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(16px, 3vw, 40px);
+    padding: clamp(14px, 2vw, 22px) clamp(18px, 2.4vw, 30px);
+    background: linear-gradient(180deg, var(--charcoal-2) 0%, #161d27 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    box-shadow: 0 18px 44px -26px rgba(0, 0, 0, 0.8);
+  }
+
+  .caption__logo {
+    flex: 0 0 auto;
+    display: block;
+  }
+  .caption__logo img {
+    display: block;
+    width: clamp(150px, 20vw, 210px);
+    height: auto;
+  }
+
+  .caption__text {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: right;
+  }
+
+  .tagline {
+    font-size: clamp(20px, 3.4vw, 34px);
+    font-weight: 800;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+  }
+  .tagline .gold { color: var(--gold); }
+  .tagline .rest { color: var(--white); }
+
+  .locline {
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: clamp(10px, 1.4vw, 12px);
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .locline::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 1px;
+    background: var(--gold-dark);
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 3px;
+  }
+
+  /* progress dots */
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin: clamp(18px, 2.4vw, 26px) auto 0;
+  }
+  .dots button {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(255,255,255,0.22);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .dots button.is-active {
+    background: var(--gold);
+    transform: scale(1.15);
+  }
+
+  /* Stack the caption bar on small screens; keep everything centered */
+  @media (max-width: 640px) {
+    .caption {
+      flex-direction: column;
+      text-align: center;
+    }
+    .caption__text { text-align: center; }
+    .locline::before { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stage__slide { transition: opacity 0.01ms; }
+  }
+
+  /* ===== Content strip below (for context) ===== */
+  .strip {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 88px) clamp(16px, 4vw, 48px);
+  }
+  .strip__lead {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto clamp(36px, 5vw, 56px);
+  }
+  .strip__lead h2 {
+    font-size: clamp(22px, 3.4vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .strip__lead h2 .gold { color: var(--gold); }
+  .strip__lead p {
+    color: var(--muted);
+    font-size: clamp(15px, 1.8vw, 17px);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(16px, 2.4vw, 24px);
+  }
+  .card {
+    background: var(--charcoal-2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: clamp(20px, 3vw, 28px);
+  }
+  .card .num {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .card .lbl {
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-label="Rohrman Impact">
+    <div class="hero__eyebrow"><span>Rohrman Impact</span></div>
+
+    <!-- Framed cinematic gallery card -->
+    <div class="frame">
+      <div class="stage" id="stage" aria-live="polite">
+        <div class="stage__slide is-active" data-src="../assets/hero/hero-1.jpg"></div>
+        <div class="stage__slide" data-src="../assets/hero/hero-2.jpg"></div>
+        <div class="stage__slide" data-src="../assets/hero/hero-3.jpg"></div>
+        <div class="stage__slide" data-src="../assets/hero/hero-4.jpg"></div>
+        <div class="stage__scrim"></div>
+      </div>
+    </div>
+
+    <!-- Charcoal caption bar directly beneath the framed photo -->
+    <div class="caption">
+      <a class="caption__logo" href="#" aria-label="Rohrman Automotive Group">
+        <img src="../assets/logo-light-trim.png" alt="Rohrman Automotive Group" width="210" height="53">
+      </a>
+      <div class="caption__text">
+        <div class="tagline">
+          <span class="gold">Driven to give back</span>
+          <span class="rest">in the places we call home.</span>
+        </div>
+        <div class="locline">Greater Lafayette, Indiana</div>
+      </div>
+    </div>
+
+    <!-- progress dots -->
+    <div class="dots" id="dots" role="tablist" aria-label="Photo selector">
+      <button class="is-active" type="button" aria-label="Photo 1"></button>
+      <button type="button" aria-label="Photo 2"></button>
+      <button type="button" aria-label="Photo 3"></button>
+      <button type="button" aria-label="Photo 4"></button>
+    </div>
+  </section>
+
+  <!-- ================= CONTENT STRIP (context) ================= -->
+  <section class="strip">
+    <div class="strip__lead">
+      <h2>Twenty stores, <span class="gold">one community.</span></h2>
+      <p>From youth sports to food banks to disaster relief, our teams show up where it counts. Here is a look at the causes we are proud to stand behind across greater Lafayette.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="num">$1.2M+</div><div class="lbl">Given back</div></div>
+      <div class="card"><div class="num">20</div><div class="lbl">Stores giving</div></div>
+      <div class="card"><div class="num">40+</div><div class="lbl">Local causes</div></div>
+      <div class="card"><div class="num">1 home</div><div class="lbl">Greater Lafayette</div></div>
+    </div>
+  </section>
+
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(stage.querySelectorAll('.stage__slide'));
+  var dotWrap = document.getElementById('dots');
+  var dots = Array.prototype.slice.call(dotWrap.querySelectorAll('button'));
+  var current = 0;
+  var timer = null;
+  var INTERVAL = 5000;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Preload photos by assigning background-image from data-src
+  slides.forEach(function (s) {
+    var url = s.getAttribute('data-src');
+    if (url) {
+      var img = new Image();
+      img.src = url;
+      s.style.backgroundImage = 'url("' + url + '")';
+    }
+  });
+
+  function show(next) {
+    if (next === current) return;
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('is-active');
+    current = (next + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('is-active');
+  }
+
+  function advance() { show(current + 1); }
+
+  function start() {
+    if (reduce) return;            // honor reduced-motion: no auto-rotate
+    stop();
+    timer = setInterval(advance, INTERVAL);
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () {
+      show(i);
+      start(); // restart the clock after a manual pick
+    });
+  });
+
+  // Pause rotation when the tab is hidden (saves work, avoids jump-cuts)
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { stop(); } else { start(); }
+  });
+
+  start();
+})();
+</script>
+</body>
+</html>
