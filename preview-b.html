@@ -86,12 +86,12 @@
      stays legible over ANY hero photo (they rotate) via a dual scrim. */
   .hero{
     position:relative;
-    min-height:clamp(480px,64vh,680px);
+    aspect-ratio:16 / 10;min-height:440px;max-height:1220px;
     display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
     color:#fff;background:#0b0e12;overflow:hidden;
     padding:clamp(40px,9vh,96px) clamp(24px,6vw,84px);
   }
-  .hero__bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;opacity:0;transition:opacity 1.6s ease}
+  .hero__bg{position:absolute;inset:0;background-size:cover;background-position:center center;opacity:0;transition:opacity 1.6s ease}
   .hero__bg.is-active{opacity:1}
   /* Two stacked gradients: bottom fade + left fade, so the bottom-left corner
      where the logo/copy live is always dark enough, whatever photo loads. */
@@ -525,20 +525,19 @@
   .map-card--charity .logohelp{gap:13px}
 
   /* ===================== ODOMETER (old-school mechanical drum, shared) ===================== */
-  .odo-num{display:inline-flex;justify-content:center;align-items:stretch;gap:0;font-weight:800;font-variant-numeric:tabular-nums;line-height:1;color:#f4f1e6;
-    background:#05070a;border:2px solid rgba(0,0,0,.7);border-radius:9px;padding:5px;
-    box-shadow:inset 0 3px 12px rgba(0,0,0,.9), inset 0 -3px 12px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.06)}
+  .odo-num{display:inline-flex;justify-content:center;align-items:stretch;gap:0;font-weight:800;font-variant-numeric:tabular-nums;line-height:1;color:#f2f0ea;
+    background:#0b0e13;border:1px solid rgba(255,255,255,.2);border-radius:5px;padding:4px 3px;
+    box-shadow:inset 0 2px 7px rgba(0,0,0,.75), inset 0 -2px 7px rgba(0,0,0,.75), 0 1px 0 rgba(255,255,255,.05)}
   .odo-money{font-size:clamp(44px,11vw,82px)}
   .odo-money--sm{font-size:clamp(28px,7vw,50px)}
   .odo-mini{font-size:clamp(22px,4.6vw,32px)}
-  .odo-d{position:relative;height:1em;overflow:hidden;width:.66em;
-    background:linear-gradient(180deg,#04060a 0%, #171d29 20%, #39424f 50%, #171d29 80%, #04060a 100%);
-    border-left:1px solid rgba(0,0,0,.75);border-right:1px solid rgba(255,255,255,.05)}
+  .odo-d{position:relative;height:1em;overflow:hidden;width:.64em;
+    background:linear-gradient(180deg,#080b10 0%, #1a1f28 50%, #080b10 100%);
+    border-left:1px solid rgba(0,0,0,.5);border-right:1px solid rgba(255,255,255,.04)}
   .odo-d:first-child{border-left:none}
-  .odo-d::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.6);z-index:3;pointer-events:none}
   .odo-reel{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.16,1,.3,1);will-change:transform}
-  .odo-reel span{height:1em;display:flex;align-items:center;justify-content:center;color:#f4f1e6;text-shadow:0 1px 2px rgba(0,0,0,.8)}
-  .odo-sep{display:flex;align-items:center;justify-content:center;padding:0 .05em;color:#f4f1e6}
+  .odo-reel span{height:1em;display:flex;align-items:center;justify-content:center;color:#f2f0ea;text-shadow:0 1px 1px rgba(0,0,0,.5)}
+  .odo-sep{display:flex;align-items:center;justify-content:center;padding:0 .05em;color:#f2f0ea}
   .odo-sep.odo-comma{align-items:flex-end;padding-bottom:.06em;font-size:.66em;color:rgba(244,241,230,.85)}
   .stat-row .odo-num{margin:0 auto}
   @media(prefers-reduced-motion:reduce){.odo-reel{transition:none}}
@@ -570,11 +569,10 @@
 
 <!-- ========== HERO (logo only, top-weighted) ========== -->
 <header class="hero">
-  <div class="hero__bg is-active" role="img" aria-label="Rohrman teammates giving back in the community" style="background-image:url('assets/vol-mealpack-group.jpg');background-position:center 36%"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/ath-stadium-check.jpg');background-position:center 32%"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/d-check-puppies.jpg');background-position:center 22%"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/mp-06.jpg');background-position:center 38%"></div>
-  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/vol-yardcleanup.jpg');background-position:center 44%"></div>
+  <div class="hero__bg is-active" role="img" aria-label="Rohrman teammates giving back in the community" style="background-image:url('assets/hero/hero-1.jpg')"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/hero/hero-2.jpg')"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/hero/hero-3.jpg')"></div>
+  <div class="hero__bg" aria-hidden="true" style="background-image:url('assets/hero/hero-4.jpg')"></div>
   <div class="hero__scrim"></div>
   <div class="hero__inner">
     <h1 class="visually-hidden">Rohrman Impact</h1>
